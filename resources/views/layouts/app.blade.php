@@ -111,7 +111,7 @@
             <!-- /.navbar -->
 
             <!-- Main Sidebar Container -->
-            <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <aside class="main-sidebar sidebar-dark-warning bg-gradient-navy elevation-4">
                 <!-- Brand Logo -->
                 <a href="/home" class="brand-link">
                     <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -197,25 +197,6 @@
                                 <a href="/pacientes" class="nav-link">
                                     <i class="nav-icon fa fa-users"></i>
                                     <p>Pacientes</p>
-                                </a>
-                            </li>
-                            <li class="nav-header">LABELS</li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon far fa-circle text-danger"></i>
-                                    <p class="text">Important</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon far fa-circle text-warning"></i>
-                                    <p>Warning</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon far fa-circle text-info"></i>
-                                    <p>Informational</p>
                                 </a>
                             </li>
                         </ul>

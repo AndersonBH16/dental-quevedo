@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\PacientesController;
+use App\Http\Controllers\PacienteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,5 +24,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resources([
-    'pacientes'               => PacientesController::class
+    'pacientes'               => PacienteController::class
 ]);
