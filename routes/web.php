@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\PacientesController;
+use App\Http\Controllers\CitasController;
+use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\HistogramaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,5 +26,12 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resources([
-    'pacientes'               => PacientesController::class
+    'pacientes'               => PacienteController::class,
+    'histograma'              => HistogramaController::class,
+    'citas'                   => CitasController::class
 ]);
+
+Route::get('/pacientes_total', [App\Http\Controllers\PacienteController::class, 'mostrarTodos']);
+Route::get('/ver-histograma-paciente/', [App\Http\Controllers\PacienteController::class, 'verHistogramaPaciente']);
+//Route::get('/ver_histograma/update/{dni}', 'HistogramaController')->name('ver_histograma');
+//Route::get('/histograma', HistogramaController::class);

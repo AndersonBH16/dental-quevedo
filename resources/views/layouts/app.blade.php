@@ -37,8 +37,10 @@
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('dq-styles/estilos.css') }}" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -60,7 +62,7 @@
                         <a href="/home" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item d-none d-lg-inline-block pl-4">
-                        <a href="#" class="nav-link">Contact</a>
+                        <a href="#" class="nav-link">My Profile</a>
                     </li>
                 </ul>
 
@@ -111,7 +113,7 @@
             <!-- /.navbar -->
 
             <!-- Main Sidebar Container -->
-            <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <aside class="main-sidebar sidebar-dark-warning bg-gradient-navy elevation-4">
                 <!-- Brand Logo -->
                 <a href="/home" class="brand-link">
                     <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -133,89 +135,101 @@
                                     <p>Dashboard</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-tree"></i>
-                                    <p>
-                                        UI Elements
-                                        <i class="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="pages/UI/general.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>General</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/UI/icons.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Icons</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/UI/buttons.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Buttons</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/UI/sliders.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Sliders</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/UI/modals.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Modals & Alerts</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/UI/navbar.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Navbar & Tabs</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/UI/timeline.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Timeline</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/UI/ribbons.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Ribbons</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="#" class="nav-link">--}}
+{{--                                    <i class="nav-icon fas fa-tree"></i>--}}
+{{--                                    <p>--}}
+{{--                                        UI Elements--}}
+{{--                                        <i class="fas fa-angle-left right"></i>--}}
+{{--                                    </p>--}}
+{{--                                </a>--}}
+{{--                                <ul class="nav nav-treeview">--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="pages/UI/general.html" class="nav-link">--}}
+{{--                                            <i class="far fa-circle nav-icon"></i>--}}
+{{--                                            <p>General</p>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="pages/UI/icons.html" class="nav-link">--}}
+{{--                                            <i class="far fa-circle nav-icon"></i>--}}
+{{--                                            <p>Icons</p>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="pages/UI/buttons.html" class="nav-link">--}}
+{{--                                            <i class="far fa-circle nav-icon"></i>--}}
+{{--                                            <p>Buttons</p>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="pages/UI/sliders.html" class="nav-link">--}}
+{{--                                            <i class="far fa-circle nav-icon"></i>--}}
+{{--                                            <p>Sliders</p>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="pages/UI/modals.html" class="nav-link">--}}
+{{--                                            <i class="far fa-circle nav-icon"></i>--}}
+{{--                                            <p>Modals & Alerts</p>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="pages/UI/navbar.html" class="nav-link">--}}
+{{--                                            <i class="far fa-circle nav-icon"></i>--}}
+{{--                                            <p>Navbar & Tabs</p>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="pages/UI/timeline.html" class="nav-link">--}}
+{{--                                            <i class="far fa-circle nav-icon"></i>--}}
+{{--                                            <p>Timeline</p>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="pages/UI/ribbons.html" class="nav-link">--}}
+{{--                                            <i class="far fa-circle nav-icon"></i>--}}
+{{--                                            <p>Ribbons</p>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+{{--                            </li>--}}
                             <li class="nav-header">GESTIÓN DEL CONSULTORIO</li>
+                            <li class="nav-item">
+                                <a href="/citas" class="nav-link">
+                                    <i class="nav-icon fa fa-clock"></i>
+                                    <p>Citas</p>
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a href="/pacientes" class="nav-link">
                                     <i class="nav-icon fa fa-users"></i>
                                     <p>Pacientes</p>
                                 </a>
                             </li>
-                            <li class="nav-header">LABELS</li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon far fa-circle text-danger"></i>
-                                    <p class="text">Important</p>
+                                <a href="/pacientes" class="nav-link">
+                                    <i class="nav-icon fa fa-cubes"></i>
+                                    <p>Inventario</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon far fa-circle text-warning"></i>
-                                    <p>Warning</p>
+                                <a href="/pacientes" class="nav-link">
+                                    <i class="nav-icon fa fa-dollar-sign"></i>
+                                    <p>Caja</p>
+                                </a>
+                            </li>
+                            <li class="nav-header">REPORTES</li>
+                            <li class="nav-item">
+                                <a href="/pacientes" class="nav-link">
+                                    <i class="nav-icon fa fa-users"></i>
+                                    <p>Reporte de Historiales</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon far fa-circle text-info"></i>
-                                    <p>Informational</p>
+                                <a href="/pacientes" class="nav-link">
+                                    <i class="nav-icon fa fa-cubes"></i>
+                                    <p>Reporte de Costos</p>
                                 </a>
                             </li>
                         </ul>
@@ -287,5 +301,9 @@
     <script src="dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="dist/js/pages/dashboard.js"></script>
+    <!-- dataTables pluggin -->
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables-buttons/js/dataTables.buttons.js"></script>
+    @yield('js')
 </body>
 </html>
