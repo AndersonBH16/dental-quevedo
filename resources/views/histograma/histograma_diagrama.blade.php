@@ -2,7 +2,7 @@
 
 @section('content_header')
     <div class="row ml-1">
-        <h4 class="d-inline">Pacientes</h4>
+        <h4 class="d-inline">Histograma del Paciente </h4>
     </div>
 @stop
 
@@ -16,26 +16,26 @@
                     <button id="registrarNuevoPaciente" class="btn btn-outline-info" tabindex="0" data-toggle="modal" data-target="#nuevoPacienteModal">
                         <i class="fa fa-plus-circle mr-2"></i>Nuevo
                     </button>
-{{--                    <button class="btn btn-outline-info" tabindex="0" aria-controls="listaProformas" data-toggle="modal" data-target="#filtrosModal">--}}
-{{--                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> button--}}
-{{--                    </button>--}}
+                    {{--                    <button class="btn btn-outline-info" tabindex="0" aria-controls="listaProformas" data-toggle="modal" data-target="#filtrosModal">--}}
+                    {{--                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> button--}}
+                    {{--                    </button>--}}
                 </div>
             </div>
         </div>
         <div class="card-body">
             <table id="tablaPacientes" class="table table-bordered table-hover dt-responsive table-responsive-xl">
                 <thead>
-                    <tr>
-{{--                        <td><b>#</b></td>--}}
-                        <td><b>DNI</b></td>
-                        <td><b>Apellido paterno</b></td>
-                        <td><b>Apellido Materno</b></td>
-                        <td><b>Nombres</b></td>
-                        <td><b>Fecha Nac.</b></td>
-                        <td><b>Teléfono</b></td>
-                        <td><b>Email</b></td>
-                        <td><b>Opciones</b></td>
-                    </tr>
+                <tr>
+                    {{--                        <td><b>#</b></td>--}}
+                    <td><b>DNI</b></td>
+                    <td><b>Apellido paterno</b></td>
+                    <td><b>Apellido Materno</b></td>
+                    <td><b>Nombres</b></td>
+                    <td><b>Fecha Nac.</b></td>
+                    <td><b>Teléfono</b></td>
+                    <td><b>Email</b></td>
+                    <td><b>Opciones</b></td>
+                </tr>
                 </thead>
                 <tbody id="filasListaPacientes" style="display: none;">
                 <tr>
