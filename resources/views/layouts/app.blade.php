@@ -41,6 +41,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <link href="{{ asset('dq-styles/estilos.css') }}" rel="stylesheet">
+
+    @yield('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
