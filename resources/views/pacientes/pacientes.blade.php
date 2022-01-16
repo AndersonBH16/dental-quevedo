@@ -55,8 +55,16 @@
     </div>
 
     @include('pacientes.modal.nuevo_paciente')
+    @include('pacientes.modal.odontograma')
 @stop
 @section('js')
     <script src="{{ asset('dq-scripts/pacientes.js') }}"></script>
+
+    <script>
+        $(document).on('click', '.btnOpenOdontogram', function () {
+            $('#odontogramModal iframe').attr('src', '{{ url('/odontograma') }}');
+            $('#odontogramModal').modal('show');
+        })
+    </script>
 @stop
 

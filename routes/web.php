@@ -35,3 +35,4 @@ Route::get('/pacientes_total', [App\Http\Controllers\PacienteController::class, 
 Route::get('/ver-histograma-paciente/', [App\Http\Controllers\PacienteController::class, 'verHistogramaPaciente']);
 //Route::get('/ver_histograma/update/{dni}', 'HistogramaController')->name('ver_histograma');
 //Route::get('/histograma', HistogramaController::class);
+Route::get('/odontograma', [\App\Http\Controllers\OdontogramController::class, 'canvas']);
