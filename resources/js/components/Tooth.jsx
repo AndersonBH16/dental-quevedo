@@ -1,5 +1,4 @@
 import React from "react";
-import {widthTooth} from "../config/helpers";
 import {POSITION_TOOTH} from "../config/constants";
 import {Typography} from "@mui/material";
 import ImageTooth from "./ImageTooth";
@@ -20,7 +19,7 @@ export default function Tooth({item, onSelect}) {
     )
 
     return (
-        <div style={{width: widthTooth(), padding: 2}}>
+        <div style={{width: '100%', padding: 2}}>
             {(item.position === POSITION_TOOTH.UP) && <Square/>}
             <ImageTooth item={item} onClick={() => {onSelect(item)}}/>
             {(item.position === POSITION_TOOTH.DOWN) && <Square/>}

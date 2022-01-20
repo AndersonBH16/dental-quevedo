@@ -5,10 +5,6 @@ import premolar from "../images/premolar.png";
 import canine from "../images/canine.png";
 import incisive from "../images/incisive.png";
 
-export function widthTooth() {
-    return window.innerWidth / 16;
-}
-
 export function imgType(item) {
     switch (item.type) {
         case TOOTH.MOLAR:
