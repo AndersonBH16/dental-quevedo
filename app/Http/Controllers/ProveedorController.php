@@ -12,7 +12,7 @@ class ProveedorController extends Controller
     public function index()
     {
         $listaProveedores = Proveedor::all();
-        return view('inventario.categorias.categoria', compact('listaProveedores'));
+        return view('inventario.categorias.categorias', compact('listaProveedores'));
     }
 
 

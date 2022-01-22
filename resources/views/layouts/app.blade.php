@@ -210,10 +210,26 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/pacientes" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="nav-icon fa fa-cubes"></i>
-                                    <p>Inventario</p>
+                                    <p>Inventario
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
                                 </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="categorias" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Categorias</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="productos" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Productos</p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a href="/pacientes" class="nav-link">

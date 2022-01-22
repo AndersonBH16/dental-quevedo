@@ -28,7 +28,7 @@ class UpdateRequest extends FormRequest
             'email' => 'required|email|string|unique:proveedores, email,',
 
             'ruc'=> 'required|string|min:11|unique:proveedores, ruc,'.
-            $this->route('proveedor')->id.'|max:11',
+            $this->route('proveedores')->id.'|max:11',
 
             'direccion' => 'nullable|string|max:255',
             'telefono' => 'required|string|max:50|unique:proveedores',

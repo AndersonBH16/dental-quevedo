@@ -68,8 +68,8 @@ function obtenerFilasTablaPacientes(value) {
 
 function itemJson(data, type, value, meta) {
     item = obtenerFilasTablaPacientes(value);
-    listaTotalPacientes[value.idPacientes] = item;
-
+    listaTotalPacientes[value.idPaciente] = item;
+    debugger;
     return item[columns[meta.col].data];
 }
 

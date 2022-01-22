@@ -45,11 +45,11 @@ class StoreRequest extends FormRequest
 
             'categoria_id.integer' => 'El valor tiene que ser entero',
             'categoria_id.required' => 'El campo es requerido',
-            'categoria_id.exists' => 'La categoria no existe',
+            'categoria_id.exists' => 'La categorias no existe',
 
             'proveedor_id.integer' => 'El valor tiene que ser entero',
             'proveedor_id.required' => 'El campo es requerido',
-            'proveedor_id.exists' => 'La categoria no existe'
+            'proveedor_id.exists' => 'La categorias no existe'
         ];
     }
 }
