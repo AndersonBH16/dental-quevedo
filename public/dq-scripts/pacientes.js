@@ -59,7 +59,7 @@ function obtenerFilasTablaPacientes(value) {
                             </a>
                             <a class="dropdown-item btnOpenOdontogram" href="javascript:;">
                                 <i class="fa fa-h-square mr-2" style="color: darkcyan"></i>
-                                Ver Odontograma
+                                Odontograma Inicial
                             </a>
                         </div>
                   </div>`

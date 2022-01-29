@@ -78,7 +78,7 @@ export function Odontogram() {
                     <Tooth key={index} item={tooth} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
-            <div style={{display: "flex", justifyContent: 'center', width: '60%', margin: 'auto'}}>
+            <div style={{display: "flex", justifyContent: 'center', width: '20%', margin: 'auto'}}>
                 {childModel.filter(tooth => tooth.position === CONSTANTS.POSITION_TOOTH.DOWN).map((tooth, index) => (
                     <Tooth key={index} item={tooth} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}

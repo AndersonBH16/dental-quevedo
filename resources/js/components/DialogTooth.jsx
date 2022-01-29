@@ -85,8 +85,8 @@ export default function DialogTooth({tooth, onClose}) {
                     <Selector id={"finding"} label={"Hallazgo"} value={tooth.finding} items={itemsFinding}/>
                     <Selector id={"findingType"} label={"Tipo Hallazgo"} value={tooth.findingType} items={itemsFindingType}/>
                 </Stack>
-                <div style={{width: 200, margin: 'auto'}}>
-                    <ImageTooth item={tooth}/>
+                <div style={{padding: 20, textAlign: "center"}}>
+                    <ImageTooth item={tooth} width={200} height={300}/>
                 </div>
             </DialogContent>
         </Dialog>

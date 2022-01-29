@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document" style="max-width: 1024px">
         <div class="modal-content">
             <div class="modal-header bg-gradient-cyan">
-                <h5 class="modal-title">Odontograma de Evolución</h5>
+                <h5 class="modal-title">Odontograma Inicial</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
