@@ -1,91 +1,70 @@
+import React from "react";
 import Tooth from "./Tooth";
 import * as CONSTANTS from "../config/constants";
+import * as DEFAULTS from "../config/defaults";
+import * as PATHS from "../config/paths";
 import DialogTooth from "./DialogTooth";
-import React from "react";
-import {Stack, TextField} from "@mui/material";
-import {FINDING_TYPE} from "../config/defaults";
-
-const adultModel = [
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.UP,     number: 18, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.UP,     number: 17, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.UP,     number: 16, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.PREMOLAR,    position: CONSTANTS.POSITION_TOOTH.UP,     number: 15, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.CANINE,      position: CONSTANTS.POSITION_TOOTH.UP,     number: 14, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.UP,     number: 13, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.UP,     number: 12, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.UP,     number: 11, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.UP,     number: 21, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.UP,     number: 22, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.UP,     number: 23, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.CANINE,      position: CONSTANTS.POSITION_TOOTH.UP,     number: 24, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.PREMOLAR,    position: CONSTANTS.POSITION_TOOTH.UP,     number: 25, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.UP,     number: 26, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.UP,     number: 27, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.UP,     number: 28, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 48, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 47, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 46, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.PREMOLAR,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 45, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.PREMOLAR,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 44, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 43, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 42, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 41, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 31, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 32, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 33, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.PREMOLAR,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 34, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.PREMOLAR,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 35, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 36, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 37, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 48, findingType: FINDING_TYPE},
-];
-
-const childModel = [
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.UP,     number: 55, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.UP,     number: 54, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.UP,     number: 53, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.UP,     number: 52, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.UP,     number: 51, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.UP,     number: 61, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.UP,     number: 62, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.UP,     number: 63, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.UP,     number: 64, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.UP,     number: 65, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 85, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 84, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 83, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 82, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 81, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 71, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 72, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.INCISIVE,    position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 73, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 74, findingType: FINDING_TYPE},
-    {type: CONSTANTS.TOOTH.MOLAR,       position: CONSTANTS.POSITION_TOOTH.DOWN,   number: 75, findingType: FINDING_TYPE},
-];
+import {Box, Button, Stack, TextField} from "@mui/material";
+import {post, put} from "../services/api";
 
 export function Odontogram() {
+    const [data, setData] = React.useState(DEFAULTS.ODONTOGRAM);
     const [selTooth, setSelTooth] = React.useState(null);
 
+    React.useEffect(() => {
+        const url = new URL(location.href);
+        post(PATHS.ODONTOGRAM, {dni: url.searchParams.get('dni')}).then(data => {
+            setData(data);
+        })
+    }, []);
+
+    const adultModel = () => data.payload.filter(item => item.age === CONSTANTS.AGE.ADULT);
+    const childModel = () => data.payload.filter(item => item.age === CONSTANTS.AGE.CHILD);
+
+    const setTooth = (tooth) => {
+        setData({
+            ...data,
+            payload: data.payload.map((item) => item.number === tooth.number ? tooth : item),
+        });
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        data.payload.forEach((tooth) => {
+            if (tooth.blob !== undefined) {
+                formData.append(`draws[${tooth.number}]`, JSON.stringify(tooth.draw));
+                if (tooth.blob) formData.append(`images[${tooth.number}]`, tooth.blob);
+                formData.append(`types[${tooth.number}]`, tooth.findingType);
+            }
+        });
+        put(PATHS.ODONTOGRAM, formData).then(data => {
+            setData(data);
+            if (window.parent.closeOdontogramModal !== undefined) window.parent.closeOdontogramModal();
+        });
+    }
+
     return (
-        <div style={{width: '100%'}}>
-            <DialogTooth tooth={selTooth} onClose={() => {setSelTooth(null)}}/>
+        <Box component={"form"} onSubmit={handleSubmit} style={{width: '100%'}}>
+            <input type="hidden" name={"id"} defaultValue={data.id}/>
+            <DialogTooth tooth={selTooth} setTooth={setTooth} onClose={() => {setSelTooth(null)}}/>
             <div style={{display: "flex", justifyContent: 'center'}}>
-                {adultModel.filter(tooth => tooth.position === CONSTANTS.POSITION_TOOTH.UP).map((tooth, index) => (
+                {adultModel().filter(tooth => tooth.position === CONSTANTS.POSITION_TOOTH.UP).map((tooth, index) => (
                     <Tooth key={index} item={tooth} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
             <div style={{display: "flex", justifyContent: 'center', width: '60%', margin: 'auto'}}>
-                {childModel.filter(tooth => tooth.position === CONSTANTS.POSITION_TOOTH.UP).map((tooth, index) => (
+                {childModel().filter(tooth => tooth.position === CONSTANTS.POSITION_TOOTH.UP).map((tooth, index) => (
                     <Tooth key={index} item={tooth} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
             <div style={{display: "flex", justifyContent: 'center', width: '20%', margin: 'auto'}}>
-                {childModel.filter(tooth => tooth.position === CONSTANTS.POSITION_TOOTH.DOWN).map((tooth, index) => (
+                {childModel().filter(tooth => tooth.position === CONSTANTS.POSITION_TOOTH.DOWN).map((tooth, index) => (
                     <Tooth key={index} item={tooth} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
             <div style={{display: "flex", justifyContent: 'center'}}>
-                {adultModel.filter(tooth => tooth.position === CONSTANTS.POSITION_TOOTH.DOWN).map((tooth, index) => (
+                {adultModel().filter(tooth => tooth.position === CONSTANTS.POSITION_TOOTH.DOWN).map((tooth, index) => (
                     <Tooth key={index} item={tooth} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
@@ -93,18 +72,37 @@ export function Odontogram() {
                 <TextField
                     multiline
                     fullWidth
-                    id={"specifications"}
+                    variant="outlined"
+                    value={data.specifications}
+                    name={"specifications"}
                     label={"Especificaciones"}
                     rows={3}
+                    onChange={(e) => {
+                        setData({
+                            ...data,
+                            specifications: e.currentTarget.value,
+                        })
+                    }}
                 />
                 <TextField
                     multiline
                     fullWidth
-                    id={"notes"}
+                    variant="outlined"
+                    value={data.observations}
+                    name={"observations"}
                     label={"Observaciones"}
                     rows={3}
+                    onChange={(e) => {
+                        setData({
+                            ...data,
+                            observations: e.currentTarget.value,
+                        })
+                    }}
                 />
             </Stack>
-        </div>
+            <Button type={"submit"}>
+                Guardar
+            </Button>
+        </Box>
     );
 }

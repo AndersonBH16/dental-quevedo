@@ -1,18 +1,22 @@
-import {POSITION_TOOTH, TOOTH} from "../config/constants";
+import React from "react";
+import {ReactSketchCanvas} from "react-sketch-canvas";
+import * as CONSTANTS from "../config/constants";
 
-export default function ImageTooth({item, width, height, model, onClick = null}) {
-    const up = item.position === POSITION_TOOTH.UP;
+export const ImageTooth = React.forwardRef(({item, width, height, draw = null, model, onClick = null, onLoaded = null}, ref) => {
+    const [loaded, setLoaded] = React.useState(false);
+
+    const up = item.position === CONSTANTS.POSITION_TOOTH.UP;
 
     const config = {
         width: width,
         height: height,
         up: up,
         strokeWidth: 2,
-        center: item.type !== TOOTH.INCISIVE,
-        verticalLine: item.type === TOOTH.MOLAR,
-        middleLine: [TOOTH.MOLAR, TOOTH.PREMOLAR].includes(item.type) || item.number === 24,
-        edges: (item.type === TOOTH.MOLAR ? (up ? 3 : 2) : (item.type === TOOTH.CANINE ? 2 : 1)),
-        justifyEdges: item.type === TOOTH.PREMOLAR,
+        center: item.type !== CONSTANTS.TOOTH.INCISIVE,
+        verticalLine: item.type === CONSTANTS.TOOTH.MOLAR,
+        middleLine: [CONSTANTS.TOOTH.MOLAR, CONSTANTS.TOOTH.PREMOLAR].includes(item.type) || item.number === 24,
+        edges: (item.type === CONSTANTS.TOOTH.MOLAR ? (up ? 3 : 2) : (item.type === CONSTANTS.TOOTH.CANINE ? 2 : 1)),
+        justifyEdges: item.type === CONSTANTS.TOOTH.PREMOLAR,
     };
 
     const halfY = config.up ? 0 : config.height / 2;
@@ -27,9 +31,16 @@ export default function ImageTooth({item, width, height, model, onClick = null})
         )
     }
 
-    const Triangle = ({x1, y1, x2, y2, x3, y3, fill = "white"}) => {
+    const Triangle = ({halfLeft = false, halfRight = false, x1, y1, x2, y2, x3, y3}) => {
+        const dist = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2,  2));
+        const [uX, uY] = [(x1 - x2) / dist, (y1 - y2) / dist];
+
+        const f = dist / config.edges;
         return (
-            <polygon points={`${x1},${y1} ${x2},${y2} ${x3},${y3}`} fill={fill} strokeWidth={config.strokeWidth} stroke={"rgb(0, 0, 0)"}/>
+            <g>
+                <line x1={x1-(halfLeft ? f*uX : 0)} y1={y1-(halfLeft ? f*uY : 0)} x2={x2} y2={y2} strokeWidth={config.strokeWidth} stroke={"rgb(0, 0, 0)"}/>
+                <line x1={x3+(halfRight ? f*uX : 0)} y1={y3-(halfRight ? f*uY : 0)} x2={x2} y2={y2} strokeWidth={config.strokeWidth} stroke={"rgb(0, 0, 0)"}/>
+            </g>
         )
     }
 
@@ -40,27 +51,49 @@ export default function ImageTooth({item, width, height, model, onClick = null})
     }
 
     return (
-        <svg width={config.width} height={config.height} onClick={onClick}>
-            <g>
-                <Rect x={0} y={config.height*0.5} width={config.width} height={config.height*0.5}/>
+        <div>
+            {draw !== null && <ReactSketchCanvas
+                style={{
+                    position: "absolute",
+                    left: 0,
+                    right: 0,
+                    margin: 'auto',
+                }}
+                ref={ref}
+                onChange={() => {
+                    if (!loaded && item.draw && item.draw.length) {
+                        ref.current.loadPaths(item.draw);
+                    }
+                    setLoaded(true);
+                }}
+                width={`${config.width}px`}
+                height={`${config.height}px`}
+                canvasColor={"transparent"}
+                {...draw}
+            />}
+            {item.url !== null && <img src={item.url} alt={'base64'} width={`${config.width}px`} height={`${config.height}px`} style={{position: 'absolute', zIndex: -1}}/>}
+            <svg width={config.width} height={config.height} onClick={onClick}>
+                <g>
+                    <Rect x={0} y={config.height*0.5} width={config.width} height={config.height*0.5}/>
 
-                <Line x1={0} y1={config.height*0.5} x2={config.width*(config.center ? 0.5 : 0.26)} y2={config.height*0.75} />
-                <Line x1={config.width*(config.center ? 0.5 : 0.75)} y1={config.height*0.75} x2={config.width} y2={config.height} />
+                    <Line x1={0} y1={config.height*0.5} x2={config.width*0.26} y2={config.height*(config.center ? 0.63 : 0.75)} />
+                    <Line x1={config.width*0.75} y1={config.height*(config.center ? 0.87 : 0.75)} x2={config.width} y2={config.height} />
 
-                <Line x1={0} y1={config.height} x2={config.width*(config.center ? 0.5 : 0.26)} y2={config.height*0.75} />
-                <Line x1={config.width*(config.center ? 0.5 : 0.75)} y1={config.height*0.75} x2={config.width} y2={config.height*0.5} />
+                    <Line x1={0} y1={config.height} x2={config.width*0.26} y2={config.height*(config.center ? 0.87 : 0.75)} />
+                    <Line x1={config.width*0.75} y1={config.height*(config.center ? 0.63 : 0.75)} x2={config.width} y2={config.height*0.5} />
 
-                {config.center && <Rect x={config.width*0.26} y={config.height*0.63} fill={"white"} width={config.width*0.48} height={config.height*0.24}/>}
+                    {config.center && <Rect x={config.width*0.26} y={config.height*0.63} width={config.width*0.48} height={config.height*0.24}/>}
 
-                {(config.middleLine || !config.center) && <Line x1={config.width*0.26} y1={config.height*0.75} x2={config.width*0.75} y2={config.height*0.75} />}
-                {config.center && config.verticalLine && <Line x1={config.width*0.42} y1={config.height*0.63} x2={config.width*0.42} y2={config.height*0.87} />}
-                {config.center && config.verticalLine && <Line x1={config.width*0.58} y1={config.height*0.63} x2={config.width*0.58} y2={config.height*0.87} />}
-            </g>
-            <g>
-                {config.edges >= 2 && <Triangle x1={startX - offset} y1={config.height/2} x2={startX + widthTriangle*0.5 - offset} y2={config.up ? 0 : config.height} x3={startX + widthTriangle - offset} y3={config.height/2}/>}
-                {config.edges >= 3 && <Triangle x1={startX + offset} y1={config.height/2} x2={startX + widthTriangle*0.5 + offset} y2={config.up ? 0 : config.height} x3={startX + widthTriangle + offset} y3={config.height/2}/>}
-                <Triangle x1={startX} y1={config.height/2} x2={startX + widthTriangle*0.5} y2={config.up ? 0 : config.height} x3={startX + widthTriangle} y3={config.height/2}/>
-            </g>
-        </svg>
+                    {(config.middleLine || !config.center) && <Line x1={config.width*0.26} y1={config.height*0.75} x2={config.width*0.75} y2={config.height*0.75} />}
+                    {config.center && config.verticalLine && <Line x1={config.width*0.42} y1={config.height*0.63} x2={config.width*0.42} y2={config.height*0.87} />}
+                    {config.center && config.verticalLine && <Line x1={config.width*0.58} y1={config.height*0.63} x2={config.width*0.58} y2={config.height*0.87} />}
+                </g>
+                <g>
+                    {config.edges >= 2 && <Triangle halfRight={true} index={0} x1={startX - offset} y1={config.height/2} x2={startX + widthTriangle*0.5 - offset} y2={config.up ? 0 : config.height} x3={startX + widthTriangle - offset} y3={config.height/2}/>}
+                    {config.edges >= 3 && <Triangle halfLeft={true} index={1} x1={startX + offset} y1={config.height/2} x2={startX + widthTriangle*0.5 + offset} y2={config.up ? 0 : config.height} x3={startX + widthTriangle + offset} y3={config.height/2}/>}
+                    <Triangle index={2} x1={startX} y1={config.height/2} x2={startX + widthTriangle*0.5} y2={config.up ? 0 : config.height} x3={startX + widthTriangle} y3={config.height/2}/>
+                </g>
+            </svg>
+        </div>
     );
-}
+});

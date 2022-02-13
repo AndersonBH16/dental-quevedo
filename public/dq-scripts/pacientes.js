@@ -57,7 +57,7 @@ function obtenerFilasTablaPacientes(value) {
                                 <i class="fa fa-h-square mr-2" style="color: darkcyan"></i>
                                 Ver Histograma
                             </a>
-                            <a class="dropdown-item btnOpenOdontogram" href="javascript:;">
+                            <a class="dropdown-item btnOpenOdontogram" data-dni="${value.dni}" href="javascript:;">
                                 <i class="fa fa-h-square mr-2" style="color: darkcyan"></i>
                                 Odontograma Inicial
                             </a>

@@ -36,3 +36,6 @@ Route::get('/ver-histograma-paciente/', [App\Http\Controllers\PacienteController
 //Route::get('/ver_histograma/update/{dni}', 'HistogramaController')->name('ver_histograma');
 //Route::get('/histograma', HistogramaController::class);
 Route::get('/odontograma', [\App\Http\Controllers\OdontogramController::class, 'canvas']);
+Route::get('/odontograms/{id}/{tooth}', [\App\Http\Controllers\OdontogramController::class, 'display']);
+Route::post('/odontograma', [\App\Http\Controllers\OdontogramController::class, 'data']);
+Route::put('/odontograma', [\App\Http\Controllers\OdontogramController::class, 'update']);

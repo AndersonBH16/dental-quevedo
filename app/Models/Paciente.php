@@ -11,4 +11,9 @@ class Paciente extends Model
 
     protected $table = 'pacientes';
     public $timestamps = false;
+
+    public function odontograms()
+    {
+        return $this->hasMany(Odontogram::class, 'patient_id', 'idPaciente');
+    }
 }

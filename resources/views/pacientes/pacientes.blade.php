@@ -62,9 +62,14 @@
 
     <script>
         $(document).on('click', '.btnOpenOdontogram', function () {
-            $('#odontogramModal iframe').attr('src', '{{ url('/odontograma') }}');
+            let dni = $(this).attr('data-dni');
+            $('#odontogramModal iframe').attr('src', '{{ url('/odontograma') }}?dni=' + dni);
             $('#odontogramModal').modal('show');
-        })
+        });
+
+        function closeOdontogramModal() {
+            $('#odontogramModal').modal('hide');
+        }
     </script>
 @stop
 

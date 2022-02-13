@@ -1,74 +1,41 @@
 import React from "react";
 import {
+    Button,
     Dialog,
-    DialogContent,
-    MenuItem,
+    DialogContent, FormControl, InputLabel,
+    MenuItem, Select,
     Stack,
-    TextField
 } from "@mui/material";
-import ImageTooth from "./ImageTooth";
+import {ImageTooth} from "./ImageTooth";
+import * as FINDINGS from "../config/findings";
 
-const itemsFinding = [
-    {
-        value: 0,
-        name: '-',
-    },
-    {
-        value: 1,
-        name: 'LESIÓN DE CARIES DENTAL',
-    },
-];
-
-const itemsFindingType = [
-    {
-        value: '-',
-        name: '-',
-        finding: 0,
-    },
-    {
-        value: 'MB',
-        name: 'MB',
-        finding: 1,
-    },
-    {
-        value: 'CE',
-        name: 'CE',
-        finding: 1,
-    },
-    {
-        value: 'CD',
-        name: 'CD',
-        finding: 1,
-    },
-    {
-        value: 'CDP',
-        name: 'CDP',
-        finding: 1,
-    },
-];
-
-export default function DialogTooth({tooth, onClose}) {
+export default function DialogTooth({setTooth, tooth, onClose}) {
     if (!tooth) return (
         <div/>
     );
 
-    const [selFinding, setSelFinding] = React.useState(tooth.findingType.finding);
-    const [selFindingType, setSelFindingType] = React.useState(tooth.findingType.value);
-    const [findingsType, setFindingsType] = React.useState(itemsFindingType.filter(item => item.finding === selFinding));
+    const [selFindingType, setSelFindingType] = React.useState(FINDINGS.ITEM_TYPES.find(item => item.value === tooth.findingType));
+    const [selFinding, setSelFinding] = React.useState(FINDINGS.ITEMS.find(item => item.value === selFindingType.finding));
+    const [findingsType, setFindingsType] = React.useState(FINDINGS.ITEM_TYPES.filter(item => item.finding === selFinding.value));
+    const canvas = React.useRef(null);
 
-    const Selector = ({id, label, value, items, onChange = null}) => {
+    const Selector = ({id, label, value, items, color = 'black', onChange = null}) => {
         return (
-            <TextField
-                select
-                id={id}
-                value={value}
-                label={label}
-                onChange={onChange}
-            >
-                {items.map((item, index) => (
-                    <MenuItem key={index} value={item.value}>{item.name}</MenuItem>
-                ))}
-            </TextField>
+            <FormControl fullWidth>
+                <InputLabel id={`label${id}`}>{label}</InputLabel>
+                <Select
+                    sx={{color: color}}
+                    labelId={`label${id}`}
+                    id={id}
+                    value={value}
+                    label={label}
+                    onChange={onChange}
+                >
+                    {items.map((item, index) => (
+                        <MenuItem key={index} value={item.value} sx={{color: color}}>{item.name}</MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
         )
     }
 
@@ -76,19 +43,60 @@ export default function DialogTooth({tooth, onClose}) {
         <Dialog onClose={onClose} open={true}>
             <DialogContent style={{padding: 20}}>
                 <Stack spacing={2}>
-                    <Selector id={"finding"} label={"Hallazgo"} value={selFinding} items={itemsFinding} onChange={(event) => {
-                        const newItems = itemsFindingType.filter(item => item.finding === event.target.value);
-                        setFindingsType(newItems);
-                        setSelFindingType(newItems[0].value);
-                        setSelFinding(event.target.value);
+                    <Selector id={"finding"} label={"Hallazgo"} value={selFinding.value} items={FINDINGS.ITEMS} onChange={(event) => {
+                        const selItem = FINDINGS.ITEMS.find(item => item.value === event.target.value);
+                        const newItemsType = FINDINGS.ITEM_TYPES.filter(item => item.finding === selItem.value);
+                        setSelFinding(selItem);
+                        setFindingsType(newItemsType);
+                        setSelFindingType(newItemsType[0]);
                     }}/>
-                    <Selector id={"findingType"} label={"Tipo Hallazgo"} value={selFindingType} items={findingsType} onChange={(event) => {
-                        setSelFindingType(event.target.value);
+                    <Selector id={"findingType"} label={"Tipo Hallazgo"} color={selFinding.colorFindingType} value={selFindingType.value} items={findingsType} onChange={(event) => {
+                        setSelFindingType(FINDINGS.ITEM_TYPES.find(item => item.value === event.target.value));
                     }}/>
                 </Stack>
                 <div style={{padding: 20, textAlign: "center"}}>
-                    <ImageTooth item={tooth} width={200} height={300}/>
+                    <ImageTooth
+                        ref={canvas}
+                        item={tooth}
+                        draw={selFinding.draw}
+                        width={200}
+                        height={300}
+                    />
                 </div>
+                <Button
+                    onClick={() => {
+                        if (canvas.current) {
+                            canvas.current.exportImage().then(base64 => {
+                                canvas.current.exportPaths().then(result => {
+                                    fetch(base64).then(res => {
+                                        res.blob().then(res => {
+                                            setTooth({
+                                                ...tooth,
+                                                findingType: selFindingType.value,
+                                                draw: result,
+                                                url: base64,
+                                                blob: res,
+                                            });
+                                            onClose();
+                                        });
+                                    });
+                                });
+                            });
+                        }
+                        else {
+                            setTooth({
+                                ...tooth,
+                                findingType: selFindingType.value,
+                                draw: null,
+                                url: null,
+                                blob: null,
+                            });
+                            onClose();
+                        }
+                    }}
+                >
+                    Conservar
+                </Button>
             </DialogContent>
         </Dialog>
     );
