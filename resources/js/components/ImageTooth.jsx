@@ -67,7 +67,7 @@ export const ImageTooth = React.forwardRef(({item, width, height, draw = null, g
                             if (item.canvasPaths.length > 0)
                                 ref.current.loadPaths(item.canvasPaths);
                             else if (fixing) {
-                                fixing(config.width, config.height, ref.current);
+                                fixing(config.width, config.height, ref.current, item);
                             }
                         }
                         setLoaded(true);

@@ -1,5 +1,6 @@
 import FractureFinding from "../components/FractureFinding";
 import EruptionFinding from "../components/EruptionFinding";
+import {POSITION_TOOTH} from "./constants";
 
 export const ITEMS = [
     {
@@ -94,6 +95,27 @@ export const ITEMS = [
             strokeWidth: 15,
             strokeColor: "red",
         },
+    },
+    {
+        value: 10,
+        name: 'EDÉNTULO TOTAL',
+        draw: {},
+        fixing: (width, height, canvas, item) => {
+            if (canvas) {
+                const factor = item.position === POSITION_TOOTH.UP ? 0.75 : 0.25;
+                canvas.loadPaths([
+                    {
+                        drawMode: true,
+                        paths: [
+                            {x: 0, y: factor * height},
+                            {x: width, y: factor * height},
+                        ],
+                        strokeWidth: 20,
+                        strokeColor: "blue",
+                    },
+                ]);
+            }
+        }
     },
 ];
 
@@ -312,5 +334,10 @@ export const ITEM_TYPES = [
         value: '_ 9',
         name: 'Restauración Temporal',
         finding: 9,
+    },
+    {
+        value: '_ 10',
+        name: 'Edéntulo Total',
+        finding: 10,
     },
 ];
