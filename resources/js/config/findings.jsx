@@ -31,6 +31,11 @@ export const ITEMS = [
         name: 'FRACTURA',
         colorFindingType: 'red',
     },
+    {
+        value: 5,
+        name: 'FOSAS Y FISURAS PROFUNDAS (FFP)',
+        colorFindingType: 'blue',
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -110,5 +115,10 @@ export const ITEM_TYPES = [
         finding: 4,
         draw: {},
         guiding: (width, height, canvas) => <FractureFinding width={width} height={height} canvas={canvas}/>,
+    },
+    {
+        value: 'FFP',
+        name: 'FFP - Fosas y Fisuras Profundas',
+        finding: 5,
     },
 ];
