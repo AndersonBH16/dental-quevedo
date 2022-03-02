@@ -73,7 +73,7 @@ export const ITEM_TYPES = [
         finding: 2,
     },
     {
-        value: 'FLUOR.',
+        value: 'FLUO.',
         name: 'FLUOROSIS',
         finding: 2,
     },
