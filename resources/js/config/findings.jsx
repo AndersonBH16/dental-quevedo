@@ -1,4 +1,5 @@
 import FractureFinding from "../components/FractureFinding";
+import EruptionFinding from "../components/EruptionFinding";
 
 export const ITEMS = [
     {
@@ -71,6 +72,14 @@ export const ITEMS = [
                 ]);
             }
         }
+    },
+    {
+        value: 7,
+        name: 'PIEZA DENTARIA EN ERUPCIÓN',
+        colorFindingType: 'blue',
+        description: "Marque las veces requeridas sobre la pieza dentaria para dibujar un zigzag dirigida hacia el plano oclusal:",
+        draw: {},
+        guiding: (width, height, canvas) => <EruptionFinding width={width} height={height} canvas={canvas}/>,
     },
 ];
 
@@ -159,5 +168,10 @@ export const ITEM_TYPES = [
         value: '_',
         name: 'Pieza Dentaria Ausente',
         finding: 6,
+    },
+    {
+        value: '_ 7',
+        name: 'Pieza Dentaria en Erupción',
+        finding: 7,
     },
 ];
