@@ -140,8 +140,8 @@ export const ITEM_TYPES = [
         finding: 2,
     },
     {
-        value: 'S E',
-        name: 'S - Sellantes en Buen Estado',
+        value: 'S B',
+        name: 'S - Sellantes (Buen Estado)',
         finding: 3,
         color: 'blue',
         draw: {
@@ -151,7 +151,7 @@ export const ITEM_TYPES = [
     },
     {
         value: 'S M',
-        name: 'S - Sellantes en Mal Estado',
+        name: 'S - Sellantes (Mal Estado)',
         finding: 3,
         color: 'red',
         draw: {
