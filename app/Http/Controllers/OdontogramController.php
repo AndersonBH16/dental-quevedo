@@ -40,14 +40,16 @@ class OdontogramController extends Controller
 
     public function update(Request $request)
     {
+        $time = time();
         $odontogram = Odontogram::query()->findOrFail($request->id);
         $payload = $odontogram->payload;
-        $payload = collect($payload)->map(function ($item) use ($odontogram, $request) {
+        $payload = collect($payload)->map(function ($item) use ($odontogram, $time, $request) {
             if (!isset($request->types[$item['number']])) return $item;
             $item['findingType'] = $request->types[$item['number']];
-            $item['draw'] = json_decode($request->draws[$item['number']]);
-            if ($item['url'] = $odontogram->routeTooth($item))
-                Storage::disk()->put($item['url'], file_get_contents($request->images[$item['number']]));
+            $item['canvasPaths'] = json_decode($request->paths[$item['number']]);
+            if ($url = $odontogram->routeTooth($item))
+                Storage::disk()->put($url, file_get_contents($request->images[$item['number']]));
+            $item['url'] = "$url?t=$time";
             return $item;
         });
         $odontogram->update(compact('payload') + [

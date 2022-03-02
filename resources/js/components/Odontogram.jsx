@@ -33,7 +33,7 @@ export function Odontogram() {
         const formData = new FormData(e.currentTarget);
         data.payload.forEach((tooth) => {
             if (tooth.blob !== undefined) {
-                formData.append(`draws[${tooth.number}]`, JSON.stringify(tooth.draw));
+                formData.append(`paths[${tooth.number}]`, JSON.stringify(tooth.canvasPaths));
                 if (tooth.blob) formData.append(`images[${tooth.number}]`, tooth.blob);
                 formData.append(`types[${tooth.number}]`, tooth.findingType);
             }

@@ -77,7 +77,7 @@ export default function DialogTooth({setTooth, tooth, onClose}) {
                                             setTooth({
                                                 ...tooth,
                                                 findingType: selFindingType.value,
-                                                draw: result,
+                                                canvasPaths: result,
                                                 url: base64,
                                                 blob: res,
                                             });

@@ -63,8 +63,8 @@ export const ImageTooth = React.forwardRef(({item, width, height, draw = null, g
                     }}
                     ref={ref}
                     onChange={() => {
-                        if (!loaded && item.draw && item.draw.length) {
-                            ref.current.loadPaths(item.draw);
+                        if (!loaded && item.canvasPaths.length > 0) {
+                            ref.current.loadPaths(item.canvasPaths);
                         }
                         setLoaded(true);
                     }}
