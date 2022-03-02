@@ -81,6 +81,11 @@ export const ITEMS = [
         draw: {},
         guiding: (width, height, canvas) => <EruptionFinding width={width} height={height} canvas={canvas}/>,
     },
+    {
+        value: 8,
+        name: 'RESTAURACIÓN DEFINITIVA',
+        description: "Dibuje la restauración acorde con la forma que se evidencie:",
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -173,5 +178,125 @@ export const ITEM_TYPES = [
         value: '_ 7',
         name: 'Pieza Dentaria en Erupción',
         finding: 7,
+    },
+    {
+        value: 'AM B',
+        name: 'AM - Amalgama Dental (Buen Estado)',
+        finding: 8,
+        color: 'blue',
+        draw: {
+            strokeWidth: 20,
+            strokeColor: "blue",
+        },
+    },
+    {
+        value: 'R B',
+        name: 'R - Resina (Buen Estado)',
+        finding: 8,
+        color: 'blue',
+        draw: {
+            strokeWidth: 20,
+            strokeColor: "blue",
+        },
+    },
+    {
+        value: 'IV B',
+        name: 'IV - Ionómero de Vidrio (Buen Estado)',
+        finding: 8,
+        color: 'blue',
+        draw: {
+            strokeWidth: 20,
+            strokeColor: "blue",
+        },
+    },
+    {
+        value: 'IM B',
+        name: 'IM - Incrustación Metálica (Buen Estado)',
+        finding: 8,
+        color: 'blue',
+        draw: {
+            strokeWidth: 20,
+            strokeColor: "blue",
+        },
+    },
+    {
+        value: 'IE B',
+        name: 'IE - Incrustación Estética (Buen Estado)',
+        finding: 8,
+        color: 'blue',
+        draw: {
+            strokeWidth: 20,
+            strokeColor: "blue",
+        },
+    },
+    {
+        value: 'C B',
+        name: 'C - Carilla Estética (Buen Estado)',
+        finding: 8,
+        color: 'blue',
+        draw: {
+            strokeWidth: 20,
+            strokeColor: "blue",
+        },
+    },
+    {
+        value: 'AM M',
+        name: 'AM - Amalgama Dental (Mal Estado)',
+        finding: 8,
+        color: 'red',
+        draw: {
+            strokeWidth: 20,
+            strokeColor: "red",
+        },
+    },
+    {
+        value: 'R M',
+        name: 'R - Resina (Mal Estado)',
+        finding: 8,
+        color: 'red',
+        draw: {
+            strokeWidth: 20,
+            strokeColor: "red",
+        },
+    },
+    {
+        value: 'IV M',
+        name: 'IV - Ionómero de Vidrio (Mal Estado)',
+        finding: 8,
+        color: 'red',
+        draw: {
+            strokeWidth: 20,
+            strokeColor: "red",
+        },
+    },
+    {
+        value: 'IM M',
+        name: 'IM - Incrustación Metálica (Mal Estado)',
+        finding: 8,
+        color: 'red',
+        draw: {
+            strokeWidth: 20,
+            strokeColor: "red",
+        },
+    },
+    {
+        value: 'IE M',
+        name: 'IE - Incrustación Estética (Mal Estado)',
+        finding: 8,
+        color: 'red',
+        draw: {
+            strokeWidth: 20,
+            strokeColor: "red",
+        },
+    },
+    {
+        value: 'C M',
+        name: 'C - Carilla Estética (Mal Estado)',
+        finding: 8,
+        color: 'red',
+        draw: {
+            strokeWidth: 20,
+            strokeColor: "red",
+        },
     },
 ];
