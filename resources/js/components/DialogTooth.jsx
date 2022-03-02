@@ -32,7 +32,7 @@ export default function DialogTooth({setTooth, tooth, onClose}) {
                     onChange={onChange}
                 >
                     {items.map((item, index) => (
-                        <MenuItem key={index} value={item.value} sx={{color: color}}>{item.name}</MenuItem>
+                        <MenuItem key={index} value={item.value} sx={{color: item.color || color}}>{item.name}</MenuItem>
                     ))}
                 </Select>
             </FormControl>
@@ -50,15 +50,18 @@ export default function DialogTooth({setTooth, tooth, onClose}) {
                         setFindingsType(newItemsType);
                         setSelFindingType(newItemsType[0]);
                     }}/>
-                    <Selector id={"findingType"} label={"Tipo Hallazgo"} color={selFinding.colorFindingType} value={selFindingType.value} items={findingsType} onChange={(event) => {
-                        setSelFindingType(FINDINGS.ITEM_TYPES.find(item => item.value === event.target.value));
+                    <Selector id={"findingType"} label={"Tipo Hallazgo"} color={selFindingType.color || selFinding.colorFindingType} value={selFindingType.value} items={findingsType} onChange={(event) => {
+                        const findingType = FINDINGS.ITEM_TYPES.find(item => item.value === event.target.value);
+                        setSelFindingType(findingType);
+                        if (findingType.draw && canvas.current)
+                            canvas.current.resetCanvas();
                     }}/>
                 </Stack>
                 <div style={{padding: 20, textAlign: "center"}}>
                     <ImageTooth
                         ref={canvas}
                         item={tooth}
-                        draw={selFinding.draw}
+                        draw={selFindingType.draw || selFinding.draw}
                         width={200}
                         height={300}
                     />

@@ -15,15 +15,25 @@ export default function Tooth({model, item, onSelect}) {
         <p style={{textAlign: "center", margin: 0}}>{item.number}</p>
     );
 
-    const Square = () => (
-        (item.position !== CONSTANTS.POSITION_TOOTH.UP) ? <div>
-            <Order/>
-            <Typography fontSize={12} textAlign={'center'} color={selFinding.colorFindingType}>{item.findingType}</Typography>
-        </div> : <div>
-            <Typography fontSize={12} textAlign={'center'} color={selFinding.colorFindingType}>{item.findingType}</Typography>
-            <Order/>
-        </div>
-    )
+    const Square = () => {
+        const color = selFindingType?.color || selFinding.colorFindingType;
+        const type = item.findingType.split(' ')[0];
+
+        if (item.position !== CONSTANTS.POSITION_TOOTH.UP)
+            return (
+                <div>
+                    <Order/>
+                    <Typography fontSize={12} textAlign={'center'} color={color}>{type}</Typography>
+                </div>
+            );
+
+        return (
+            <div>
+                <Typography fontSize={12} textAlign={'center'} color={color}>{type}</Typography>
+                <Order/>
+            </div>
+        );
+    }
 
     return (
         <div style={{width: width, padding: 2}}>

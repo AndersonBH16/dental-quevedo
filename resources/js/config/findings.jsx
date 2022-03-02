@@ -20,6 +20,10 @@ export const ITEMS = [
         colorFindingType: 'red',
         draw: null,
     },
+    {
+        value: 3,
+        name: 'SELLANTES',
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -72,5 +76,25 @@ export const ITEM_TYPES = [
         value: 'FLUOR.',
         name: 'FLUOROSIS',
         finding: 2,
+    },
+    {
+        value: 'S E',
+        name: 'S - Sellantes en Buen Estado',
+        finding: 3,
+        color: 'blue',
+        draw: {
+            strokeWidth: 20,
+            strokeColor: "blue",
+        },
+    },
+    {
+        value: 'S M',
+        name: 'S - Sellantes en Mal Estado',
+        finding: 3,
+        color: 'red',
+        draw: {
+            strokeWidth: 20,
+            strokeColor: "red",
+        },
     },
 ];
