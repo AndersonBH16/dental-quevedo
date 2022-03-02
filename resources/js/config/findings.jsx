@@ -155,7 +155,7 @@ export const ITEM_TYPES = [
         },
     },
     {
-        value: '_',
+        value: '_ 4',
         name: 'FRACTURA',
         finding: 4,
     },
@@ -165,7 +165,7 @@ export const ITEM_TYPES = [
         finding: 5,
     },
     {
-        value: '_',
+        value: '_ 6',
         name: 'Pieza Dentaria Ausente',
         finding: 6,
     },
