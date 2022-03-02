@@ -49,7 +49,7 @@ class OdontogramController extends Controller
             $item['canvasPaths'] = json_decode($request->paths[$item['number']]);
             if ($url = $odontogram->routeTooth($item))
                 Storage::disk()->put($url, file_get_contents($request->images[$item['number']]));
-            $item['url'] = "$url?t=$time";
+            $item['url'] = $url ? "$url?t=$time" : null;
             return $item;
         });
         $odontogram->update(compact('payload') + [
