@@ -1,3 +1,5 @@
+import FractureFinding from "../components/FractureFinding";
+
 export const ITEMS = [
     {
         value: 0,
@@ -23,6 +25,11 @@ export const ITEMS = [
     {
         value: 3,
         name: 'SELLANTES',
+    },
+    {
+        value: 4,
+        name: 'FRACTURA',
+        colorFindingType: 'red',
     },
 ];
 
@@ -96,5 +103,12 @@ export const ITEM_TYPES = [
             strokeWidth: 20,
             strokeColor: "red",
         },
+    },
+    {
+        value: 'FRAC.',
+        name: 'FRACTURA',
+        finding: 4,
+        draw: {},
+        guiding: (width, height, canvas) => <FractureFinding width={width} height={height} canvas={canvas}/>,
     },
 ];

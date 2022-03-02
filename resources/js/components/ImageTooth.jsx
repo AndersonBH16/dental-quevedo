@@ -1,8 +1,9 @@
 import React from "react";
 import {ReactSketchCanvas} from "react-sketch-canvas";
 import * as CONSTANTS from "../config/constants";
+import {Box} from "@mui/material";
 
-export const ImageTooth = React.forwardRef(({item, width, height, draw = null, model, onClick = null, onLoaded = null}, ref) => {
+export const ImageTooth = React.forwardRef(({item, width, height, draw = null, guiding = null, model, onClick = null, onLoaded = null}, ref) => {
     const [loaded, setLoaded] = React.useState(false);
 
     const up = item.position === CONSTANTS.POSITION_TOOTH.UP;
@@ -51,26 +52,29 @@ export const ImageTooth = React.forwardRef(({item, width, height, draw = null, m
     }
 
     return (
-        <div>
-            {draw !== null && <ReactSketchCanvas
-                style={{
-                    position: "absolute",
-                    left: 0,
-                    right: 0,
-                    margin: 'auto',
-                }}
-                ref={ref}
-                onChange={() => {
-                    if (!loaded && item.draw && item.draw.length) {
-                        ref.current.loadPaths(item.draw);
-                    }
-                    setLoaded(true);
-                }}
-                width={`${config.width}px`}
-                height={`${config.height}px`}
-                canvasColor={"transparent"}
-                {...draw}
-            />}
+        <div style={{position: "relative"}}>
+            {draw !== null && <Box>
+                <ReactSketchCanvas
+                    style={{
+                        position: "absolute",
+                        left: 0,
+                        right: 0,
+                        margin: 'auto',
+                    }}
+                    ref={ref}
+                    onChange={() => {
+                        if (!loaded && item.draw && item.draw.length) {
+                            ref.current.loadPaths(item.draw);
+                        }
+                        setLoaded(true);
+                    }}
+                    width={`${config.width}px`}
+                    height={`${config.height}px`}
+                    canvasColor={"transparent"}
+                    {...draw}
+                />
+                {guiding && guiding(config.width, config.height, ref.current)}
+            </Box>}
             {item.url !== null && <img src={item.url} alt={'base64'} width={`${config.width}px`} height={`${config.height}px`} style={{position: 'absolute', zIndex: -1}}/>}
             <svg width={config.width} height={config.height} onClick={onClick}>
                 <g>
