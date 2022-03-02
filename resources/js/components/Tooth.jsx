@@ -18,9 +18,9 @@ export default function Tooth({model, item, onSelect}) {
     const Square = () => (
         (item.position !== CONSTANTS.POSITION_TOOTH.UP) ? <div>
             <Order/>
-            <Typography textAlign={'center'} color={selFinding.colorFindingType}>{item.findingType}</Typography>
+            <Typography fontSize={12} textAlign={'center'} color={selFinding.colorFindingType}>{item.findingType}</Typography>
         </div> : <div>
-            <Typography textAlign={'center'} color={selFinding.colorFindingType}>{item.findingType}</Typography>
+            <Typography fontSize={12} textAlign={'center'} color={selFinding.colorFindingType}>{item.findingType}</Typography>
             <Order/>
         </div>
     )
