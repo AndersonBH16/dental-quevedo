@@ -14,6 +14,8 @@ export default function DialogTooth({setTooth, tooth, onClose}) {
         <div/>
     );
 
+    const width = 200;
+    const height = 300;
     const [selFindingType, setSelFindingType] = React.useState(FINDINGS.ITEM_TYPES.find(item => item.value === tooth.findingType));
     const [selFinding, setSelFinding] = React.useState(FINDINGS.ITEMS.find(item => item.value === selFindingType.finding));
     const [findingsType, setFindingsType] = React.useState(FINDINGS.ITEM_TYPES.filter(item => item.finding === selFinding.value));
@@ -49,8 +51,12 @@ export default function DialogTooth({setTooth, tooth, onClose}) {
                         setSelFinding(selItem);
                         setFindingsType(newItemsType);
                         setSelFindingType(newItemsType[0]);
-                        if (canvas.current)
+                        if (canvas.current) {
                             canvas.current.resetCanvas();
+                            if (selItem.fixing) {
+                                selItem.fixing(width, height, canvas.current, tooth);
+                            }
+                        }
                     }}/>
                     <Selector id={"findingType"} label={"Tipo Hallazgo"} color={selFindingType.color || selFinding.colorFindingType} value={selFindingType.value} items={findingsType} onChange={(event) => {
                         const findingType = FINDINGS.ITEM_TYPES.find(item => item.value === event.target.value);
@@ -67,8 +73,8 @@ export default function DialogTooth({setTooth, tooth, onClose}) {
                         draw={selFindingType.draw || selFinding.draw}
                         guiding={selFinding.guiding}
                         fixing={selFinding.fixing}
-                        width={200}
-                        height={300}
+                        width={width}
+                        height={height}
                     />
                 </div>
                 <Button
