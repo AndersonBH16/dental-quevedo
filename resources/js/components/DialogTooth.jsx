@@ -4,7 +4,7 @@ import {
     Dialog,
     DialogContent, FormControl, InputLabel,
     MenuItem, Select,
-    Stack,
+    Stack, Typography,
 } from "@mui/material";
 import {ImageTooth} from "./ImageTooth";
 import * as FINDINGS from "../config/findings";
@@ -57,6 +57,7 @@ export default function DialogTooth({setTooth, tooth, onClose}) {
                             canvas.current.resetCanvas();
                     }}/>
                 </Stack>
+                <Typography margin={2} fontSize={12}>{selFinding.description}</Typography>
                 <div style={{padding: 20, textAlign: "center"}}>
                     <ImageTooth
                         ref={canvas}

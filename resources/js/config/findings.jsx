@@ -10,6 +10,7 @@ export const ITEMS = [
     {
         value: 1,
         name: 'LESIÓN DE CARIES DENTAL',
+        description: "Dibuje la lesión de caries dental según la forma en la que se evidencie:",
         colorFindingType: 'red',
         draw: {
             strokeWidth: 20,
@@ -25,11 +26,13 @@ export const ITEMS = [
     {
         value: 3,
         name: 'SELLANTES',
+        description: "Dibuje el recorrido del sellante siguiendo la forma de las fosas y fisuras selladas:",
     },
     {
         value: 4,
         name: 'FRACTURA',
         colorFindingType: 'red',
+        description: "Marque 2 veces sobre la pieza dentaria para dibujar una línea que represente la fractura de la corona y/o raíz según sea el caso:",
     },
     {
         value: 5,
