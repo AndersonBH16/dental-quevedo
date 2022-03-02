@@ -14,6 +14,12 @@ export const ITEMS = [
             strokeColor: "red",
         },
     },
+    {
+        value: 2,
+        name: 'DEFECTOS DE DESARROLLO DEL ESMALTE (DDE)',
+        colorFindingType: 'red',
+        draw: null,
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -41,5 +47,30 @@ export const ITEM_TYPES = [
         value: 'CDP',
         name: 'CDP - A Nivel de la Dentina / Compromiso de la Pulpa',
         finding: 1,
+    },
+    {
+        value: 'HP',
+        name: 'HP - Hipoplasia',
+        finding: 2,
+    },
+    {
+        value: 'HM',
+        name: 'HM - Hipo mineralización',
+        finding: 2,
+    },
+    {
+        value: 'O',
+        name: 'O - Opacidades del Esmalte',
+        finding: 2,
+    },
+    {
+        value: 'D',
+        name: 'D - Decoloración del Esmalte',
+        finding: 2,
+    },
+    {
+        value: 'FLUOR.',
+        name: 'FLUOROSIS',
+        finding: 2,
     },
 ];
