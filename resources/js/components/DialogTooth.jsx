@@ -49,6 +49,8 @@ export default function DialogTooth({setTooth, tooth, onClose}) {
                         setSelFinding(selItem);
                         setFindingsType(newItemsType);
                         setSelFindingType(newItemsType[0]);
+                        if (canvas.current)
+                            canvas.current.resetCanvas();
                     }}/>
                     <Selector id={"findingType"} label={"Tipo Hallazgo"} color={selFindingType.color || selFinding.colorFindingType} value={selFindingType.value} items={findingsType} onChange={(event) => {
                         const findingType = FINDINGS.ITEM_TYPES.find(item => item.value === event.target.value);
