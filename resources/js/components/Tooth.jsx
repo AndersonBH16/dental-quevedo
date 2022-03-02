@@ -17,19 +17,19 @@ export default function Tooth({model, item, onSelect}) {
 
     const Square = () => {
         const color = selFindingType?.color || selFinding.colorFindingType;
-        const type = item.findingType.split(' ')[0];
+        const type = item.findingType.split(' ')[0].replace("_", " ");
 
         if (item.position !== CONSTANTS.POSITION_TOOTH.UP)
             return (
                 <div>
                     <Order/>
-                    <Typography fontSize={12} textAlign={'center'} color={color}>{type}</Typography>
+                    <Typography fontSize={12} textAlign={'center'} color={color} whiteSpace={'pre'}>{type}</Typography>
                 </div>
             );
 
         return (
             <div>
-                <Typography fontSize={12} textAlign={'center'} color={color}>{type}</Typography>
+                <Typography fontSize={12} textAlign={'center'} color={color} whiteSpace={'pre'}>{type}</Typography>
                 <Order/>
             </div>
         );

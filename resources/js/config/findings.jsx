@@ -39,6 +39,37 @@ export const ITEMS = [
         name: 'FOSAS Y FISURAS PROFUNDAS (FFP)',
         colorFindingType: 'blue',
     },
+    {
+        value: 6,
+        name: 'PIEZA DENTARIA AUSENTE',
+        colorFindingType: 'blue',
+        draw: {},
+        fixing: (width, height, canvas) => {
+            if (canvas) {
+                const offset = 20;
+                canvas.loadPaths([
+                    {
+                        drawMode: true,
+                        paths: [
+                            {x: offset, y: offset},
+                            {x: width-offset, y: height-offset},
+                        ],
+                        strokeWidth: 15,
+                        strokeColor: "blue",
+                    },
+                    {
+                        drawMode: true,
+                        paths: [
+                            {x: width-offset, y: offset},
+                            {x: offset, y: height-offset},
+                        ],
+                        strokeWidth: 15,
+                        strokeColor: "blue",
+                    },
+                ]);
+            }
+        }
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -123,5 +154,10 @@ export const ITEM_TYPES = [
         value: 'FFP',
         name: 'FFP - Fosas y Fisuras Profundas',
         finding: 5,
+    },
+    {
+        value: '_',
+        name: 'Pieza Dentaria Ausente',
+        finding: 6,
     },
 ];

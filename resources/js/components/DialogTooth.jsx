@@ -66,6 +66,7 @@ export default function DialogTooth({setTooth, tooth, onClose}) {
                         item={tooth}
                         draw={selFindingType.draw || selFinding.draw}
                         guiding={selFindingType.guiding}
+                        fixing={selFinding.fixing}
                         width={200}
                         height={300}
                     />

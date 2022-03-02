@@ -3,7 +3,7 @@ import {ReactSketchCanvas} from "react-sketch-canvas";
 import * as CONSTANTS from "../config/constants";
 import {Box} from "@mui/material";
 
-export const ImageTooth = React.forwardRef(({item, width, height, draw = null, guiding = null, model, onClick = null, onLoaded = null}, ref) => {
+export const ImageTooth = React.forwardRef(({item, width, height, draw = null, guiding = null, fixing = null, model, onClick = null, onLoaded = null}, ref) => {
     const [loaded, setLoaded] = React.useState(false);
 
     const up = item.position === CONSTANTS.POSITION_TOOTH.UP;
@@ -63,14 +63,19 @@ export const ImageTooth = React.forwardRef(({item, width, height, draw = null, g
                     }}
                     ref={ref}
                     onChange={() => {
-                        if (!loaded && item.canvasPaths.length > 0) {
-                            ref.current.loadPaths(item.canvasPaths);
+                        if (!loaded) {
+                            if (item.canvasPaths.length > 0)
+                                ref.current.loadPaths(item.canvasPaths);
+                            else if (fixing) {
+                                fixing(config.width, config.height, ref.current);
+                            }
                         }
                         setLoaded(true);
                     }}
                     width={`${config.width}px`}
                     height={`${config.height}px`}
                     canvasColor={"transparent"}
+                    allowOnlyPointerType={fixing ? null : 'all'}
                     {...draw}
                 />
                 {guiding && guiding(config.width, config.height, ref.current)}
