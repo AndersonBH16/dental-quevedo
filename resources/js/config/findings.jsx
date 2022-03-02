@@ -146,7 +146,7 @@ export const ITEM_TYPES = [
         },
     },
     {
-        value: 'FRAC.',
+        value: '_',
         name: 'FRACTURA',
         finding: 4,
     },
