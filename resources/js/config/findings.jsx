@@ -86,6 +86,15 @@ export const ITEMS = [
         name: 'RESTAURACIÓN DEFINITIVA',
         description: "Dibuje la restauración acorde con la forma que se evidencie:",
     },
+    {
+        value: 9,
+        name: 'RESTAURACIÓN TEMPORAL',
+        description: "Dibuje el contorno de la restauración siguiendo su forma en las superficies comprometidas:",
+        draw: {
+            strokeWidth: 15,
+            strokeColor: "red",
+        },
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -298,5 +307,10 @@ export const ITEM_TYPES = [
             strokeWidth: 20,
             strokeColor: "red",
         },
+    },
+    {
+        value: '_ 9',
+        name: 'Restauración Temporal',
+        finding: 9,
     },
 ];
