@@ -33,6 +33,8 @@ export const ITEMS = [
         name: 'FRACTURA',
         colorFindingType: 'red',
         description: "Marque 2 veces sobre la pieza dentaria para dibujar una línea que represente la fractura de la corona y/o raíz según sea el caso:",
+        draw: {},
+        guiding: (width, height, canvas) => <FractureFinding width={width} height={height} canvas={canvas}/>,
     },
     {
         value: 5,
@@ -147,8 +149,6 @@ export const ITEM_TYPES = [
         value: 'FRAC.',
         name: 'FRACTURA',
         finding: 4,
-        draw: {},
-        guiding: (width, height, canvas) => <FractureFinding width={width} height={height} canvas={canvas}/>,
     },
     {
         value: 'FFP',
