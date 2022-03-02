@@ -100,9 +100,9 @@ export const ITEMS = [
         value: 10,
         name: 'EDÉNTULO TOTAL',
         draw: {},
-        fixing: (width, height, canvas, item) => {
+        fixing: (width, height, canvas, tooth) => {
             if (canvas) {
-                const factor = item.position === POSITION_TOOTH.UP ? 0.75 : 0.25;
+                const factor = tooth.position === POSITION_TOOTH.UP ? 0.75 : 0.25;
                 canvas.loadPaths([
                     {
                         drawMode: true,
