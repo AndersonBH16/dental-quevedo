@@ -1,6 +1,7 @@
 import FractureFinding from "../components/FractureFinding";
 import EruptionFinding from "../components/EruptionFinding";
 import {POSITION_TOOTH} from "./constants";
+import SupernumeraryFinding from "../components/SupernumeraryFinding";
 
 export const ITEMS = [
     {
@@ -116,6 +117,14 @@ export const ITEMS = [
                 ]);
             }
         }
+    },
+    {
+        value: 11,
+        name: 'PIEZA DENTARIA SUPERNUMERARIA',
+        colorFindingType: 'blue',
+        description: "Marque la ubicación de la pieza supernumeraria:",
+        draw: {},
+        guiding: (width, height, canvas) => <SupernumeraryFinding width={width} height={height} canvas={canvas}/>,
     },
 ];
 
@@ -339,5 +348,10 @@ export const ITEM_TYPES = [
         value: '_ 10',
         name: 'Edéntulo Total',
         finding: 10,
+    },
+    {
+        value: '_ 11',
+        name: 'Pieza Dentaria Supernumeraria',
+        finding: 11,
     },
 ];
