@@ -311,6 +311,11 @@ export const ITEMS = [
             strokeColor: "red",
         },
     },
+    {
+        value: 25,
+        name: 'REMANENTE RADICULAR',
+        colorFindingType: 'red',
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -633,5 +638,10 @@ export const ITEM_TYPES = [
         value: 'DES',
         name: 'DES - Superficie Desgastada',
         finding: 24,
+    },
+    {
+        value: 'RR',
+        name: 'Remanente Radicular',
+        finding: 25,
     },
 ];
