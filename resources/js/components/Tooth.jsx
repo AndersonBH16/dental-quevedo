@@ -15,7 +15,7 @@ export default function Tooth({model, item, onSelect}) {
 
     const Order = () => (
         <Box position={'relative'}>
-            {selFinding.highlighting && selFinding.highlighting(item, minWidth, width)}
+            {selFinding.highlighting && selFinding.highlighting(item, minWidth, width, selFindingType)}
             <p style={{textAlign: "center", margin: 0}}>{item.number}</p>
         </Box>
     );

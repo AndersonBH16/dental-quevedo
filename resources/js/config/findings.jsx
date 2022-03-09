@@ -7,6 +7,7 @@ import React from "react";
 import * as CONSTANTS from "./constants";
 import curveUp from "../assets/curve-up.png";
 import curveDown from "../assets/curve-down.png";
+import oval from "../assets/oval.png";
 import {Box} from "@mui/material";
 
 export const ITEMS = [
@@ -253,6 +254,26 @@ export const ITEMS = [
         value: 20,
         name: 'MICRODONCIA',
         colorFindingType: 'blue',
+    },
+    {
+        value: 21,
+        name: 'FUSIÓN',
+        highlighting: (tooth, minWidth, width, findingType) => {
+            const dir = (findingType.value.split(' ')[2] === '0') ? 1 : -1;
+            return (
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        width: '100%',
+                        top: -8,
+                        left: dir < 0 ? -8 : 'auto',
+                        right: dir > 0 ? -8 : 'auto',
+                    }}
+                >
+                    <img src={oval} style={{width: '100%'}} alt="oval"/>
+                </Box>
+            );
+        }
     },
 ];
 
@@ -551,5 +572,15 @@ export const ITEM_TYPES = [
         value: 'MIC',
         name: 'Microdoncia',
         finding: 20,
+    },
+    {
+        value: '_ 21 0',
+        name: 'Fusión (Inicio)',
+        finding: 21,
+    },
+    {
+        value: '_ 21 1',
+        name: 'Fusión (Fin)',
+        finding: 21,
     },
 ];
