@@ -301,6 +301,16 @@ export const ITEMS = [
         name: 'IMPACTACIÓN',
         colorFindingType: 'blue',
     },
+    {
+        value: 24,
+        name: 'SUPERFICIE DESGASTADA',
+        description: "Dibuje acorde a la forma en la que se evidencia:",
+        colorFindingType: 'red',
+        draw: {
+            strokeWidth: 20,
+            strokeColor: "red",
+        },
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -618,5 +628,10 @@ export const ITEM_TYPES = [
         value: 'I 23',
         name: 'Impactación',
         finding: 23,
+    },
+    {
+        value: 'DES',
+        name: 'DES - Superficie Desgastada',
+        finding: 24,
     },
 ];
