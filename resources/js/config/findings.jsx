@@ -239,6 +239,11 @@ export const ITEMS = [
             );
         }
     },
+    {
+        value: 18,
+        name: 'PIEZA DENTARIA ECTÓPICA',
+        colorFindingType: 'blue',
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -521,5 +526,10 @@ export const ITEM_TYPES = [
         value: '_ 17',
         name: 'Pieza Dentaria en Clavija',
         finding: 17,
+    },
+    {
+        value: 'E 18',
+        name: 'Pieza Dentaria Ectópica',
+        finding: 18,
     },
 ];
