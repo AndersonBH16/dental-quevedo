@@ -2,7 +2,7 @@ import FractureFinding from "../components/FractureFinding";
 import EruptionFinding from "../components/EruptionFinding";
 import {POSITION} from "./constants";
 import SupernumeraryFinding from "../components/SupernumeraryFinding";
-import {ArrowDownward, ArrowUpward, ChangeHistory} from "@mui/icons-material";
+import {ArrowDownward, ArrowUpward, ChangeHistory, CircleOutlined} from "@mui/icons-material";
 import React from "react";
 import * as CONSTANTS from "./constants";
 import curveUp from "../assets/curve-up.png";
@@ -271,6 +271,27 @@ export const ITEMS = [
                     }}
                 >
                     <img src={oval} style={{width: '100%'}} alt="oval"/>
+                </Box>
+            );
+        }
+    },
+    {
+        value: 22,
+        name: 'GEMINACIÓN',
+        highlighting: (tooth, minWidth, width) => {
+            const iconWidth = minWidth * 1.5;
+            const offsetLeft = Math.max(iconWidth - width, 0) / 2;
+            return (
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        width: '100%',
+                        top: -10,
+                        textAlign: 'center',
+                        left: -offsetLeft,
+                    }}
+                >
+                    <CircleOutlined sx={{fontSize: 36, width: iconWidth, color: 'blue'}}/>
                 </Box>
             );
         }
@@ -582,5 +603,10 @@ export const ITEM_TYPES = [
         value: '_ 21 1',
         name: 'Fusión (Fin)',
         finding: 21,
+    },
+    {
+        value: '_ 22',
+        name: 'Geminación',
+        finding: 22,
     },
 ];
