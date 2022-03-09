@@ -1,6 +1,6 @@
 import FractureFinding from "../components/FractureFinding";
 import EruptionFinding from "../components/EruptionFinding";
-import {POSITION_TOOTH} from "./constants";
+import {POSITION} from "./constants";
 import SupernumeraryFinding from "../components/SupernumeraryFinding";
 import {ArrowDownward, ArrowUpward} from "@mui/icons-material";
 import React from "react";
@@ -106,7 +106,7 @@ export const ITEMS = [
         draw: {},
         fixing: (width, height, canvas, tooth) => {
             if (canvas) {
-                const factor = tooth.position === POSITION_TOOTH.UP ? 0.75 : 0.25;
+                const factor = tooth.position === POSITION.UP ? 0.75 : 0.25;
                 canvas.loadPaths([
                     {
                         drawMode: true,
@@ -134,12 +134,12 @@ export const ITEMS = [
         name: 'PIEZA DENTARIA EXTRUIDA',
         colorFindingType: 'blue',
         external: (tooth, position) => {
-            if (tooth.position === CONSTANTS.POSITION_TOOTH.UP && position === CONSTANTS.POSITION_TOOTH.DOWN)
+            if (tooth.position === CONSTANTS.POSITION.UP && position === CONSTANTS.POSITION.DOWN)
                 return (
                     <ArrowDownward sx={{fontSize: 18, color: 'blue'}}/>
                 );
 
-            if (tooth.position === CONSTANTS.POSITION_TOOTH.DOWN && position === CONSTANTS.POSITION_TOOTH.UP)
+            if (tooth.position === CONSTANTS.POSITION.DOWN && position === CONSTANTS.POSITION.UP)
                 return (
                     <ArrowUpward sx={{fontSize: 18, color: 'blue'}}/>
                 );

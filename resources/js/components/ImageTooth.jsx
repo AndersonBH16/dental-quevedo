@@ -6,7 +6,7 @@ import {Box} from "@mui/material";
 export const ImageTooth = React.forwardRef(({item, finding, width, height, draw = null, guiding = null, fixing = null, model, onClick = null, onLoaded = null}, ref) => {
     const [loaded, setLoaded] = React.useState(false);
 
-    const up = item.position === CONSTANTS.POSITION_TOOTH.UP;
+    const up = item.position === CONSTANTS.POSITION.UP;
 
     const config = {
         width: width,
@@ -54,7 +54,7 @@ export const ImageTooth = React.forwardRef(({item, finding, width, height, draw 
     return (
         <Box>
             <Box height={18} textAlign={'center'}>
-                {finding.external !== undefined && finding.external(item, CONSTANTS.POSITION_TOOTH.UP)}
+                {finding.external !== undefined && finding.external(item, CONSTANTS.POSITION.UP)}
             </Box>
             <div style={{position: "relative", display: "flex", justifyContent: "center"}}>
                 {draw !== null && <Box>
@@ -109,7 +109,7 @@ export const ImageTooth = React.forwardRef(({item, finding, width, height, draw 
                 </svg>
             </div>
             <Box height={18} textAlign={'center'}>
-                {finding.external !== undefined && finding.external(item, CONSTANTS.POSITION_TOOTH.DOWN)}
+                {finding.external !== undefined && finding.external(item, CONSTANTS.POSITION.DOWN)}
             </Box>
         </Box>
     );

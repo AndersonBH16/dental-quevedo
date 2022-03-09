@@ -19,7 +19,7 @@ export default function Tooth({model, item, onSelect}) {
         const color = selFindingType?.color || selFinding.colorFindingType;
         const type = item.findingType.split(' ')[0].replace("_", " ");
 
-        if (item.position !== CONSTANTS.POSITION_TOOTH.UP)
+        if (item.position !== CONSTANTS.POSITION.UP)
             return (
                 <div>
                     <Order/>
@@ -37,9 +37,9 @@ export default function Tooth({model, item, onSelect}) {
 
     return (
         <div style={{width: width}}>
-            {(item.position === CONSTANTS.POSITION_TOOTH.UP) && <Square/>}
+            {(item.position === CONSTANTS.POSITION.UP) && <Square/>}
             <ImageTooth item={item} finding={selFinding} width={width} height={height} model={model} onClick={() => {onSelect(item)}}/>
-            {(item.position === CONSTANTS.POSITION_TOOTH.DOWN) && <Square/>}
+            {(item.position === CONSTANTS.POSITION.DOWN) && <Square/>}
         </div>
     );
 }

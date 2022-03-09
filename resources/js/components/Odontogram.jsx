@@ -49,22 +49,22 @@ export function Odontogram() {
             <input type="hidden" name={"id"} defaultValue={data.id}/>
             <DialogTooth tooth={selTooth} setTooth={setTooth} onClose={() => {setSelTooth(null)}}/>
             <div style={{display: "flex", justifyContent: 'center'}}>
-                {adultModel().filter(tooth => tooth.position === CONSTANTS.POSITION_TOOTH.UP).map((tooth, index) => (
+                {adultModel().filter(tooth => tooth.position === CONSTANTS.POSITION.UP).map((tooth, index) => (
                     <Tooth key={index} item={tooth} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
             <div style={{display: "flex", justifyContent: 'center', width: '60%', margin: 'auto'}}>
-                {childModel().filter(tooth => tooth.position === CONSTANTS.POSITION_TOOTH.UP).map((tooth, index) => (
+                {childModel().filter(tooth => tooth.position === CONSTANTS.POSITION.UP).map((tooth, index) => (
                     <Tooth key={index} item={tooth} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
             <div style={{display: "flex", justifyContent: 'center', width: '20%', margin: 'auto'}}>
-                {childModel().filter(tooth => tooth.position === CONSTANTS.POSITION_TOOTH.DOWN).map((tooth, index) => (
+                {childModel().filter(tooth => tooth.position === CONSTANTS.POSITION.DOWN).map((tooth, index) => (
                     <Tooth key={index} item={tooth} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
             <div style={{display: "flex", justifyContent: 'center'}}>
-                {adultModel().filter(tooth => tooth.position === CONSTANTS.POSITION_TOOTH.DOWN).map((tooth, index) => (
+                {adultModel().filter(tooth => tooth.position === CONSTANTS.POSITION.DOWN).map((tooth, index) => (
                     <Tooth key={index} item={tooth} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>

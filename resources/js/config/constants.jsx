@@ -10,7 +10,7 @@ export const TOOTH = {
     INCISIVE: 400,
 }
 
-export const POSITION_TOOTH = {
+export const POSITION = {
     UP: 'up',
     DOWN: 'down',
 }
