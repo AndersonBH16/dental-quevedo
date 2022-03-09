@@ -147,6 +147,24 @@ export const ITEMS = [
             return null;
         }
     },
+    {
+        value: 13,
+        name: 'PIEZA DENTARIA INTRUIDA',
+        colorFindingType: 'blue',
+        external: (tooth, position) => {
+            if (tooth.position === CONSTANTS.POSITION.UP && position === CONSTANTS.POSITION.DOWN)
+                return (
+                    <ArrowUpward sx={{fontSize: 18, color: 'blue'}}/>
+                );
+
+            if (tooth.position === CONSTANTS.POSITION.DOWN && position === CONSTANTS.POSITION.UP)
+                return (
+                    <ArrowDownward sx={{fontSize: 18, color: 'blue'}}/>
+                );
+
+            return null;
+        }
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -379,5 +397,10 @@ export const ITEM_TYPES = [
         value: '_ 12',
         name: 'Pieza Dentaria Extruida',
         finding: 12,
+    },
+    {
+        value: '_ 13',
+        name: 'Pieza Dentaria Intruida',
+        finding: 13,
     },
 ];
