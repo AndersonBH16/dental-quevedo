@@ -3,7 +3,7 @@ import {ReactSketchCanvas} from "react-sketch-canvas";
 import * as CONSTANTS from "../config/constants";
 import {Box} from "@mui/material";
 
-export const ImageTooth = React.forwardRef(({item, finding, width, height, draw = null, guiding = null, fixing = null, model, onClick = null, onLoaded = null}, ref) => {
+export const ImageTooth = React.forwardRef(({item, finding, findingType, width, height, draw = null, guiding = null, fixing = null, model, onClick = null, onLoaded = null}, ref) => {
     const [loaded, setLoaded] = React.useState(false);
 
     const up = item.position === CONSTANTS.POSITION.UP;
@@ -71,7 +71,8 @@ export const ImageTooth = React.forwardRef(({item, finding, width, height, draw 
                                 if (item.canvasPaths.length > 0)
                                     ref.current.loadPaths(item.canvasPaths);
                                 else if (fixing) {
-                                    fixing(config.width, config.height, ref.current, item);
+                                    ref.current.resetCanvas();
+                                    fixing(config.width, config.height, ref.current, item, findingType);
                                 }
                             }
                             setLoaded(true);

@@ -165,6 +165,34 @@ export const ITEMS = [
             return null;
         }
     },
+    {
+        value: 14,
+        name: 'DIASTEMA',
+        draw: {},
+        fixing: (width, height, canvas, tooth, findingType) => {
+            if (canvas) {
+                const dir = (findingType.value.split(' ')[2] === '0') ? 1 : -1;
+                const h = (dir > 0 ? 0.64 : 0.36) * width;
+                const k = 0.75 * height;
+                const points = [];
+                const delta = 0.5;
+                const r = 70;
+                for (let angle = (1.6 * Math.PI) ; angle <= (2.4 * Math.PI) ; angle += delta) {
+                    const x = dir * r * Math.cos(angle);
+                    const y = dir * r * Math.sin(angle);
+                    points.push({x: x + h, y: y + k});
+                }
+                canvas.loadPaths([
+                    {
+                        drawMode: true,
+                        paths: points,
+                        strokeWidth: 15,
+                        strokeColor: "blue",
+                    },
+                ]);
+            }
+        }
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -402,5 +430,15 @@ export const ITEM_TYPES = [
         value: '_ 13',
         name: 'Pieza Dentaria Intruida',
         finding: 13,
+    },
+    {
+        value: '_ 14 0',
+        name: 'Diastema (Inicio)',
+        finding: 14,
+    },
+    {
+        value: '_ 14 1',
+        name: 'Diastema (Fin)',
+        finding: 14,
     },
 ];

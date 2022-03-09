@@ -53,16 +53,18 @@ export default function DialogTooth({setTooth, tooth, onClose}) {
                         setSelFindingType(newItemsType[0]);
                         if (canvas.current) {
                             canvas.current.resetCanvas();
-                            if (selItem.fixing) {
-                                selItem.fixing(width, height, canvas.current, tooth);
-                            }
+                            if (selItem.fixing)
+                                selItem.fixing(width, height, canvas.current, tooth, newItemsType[0]);
                         }
                     }}/>
                     <Selector id={"findingType"} label={"Tipo Hallazgo"} color={selFindingType.color || selFinding.colorFindingType} value={selFindingType.value} items={findingsType} onChange={(event) => {
                         const findingType = FINDINGS.ITEM_TYPES.find(item => item.value === event.target.value);
                         setSelFindingType(findingType);
-                        if (findingType.draw && canvas.current)
+                        if (canvas.current) {
                             canvas.current.resetCanvas();
+                            if (selFinding.fixing)
+                                selFinding.fixing(width, height, canvas.current, tooth, findingType);
+                        }
                     }}/>
                 </Stack>
                 <Typography margin={2} fontSize={12}>{selFinding.description}</Typography>
@@ -71,6 +73,7 @@ export default function DialogTooth({setTooth, tooth, onClose}) {
                         ref={canvas}
                         item={tooth}
                         finding={selFinding}
+                        findingType={selFindingType}
                         draw={selFindingType.draw || selFinding.draw}
                         guiding={selFinding.guiding}
                         fixing={selFinding.fixing}
