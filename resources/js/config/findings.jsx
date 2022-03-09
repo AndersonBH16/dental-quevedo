@@ -316,6 +316,11 @@ export const ITEMS = [
         name: 'REMANENTE RADICULAR',
         colorFindingType: 'red',
     },
+    {
+        value: 26,
+        name: 'MOVILIDAD PATOLÓGICA',
+        colorFindingType: 'red',
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -643,5 +648,15 @@ export const ITEM_TYPES = [
         value: 'RR',
         name: 'Remanente Radicular',
         finding: 25,
+    },
+    {
+        value: 'M1',
+        name: 'M1 - Movilidad Patológia Grado 1',
+        finding: 26,
+    },
+    {
+        value: 'M2',
+        name: 'M2 - Movilidad Patológia Grado 2',
+        finding: 26,
     },
 ];
