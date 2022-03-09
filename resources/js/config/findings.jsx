@@ -244,6 +244,11 @@ export const ITEMS = [
         name: 'PIEZA DENTARIA ECTÓPICA',
         colorFindingType: 'blue',
     },
+    {
+        value: 19,
+        name: 'MACRODONCIA',
+        colorFindingType: 'blue',
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -531,5 +536,10 @@ export const ITEM_TYPES = [
         value: 'E 18',
         name: 'Pieza Dentaria Ectópica',
         finding: 18,
+    },
+    {
+        value: 'MAC',
+        name: 'Macrodoncia',
+        finding: 19,
     },
 ];
