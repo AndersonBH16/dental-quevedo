@@ -2,11 +2,12 @@ import FractureFinding from "../components/FractureFinding";
 import EruptionFinding from "../components/EruptionFinding";
 import {POSITION} from "./constants";
 import SupernumeraryFinding from "../components/SupernumeraryFinding";
-import {ArrowDownward, ArrowUpward} from "@mui/icons-material";
+import {ArrowDownward, ArrowUpward, ChangeHistory} from "@mui/icons-material";
 import React from "react";
 import * as CONSTANTS from "./constants";
 import curveUp from "../assets/curve-up.png";
 import curveDown from "../assets/curve-down.png";
+import {Box} from "@mui/material";
 
 export const ITEMS = [
     {
@@ -216,6 +217,27 @@ export const ITEMS = [
         value: 16,
         name: 'POSICIÓN DENTARIA',
         colorFindingType: 'blue',
+    },
+    {
+        value: 17,
+        name: 'PIEZA DENTARIA EN CLAVIJA',
+        highlighting: (tooth, minWidth, width) => {
+            const iconWidth = minWidth * 1.5;
+            const offsetLeft = Math.max(iconWidth - width, 0) / 2;
+            return (
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        width: '100%',
+                        top: -22,
+                        textAlign: 'center',
+                        left: -offsetLeft,
+                    }}
+                >
+                    <ChangeHistory sx={{fontSize: 50, width: iconWidth, color: 'blue'}}/>
+                </Box>
+            );
+        }
     },
 ];
 
@@ -494,5 +516,10 @@ export const ITEM_TYPES = [
         value: 'L 16',
         name: "L - Lingualizado",
         finding: 16,
+    },
+    {
+        value: '_ 17',
+        name: 'Pieza Dentaria en Clavija',
+        finding: 17,
     },
 ];
