@@ -212,6 +212,11 @@ export const ITEMS = [
             return null;
         }
     },
+    {
+        value: 16,
+        name: 'POSICIÓN DENTARIA',
+        colorFindingType: 'blue',
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -464,5 +469,30 @@ export const ITEM_TYPES = [
         value: '_ 15',
         name: 'Giroversión',
         finding: 15,
+    },
+    {
+        value: 'M 16',
+        name: "M - Mesializado",
+        finding: 16,
+    },
+    {
+        value: 'D 16',
+        name: "D - Distalizado",
+        finding: 16,
+    },
+    {
+        value: 'V 16',
+        name: "V - Vestibularizado",
+        finding: 16,
+    },
+    {
+        value: 'P 16',
+        name: "P - Palatinizado",
+        finding: 16,
+    },
+    {
+        value: 'L 16',
+        name: "L - Lingualizado",
+        finding: 16,
     },
 ];
