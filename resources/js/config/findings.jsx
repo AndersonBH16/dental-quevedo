@@ -5,6 +5,8 @@ import SupernumeraryFinding from "../components/SupernumeraryFinding";
 import {ArrowDownward, ArrowUpward} from "@mui/icons-material";
 import React from "react";
 import * as CONSTANTS from "./constants";
+import curveUp from "../assets/curve-up.png";
+import curveDown from "../assets/curve-down.png";
 
 export const ITEMS = [
     {
@@ -191,6 +193,23 @@ export const ITEMS = [
                     },
                 ]);
             }
+        }
+    },
+    {
+        value: 15,
+        name: 'GIROVERSIÓN',
+        external: (tooth, position) => {
+            if (tooth.position === CONSTANTS.POSITION.UP && position === CONSTANTS.POSITION.DOWN)
+                return (
+                    <img alt={"curveDown"} src={curveDown} style={{height: 8}}/>
+                );
+
+            if (tooth.position === CONSTANTS.POSITION.DOWN && position === CONSTANTS.POSITION.UP)
+                return (
+                    <img alt={"curveUp"} src={curveUp} style={{height: 8}}/>
+                );
+
+            return null;
         }
     },
 ];
@@ -440,5 +459,10 @@ export const ITEM_TYPES = [
         value: '_ 14 1',
         name: 'Diastema (Fin)',
         finding: 14,
+    },
+    {
+        value: '_ 15',
+        name: 'Giroversión',
+        finding: 15,
     },
 ];
