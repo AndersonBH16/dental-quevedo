@@ -296,6 +296,11 @@ export const ITEMS = [
             );
         }
     },
+    {
+        value: 23,
+        name: 'IMPACTACIÓN',
+        colorFindingType: 'blue',
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -608,5 +613,10 @@ export const ITEM_TYPES = [
         value: '_ 22',
         name: 'Geminación',
         finding: 22,
+    },
+    {
+        value: 'I 23',
+        name: 'Impactación',
+        finding: 23,
     },
 ];
