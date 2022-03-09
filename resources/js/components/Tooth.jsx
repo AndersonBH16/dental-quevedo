@@ -38,7 +38,7 @@ export default function Tooth({model, item, onSelect}) {
     return (
         <div style={{width: width}}>
             {(item.position === CONSTANTS.POSITION_TOOTH.UP) && <Square/>}
-            <ImageTooth item={item} width={width} height={height} model={model} onClick={() => {onSelect(item)}}/>
+            <ImageTooth item={item} finding={selFinding} width={width} height={height} model={model} onClick={() => {onSelect(item)}}/>
             {(item.position === CONSTANTS.POSITION_TOOTH.DOWN) && <Square/>}
         </div>
     );

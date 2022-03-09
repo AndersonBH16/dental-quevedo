@@ -70,6 +70,7 @@ export default function DialogTooth({setTooth, tooth, onClose}) {
                     <ImageTooth
                         ref={canvas}
                         item={tooth}
+                        finding={selFinding}
                         draw={selFindingType.draw || selFinding.draw}
                         guiding={selFinding.guiding}
                         fixing={selFinding.fixing}

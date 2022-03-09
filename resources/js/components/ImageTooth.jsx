@@ -3,7 +3,7 @@ import {ReactSketchCanvas} from "react-sketch-canvas";
 import * as CONSTANTS from "../config/constants";
 import {Box} from "@mui/material";
 
-export const ImageTooth = React.forwardRef(({item, width, height, draw = null, guiding = null, fixing = null, model, onClick = null, onLoaded = null}, ref) => {
+export const ImageTooth = React.forwardRef(({item, finding, width, height, draw = null, guiding = null, fixing = null, model, onClick = null, onLoaded = null}, ref) => {
     const [loaded, setLoaded] = React.useState(false);
 
     const up = item.position === CONSTANTS.POSITION_TOOTH.UP;
@@ -52,57 +52,65 @@ export const ImageTooth = React.forwardRef(({item, width, height, draw = null, g
     }
 
     return (
-        <div style={{position: "relative"}}>
-            {draw !== null && <Box>
-                <ReactSketchCanvas
-                    style={{
-                        position: "absolute",
-                        left: 0,
-                        right: 0,
-                        margin: 'auto',
-                    }}
-                    ref={ref}
-                    onChange={() => {
-                        if (!loaded) {
-                            if (item.canvasPaths.length > 0)
-                                ref.current.loadPaths(item.canvasPaths);
-                            else if (fixing) {
-                                fixing(config.width, config.height, ref.current, item);
+        <Box>
+            <Box height={18} textAlign={'center'}>
+                {finding.external !== undefined && finding.external(item, CONSTANTS.POSITION_TOOTH.UP)}
+            </Box>
+            <div style={{position: "relative", display: "flex", justifyContent: "center"}}>
+                {draw !== null && <Box>
+                    <ReactSketchCanvas
+                        style={{
+                            position: "absolute",
+                            left: 0,
+                            right: 0,
+                            margin: 'auto',
+                        }}
+                        ref={ref}
+                        onChange={() => {
+                            if (!loaded) {
+                                if (item.canvasPaths.length > 0)
+                                    ref.current.loadPaths(item.canvasPaths);
+                                else if (fixing) {
+                                    fixing(config.width, config.height, ref.current, item);
+                                }
                             }
-                        }
-                        setLoaded(true);
-                    }}
-                    width={`${config.width}px`}
-                    height={`${config.height}px`}
-                    canvasColor={"transparent"}
-                    allowOnlyPointerType={fixing ? null : 'all'}
-                    {...draw}
-                />
-                {guiding && guiding(config.width, config.height, ref.current)}
-            </Box>}
-            {item.url !== null && <img src={item.url} alt={'base64'} width={`${config.width}px`} height={`${config.height}px`} style={{position: 'absolute', zIndex: -1}}/>}
-            <svg width={config.width} height={config.height} onClick={onClick}>
-                <g>
-                    <Rect x={0} y={config.height*0.5} width={config.width} height={config.height*0.5}/>
+                            setLoaded(true);
+                        }}
+                        width={`${config.width}px`}
+                        height={`${config.height}px`}
+                        canvasColor={"transparent"}
+                        allowOnlyPointerType={fixing ? null : 'all'}
+                        {...draw}
+                    />
+                    {guiding && guiding(config.width, config.height, ref.current)}
+                </Box>}
+                {item.url !== null && <img src={item.url} alt={'base64'} width={`${config.width}px`} height={`${config.height}px`} style={{position: 'absolute', zIndex: -1}}/>}
+                <svg width={config.width} height={config.height} onClick={onClick}>
+                    <g>
+                        <Rect x={0} y={config.height*0.5} width={config.width} height={config.height*0.5}/>
 
-                    <Line x1={0} y1={config.height*0.5} x2={config.width*0.26} y2={config.height*(config.center ? 0.63 : 0.75)} />
-                    <Line x1={config.width*0.75} y1={config.height*(config.center ? 0.87 : 0.75)} x2={config.width} y2={config.height} />
+                        <Line x1={0} y1={config.height*0.5} x2={config.width*0.26} y2={config.height*(config.center ? 0.63 : 0.75)} />
+                        <Line x1={config.width*0.75} y1={config.height*(config.center ? 0.87 : 0.75)} x2={config.width} y2={config.height} />
 
-                    <Line x1={0} y1={config.height} x2={config.width*0.26} y2={config.height*(config.center ? 0.87 : 0.75)} />
-                    <Line x1={config.width*0.75} y1={config.height*(config.center ? 0.63 : 0.75)} x2={config.width} y2={config.height*0.5} />
+                        <Line x1={0} y1={config.height} x2={config.width*0.26} y2={config.height*(config.center ? 0.87 : 0.75)} />
+                        <Line x1={config.width*0.75} y1={config.height*(config.center ? 0.63 : 0.75)} x2={config.width} y2={config.height*0.5} />
 
-                    {config.center && <Rect x={config.width*0.26} y={config.height*0.63} width={config.width*0.48} height={config.height*0.24}/>}
+                        {config.center && <Rect x={config.width*0.26} y={config.height*0.63} width={config.width*0.48} height={config.height*0.24}/>}
 
-                    {(config.middleLine || !config.center) && <Line x1={config.width*0.26} y1={config.height*0.75} x2={config.width*0.75} y2={config.height*0.75} />}
-                    {config.center && config.verticalLine && <Line x1={config.width*0.42} y1={config.height*0.63} x2={config.width*0.42} y2={config.height*0.87} />}
-                    {config.center && config.verticalLine && <Line x1={config.width*0.58} y1={config.height*0.63} x2={config.width*0.58} y2={config.height*0.87} />}
-                </g>
-                <g>
-                    {config.edges >= 2 && <Triangle halfRight={true} index={0} x1={startX - offset} y1={config.height/2} x2={startX + widthTriangle*0.5 - offset} y2={config.up ? 0 : config.height} x3={startX + widthTriangle - offset} y3={config.height/2}/>}
-                    {config.edges >= 3 && <Triangle halfLeft={true} index={1} x1={startX + offset} y1={config.height/2} x2={startX + widthTriangle*0.5 + offset} y2={config.up ? 0 : config.height} x3={startX + widthTriangle + offset} y3={config.height/2}/>}
-                    <Triangle index={2} x1={startX} y1={config.height/2} x2={startX + widthTriangle*0.5} y2={config.up ? 0 : config.height} x3={startX + widthTriangle} y3={config.height/2}/>
-                </g>
-            </svg>
-        </div>
+                        {(config.middleLine || !config.center) && <Line x1={config.width*0.26} y1={config.height*0.75} x2={config.width*0.75} y2={config.height*0.75} />}
+                        {config.center && config.verticalLine && <Line x1={config.width*0.42} y1={config.height*0.63} x2={config.width*0.42} y2={config.height*0.87} />}
+                        {config.center && config.verticalLine && <Line x1={config.width*0.58} y1={config.height*0.63} x2={config.width*0.58} y2={config.height*0.87} />}
+                    </g>
+                    <g>
+                        {config.edges >= 2 && <Triangle halfRight={true} index={0} x1={startX - offset} y1={config.height/2} x2={startX + widthTriangle*0.5 - offset} y2={config.up ? 0 : config.height} x3={startX + widthTriangle - offset} y3={config.height/2}/>}
+                        {config.edges >= 3 && <Triangle halfLeft={true} index={1} x1={startX + offset} y1={config.height/2} x2={startX + widthTriangle*0.5 + offset} y2={config.up ? 0 : config.height} x3={startX + widthTriangle + offset} y3={config.height/2}/>}
+                        <Triangle index={2} x1={startX} y1={config.height/2} x2={startX + widthTriangle*0.5} y2={config.up ? 0 : config.height} x3={startX + widthTriangle} y3={config.height/2}/>
+                    </g>
+                </svg>
+            </div>
+            <Box height={18} textAlign={'center'}>
+                {finding.external !== undefined && finding.external(item, CONSTANTS.POSITION_TOOTH.DOWN)}
+            </Box>
+        </Box>
     );
 });

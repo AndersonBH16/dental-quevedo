@@ -2,6 +2,9 @@ import FractureFinding from "../components/FractureFinding";
 import EruptionFinding from "../components/EruptionFinding";
 import {POSITION_TOOTH} from "./constants";
 import SupernumeraryFinding from "../components/SupernumeraryFinding";
+import {ArrowDownward, ArrowUpward} from "@mui/icons-material";
+import React from "react";
+import * as CONSTANTS from "./constants";
 
 export const ITEMS = [
     {
@@ -125,6 +128,24 @@ export const ITEMS = [
         description: "Marque la ubicación de la pieza supernumeraria:",
         draw: {},
         guiding: (width, height, canvas) => <SupernumeraryFinding width={width} height={height} canvas={canvas}/>,
+    },
+    {
+        value: 12,
+        name: 'PIEZA DENTARIA EXTRUIDA',
+        colorFindingType: 'blue',
+        external: (tooth, position) => {
+            if (tooth.position === CONSTANTS.POSITION_TOOTH.UP && position === CONSTANTS.POSITION_TOOTH.DOWN)
+                return (
+                    <ArrowDownward sx={{fontSize: 18, color: 'blue'}}/>
+                );
+
+            if (tooth.position === CONSTANTS.POSITION_TOOTH.DOWN && position === CONSTANTS.POSITION_TOOTH.UP)
+                return (
+                    <ArrowUpward sx={{fontSize: 18, color: 'blue'}}/>
+                );
+
+            return null;
+        }
     },
 ];
 
@@ -353,5 +374,10 @@ export const ITEM_TYPES = [
         value: '_ 11',
         name: 'Pieza Dentaria Supernumeraria',
         finding: 11,
+    },
+    {
+        value: '_ 12',
+        name: 'Pieza Dentaria Extruida',
+        finding: 12,
     },
 ];
