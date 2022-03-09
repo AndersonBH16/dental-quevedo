@@ -249,6 +249,11 @@ export const ITEMS = [
         name: 'MACRODONCIA',
         colorFindingType: 'blue',
     },
+    {
+        value: 20,
+        name: 'MICRODONCIA',
+        colorFindingType: 'blue',
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -541,5 +546,10 @@ export const ITEM_TYPES = [
         value: 'MAC',
         name: 'Macrodoncia',
         finding: 19,
+    },
+    {
+        value: 'MIC',
+        name: 'Microdoncia',
+        finding: 20,
     },
 ];
