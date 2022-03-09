@@ -47,8 +47,11 @@ class OdontogramController extends Controller
             if (!isset($request->types[$item['number']])) return $item;
             $item['findingType'] = $request->types[$item['number']];
             $item['canvasPaths'] = json_decode($request->paths[$item['number']]);
-            if ($url = $odontogram->routeTooth($item))
-                Storage::disk()->put($url, file_get_contents($request->images[$item['number']]));
+            if (isset($request->images[$item['number']])) {
+                if (($url = $odontogram->routeTooth($item)))
+                    Storage::disk()->put($url, file_get_contents($request->images[$item['number']]));
+            }
+            else $url = null;
             $item['url'] = $url ? "$url?t=$time" : null;
             return $item;
         });
