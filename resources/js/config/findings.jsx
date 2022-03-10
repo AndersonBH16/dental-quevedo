@@ -181,7 +181,7 @@ export const ITEMS = [
             if (canvas) {
                 const dir = (findingType.value.split(' ')[2] === '0') ? 1 : -1;
                 const h = (dir > 0 ? 0.64 : 0.36) * width;
-                const k = 0.75 * height;
+                const k = ((tooth.position === CONSTANTS.POSITION.UP) ? 0.75 : 0.25) * height;
                 const points = [];
                 const delta = 0.5;
                 const r = 70;
