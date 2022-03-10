@@ -349,6 +349,33 @@ export const ITEMS = [
             }
         }
     },
+    {
+        value: 28,
+        name: 'CORONA',
+        draw: {},
+        fixing: (width, height, canvas, tooth, findingType) => {
+            if (canvas) {
+                const offsetY = (tooth.position === CONSTANTS.POSITION.UP) ? (height / 2) : 0;
+                canvas.loadPaths([
+                    {
+                        drawMode: true,
+                        paths: [
+                            {x: 5, y: offsetY + 5},
+                            {x: width-5, y: offsetY + 5},
+                            {x: width-5, y: offsetY + 15},
+                            {x: width-5, y: offsetY + height/2 - 22},
+                            {x: width-5, y: offsetY + height/2 - 7},
+                            {x: 5, y: offsetY + height/2 - 7},
+                            {x: 5, y: offsetY + height/2 - 22},
+                            {x: 5, y: offsetY + 5},
+                        ],
+                        strokeWidth: 15,
+                        strokeColor: findingType.color,
+                    },
+                ]);
+            }
+        }
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -691,5 +718,65 @@ export const ITEM_TYPES = [
         value: 'CT',
         name: 'CT - Corona Temporal',
         finding: 27,
+    },
+    {
+        value: 'CM B',
+        name: 'CM - Corona Metálica (Buen Estado)',
+        finding: 28,
+        color: 'blue',
+    },
+    {
+        value: 'CF B',
+        name: 'CF - Corona Fenestrada (Buen Estado)',
+        finding: 28,
+        color: 'blue',
+    },
+    {
+        value: 'CMC B',
+        name: 'CMC - Corona Metal Cerámica (Buen Estado)',
+        finding: 28,
+        color: 'blue',
+    },
+    {
+        value: 'CV B',
+        name: 'CV - Corona Veener (Buen Estado)',
+        finding: 28,
+        color: 'blue',
+    },
+    {
+        value: 'CJ B',
+        name: 'CJ - Corona Jacket (Buen Estado)',
+        finding: 28,
+        color: 'blue',
+    },
+    {
+        value: 'CM M',
+        name: 'CM - Corona Metálica (Mal Estado)',
+        finding: 28,
+        color: 'red',
+    },
+    {
+        value: 'CF M',
+        name: 'CF - Corona Fenestrada (Mal Estado)',
+        finding: 28,
+        color: 'red',
+    },
+    {
+        value: 'CMC M',
+        name: 'CMC - Corona Metal Cerámica (Mal Estado)',
+        finding: 28,
+        color: 'red',
+    },
+    {
+        value: 'CV M',
+        name: 'CV - Corona Veener (Mal Estado)',
+        finding: 28,
+        color: 'red',
+    },
+    {
+        value: 'CJ M',
+        name: 'CJ - Corona Jacket (Mal Estado)',
+        finding: 28,
+        color: 'red',
     },
 ];
