@@ -657,6 +657,89 @@ export const ITEMS = [
             return null;
         }
     },
+    {
+        value: 36,
+        name: 'TRATAMIENTO PULPAR',
+        draw: {},
+        fixing: (width, height, canvas, tooth, findingType) => {
+            const type = findingType.value.split(' ')[0];
+            const strokeWidth = 15;
+
+            const generateBox = (x, y, wx, hy) => {
+                return [
+                    {
+                        drawMode: true,
+                        paths: [
+                            {x: x, y: y},
+                            {x: x + wx, y: y},
+                        ],
+                        strokeWidth: strokeWidth,
+                        strokeColor: findingType.color,
+                    },
+                    {
+                        drawMode: true,
+                        paths: [
+                            {x: x + wx, y: y},
+                            {x: x + wx, y: y + hy},
+                        ],
+                        strokeWidth: strokeWidth,
+                        strokeColor: findingType.color,
+                    },
+                    {
+                        drawMode: true,
+                        paths: [
+                            {x: x + wx, y: y + hy},
+                            {x: x, y: y + hy},
+                        ],
+                        strokeWidth: strokeWidth,
+                        strokeColor: findingType.color,
+                    },
+                    {
+                        drawMode: true,
+                        paths: [
+                            {x: x, y: y + hy},
+                            {x: x, y: y},
+                        ],
+                        strokeWidth: strokeWidth,
+                        strokeColor: findingType.color,
+                    },
+                ];
+            }
+
+            if (canvas) {
+                const isUp = (tooth.position === CONSTANTS.POSITION.UP);
+                const w = 0.5 * width;
+                const h = 0.24 * height;
+                const offsetX = width * 0.25;
+                const offsetY = height * (isUp ? 0.63 : 0.12);
+
+                let paths = [];
+                let wx = w;
+                let hy = h;
+                let x = offsetX;
+                let y = offsetY;
+                while (wx > 20 && (type === 'PP')) {
+                    paths = paths.concat(generateBox(x, y, wx, hy));
+                    x += strokeWidth - 2;
+                    y += strokeWidth - 2;
+                    wx -= (2 * strokeWidth) - 4;
+                    hy -= (2 * strokeWidth) - 4;
+                }
+
+                canvas.loadPaths(paths.concat([
+                    {
+                        drawMode: true,
+                        paths: [
+                            {x: offsetX + (w / 2), y: offsetY + (h * 0.5)},
+                            {x: offsetX + (w / 2), y: isUp ? 10 : height - 10},
+                        ],
+                        strokeWidth: strokeWidth,
+                        strokeColor: findingType.color,
+                    },
+                ]));
+            }
+        }
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -1190,6 +1273,42 @@ export const ITEM_TYPES = [
         value: '_ 35 M',
         name: 'Prótesis Total (Mal Estado)',
         finding: 35,
+        color: 'red',
+    },
+    {
+        value: 'TC B',
+        name: 'TC - Tratamiento de Conductos (Buen Estado)',
+        finding: 36,
+        color: 'blue',
+    },
+    {
+        value: 'PC B',
+        name: 'PC - Pulpectomía (Buen Estado)',
+        finding: 36,
+        color: 'blue',
+    },
+    {
+        value: 'PP B',
+        name: 'PP - Pulpotomía (Buen Estado)',
+        finding: 36,
+        color: 'blue',
+    },
+    {
+        value: 'TC M',
+        name: 'TC - Tratamiento de Conductos (Mal Estado)',
+        finding: 36,
+        color: 'red',
+    },
+    {
+        value: 'PC M',
+        name: 'PC - Pulpectomía (Mal Estado)',
+        finding: 36,
+        color: 'red',
+    },
+    {
+        value: 'PP M',
+        name: 'PP - Pulpotomía (Mal Estado)',
+        finding: 36,
         color: 'red',
     },
 ];
