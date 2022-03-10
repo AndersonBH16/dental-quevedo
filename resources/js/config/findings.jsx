@@ -376,6 +376,68 @@ export const ITEMS = [
             }
         }
     },
+    {
+        value: 29,
+        name: 'ESPIGO - MUÑÓN',
+        draw: {},
+        fixing: (width, height, canvas, tooth, findingType) => {
+            if (canvas) {
+                const isUp = (tooth.position === CONSTANTS.POSITION.UP);
+                const w = 0.52 * width;
+                const h = 0.27 * height;
+                const strokeWidth = 15;
+                const offsetX = width * 0.24;
+                const offsetY = height * (isUp ? 0.63 : 0.12);
+                canvas.loadPaths([
+                    {
+                        drawMode: true,
+                        paths: [
+                            {x: offsetX, y: offsetY},
+                            {x: offsetX + w, y: offsetY},
+                        ],
+                        strokeWidth: strokeWidth,
+                        strokeColor: findingType.color,
+                    },
+                    {
+                        drawMode: true,
+                        paths: [
+                            {x: offsetX + w, y: offsetY},
+                            {x: offsetX + w, y: offsetY + h},
+                        ],
+                        strokeWidth: strokeWidth,
+                        strokeColor: findingType.color,
+                    },
+                    {
+                        drawMode: true,
+                        paths: [
+                            {x: offsetX + w, y: offsetY + h},
+                            {x: offsetX, y: offsetY + h},
+                        ],
+                        strokeWidth: strokeWidth,
+                        strokeColor: findingType.color,
+                    },
+                    {
+                        drawMode: true,
+                        paths: [
+                            {x: offsetX, y: offsetY + h},
+                            {x: offsetX, y: offsetY},
+                        ],
+                        strokeWidth: strokeWidth,
+                        strokeColor: findingType.color,
+                    },
+                    {
+                        drawMode: true,
+                        paths: [
+                            {x: offsetX + (w / 2), y: offsetY + (isUp ? 0 : h)},
+                            {x: offsetX + (w / 2), y: isUp ? 0 : height},
+                        ],
+                        strokeWidth: strokeWidth,
+                        strokeColor: findingType.color,
+                    },
+                ]);
+            }
+        }
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -777,6 +839,18 @@ export const ITEM_TYPES = [
         value: 'CJ M',
         name: 'CJ - Corona Jacket (Mal Estado)',
         finding: 28,
+        color: 'red',
+    },
+    {
+        value: '_ 29 B',
+        name: 'Espigo - Muñón (Buen Estado)',
+        finding: 29,
+        color: 'blue',
+    },
+    {
+        value: '_ 29 M',
+        name: 'Espigo - Muñón (Mal Estado)',
+        finding: 29,
         color: 'red',
     },
 ];
