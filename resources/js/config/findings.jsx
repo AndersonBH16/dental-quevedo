@@ -529,6 +529,64 @@ export const ITEMS = [
             return null;
         }
     },
+    {
+        value: 33,
+        name: 'PRÓTESIS FIJA',
+        external: (tooth, position, width, findingType) => {
+            const type = parseInt(findingType.value.split(' ')[2]);
+            const w = width * (type === 2 ? 1 : 0.5);
+
+            const Bar = () => {
+                return (
+                    <Box
+                        sx={{
+                            position: 'absolute',
+                            border: "solid 2px " + findingType.color,
+                            height: 8,
+                            left: '50%',
+                            marginLeft: '-2px',
+                            top: 2,
+                        }}
+                    />
+                );
+            }
+
+            const LineBox = ({isUp}) => {
+                return (
+                    <Box
+                        sx={{
+                            border: "solid 2px " + findingType.color,
+                            position: 'absolute',
+                            width: w,
+                            top: isUp ? 2 : 10,
+                            left: ((type === 1 || type === 2) ? '50%' : 'auto'),
+                            right: (type === 3 ? '50%' : 'auto'),
+                            marginLeft: (type === 1) ? '-2px' : `${-((width / 2) + 2)}px`,
+                            marginRight: (type === 3) ? '-2px' : `${-((width / 2) + 2)}px`
+                        }}
+                    />
+                );
+            }
+
+            if (tooth.position === CONSTANTS.POSITION.UP && position === CONSTANTS.POSITION.UP)
+                return (
+                    <Box position={'relative'}>
+                        <LineBox isUp={true}/>
+                        {type !== 2 && <Bar/>}
+                    </Box>
+                );
+
+            if (tooth.position === CONSTANTS.POSITION.DOWN && position === CONSTANTS.POSITION.DOWN)
+                return (
+                    <Box position={'relative'}>
+                        <LineBox isUp={false}/>
+                        {type !== 2 && <Bar/>}
+                    </Box>
+                );
+
+            return null;
+        }
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -1002,6 +1060,42 @@ export const ITEM_TYPES = [
         value: '_ 32 M',
         name: 'Aparato Ortodóntico Removible (Mal Estado)',
         finding: 32,
+        color: 'red',
+    },
+    {
+        value: '_ 33 1 B',
+        name: 'Inicio (Buen Estado)',
+        finding: 33,
+        color: 'blue',
+    },
+    {
+        value: '_ 33 2 B',
+        name: 'Centro (Buen Estado)',
+        finding: 33,
+        color: 'blue',
+    },
+    {
+        value: '_ 33 3 B',
+        name: 'Fin (Buen Estado)',
+        finding: 33,
+        color: 'blue',
+    },
+    {
+        value: '_ 33 1 M',
+        name: 'Inicio (Mal Estado)',
+        finding: 33,
+        color: 'red',
+    },
+    {
+        value: '_ 33 2 M',
+        name: 'Centro (Mal Estado)',
+        finding: 33,
+        color: 'red',
+    },
+    {
+        value: '_ 33 3 M',
+        name: 'Fin (Mal Estado)',
+        finding: 33,
         color: 'red',
     },
 ];
