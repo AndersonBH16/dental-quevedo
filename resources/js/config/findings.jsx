@@ -438,6 +438,10 @@ export const ITEMS = [
             }
         }
     },
+    {
+        value: 30,
+        name: 'IMPLANTE DENTAL',
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -851,6 +855,18 @@ export const ITEM_TYPES = [
         value: '_ 29 M',
         name: 'Espigo - Muñón (Mal Estado)',
         finding: 29,
+        color: 'red',
+    },
+    {
+        value: 'IMP B',
+        name: 'IMP - Implante Dental (Buen Estado)',
+        finding: 30,
+        color: 'blue',
+    },
+    {
+        value: 'IMP M',
+        name: 'IMP - Implante Dental (Mal Estado)',
+        finding: 30,
         color: 'red',
     },
 ];
