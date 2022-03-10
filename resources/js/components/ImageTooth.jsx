@@ -68,11 +68,12 @@ export const ImageTooth = React.forwardRef(({item, finding, findingType, width, 
                         ref={ref}
                         onChange={() => {
                             if (!loaded) {
-                                if (item.canvasPaths.length > 0)
-                                    ref.current.loadPaths(item.canvasPaths);
-                                else if (fixing) {
+                                if (fixing && item.findingType !== findingType.value) {
                                     ref.current.resetCanvas();
                                     fixing(config.width, config.height, ref.current, item, findingType);
+                                }
+                                else if (item.canvasPaths.length > 0) {
+                                    ref.current.loadPaths(item.canvasPaths);
                                 }
                             }
                             setLoaded(true);
