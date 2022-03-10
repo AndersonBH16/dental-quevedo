@@ -7,6 +7,10 @@ import React from "react";
 import * as CONSTANTS from "./constants";
 import curveUp from "../assets/curve-up.png";
 import curveDown from "../assets/curve-down.png";
+import curveLeftUp from "../assets/curve-left-up.png";
+import curveRightUp from "../assets/curve-right-up.png";
+import curveLeftDown from "../assets/curve-left-down.png";
+import curveRightDown from "../assets/curve-right-down.png";
 import oval from "../assets/oval.png";
 import {Box} from "@mui/material";
 
@@ -740,6 +744,39 @@ export const ITEMS = [
             }
         }
     },
+    {
+        value: 37,
+        name: 'TRANSPOSICIÓN',
+        external: (tooth, position, width, findingType) => {
+            const type = parseInt(findingType.value.split(' ')[2]);
+
+            const style = {
+                position: 'absolute',
+                top: 6,
+                left: (type === 2) ? -12 : 'auto',
+                right: (type === 1) ? -12 : 'auto',
+                height: 8,
+            };
+
+            if (tooth.position === CONSTANTS.POSITION.UP && position === CONSTANTS.POSITION.UP)
+                return (
+                    <Box position={'relative'}>
+                        {type === 2 ? <img alt={"curveLeftUp"} src={curveLeftUp} style={style}/> :
+                        <img alt={"curveRightUp"} src={curveRightUp} style={style}/>}
+                    </Box>
+                );
+
+            if (tooth.position === CONSTANTS.POSITION.DOWN && position === CONSTANTS.POSITION.DOWN)
+                return (
+                    <Box position={'relative'}>
+                        {type === 2 ? <img alt={"curveLeftDown"} src={curveLeftDown} style={style}/> :
+                        <img alt={"curveRightDown"} src={curveRightDown} style={style}/>}
+                    </Box>
+                );
+
+            return null;
+        }
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -1310,5 +1347,17 @@ export const ITEM_TYPES = [
         name: 'PP - Pulpotomía (Mal Estado)',
         finding: 36,
         color: 'red',
+    },
+    {
+        value: '_ 37 1',
+        name: 'Transposición (Inicio)',
+        finding: 37,
+        color: 'blue',
+    },
+    {
+        value: '_ 37 2',
+        name: 'Transposición (Fin)',
+        finding: 37,
+        color: 'blue',
     },
 ];
