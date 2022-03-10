@@ -485,6 +485,50 @@ export const ITEMS = [
             return null;
         }
     },
+    {
+        value: 32,
+        name: 'APARATO ORTODÓNTICO REMOVIBLE',
+        external: (tooth, position, width, findingType) => {
+            const isUp = (tooth.position === CONSTANTS.POSITION.UP);
+            const type = parseInt(findingType.value.split(' ')[2]);
+
+            const LineBox = ({dir}) => {
+                return (
+                    <Box
+                        sx={{
+                            border: "solid 2px " + findingType.color,
+                            position: 'absolute',
+                            width: width / 2,
+                            top: 8,
+                            left: ((dir > 0) ? '50%' : 'auto'),
+                            right: ((dir < 0) ? '50%' : 'auto'),
+                            marginLeft: (type === 1) ? '5px' : `${-((width / 2) + 2)}px`,
+                            marginRight: (type === 3) ? '5px' : `${-((width / 2) + 2)}px`,
+                            transform: `rotate(${(dir * 15 * (isUp ? -1 : 1))}deg)`
+                        }}
+                    />
+                );
+            }
+
+            if (tooth.position === CONSTANTS.POSITION.UP && position === CONSTANTS.POSITION.UP)
+                return (
+                    <Box position={'relative'}>
+                        <LineBox dir={1}/>
+                        <LineBox dir={-1}/>
+                    </Box>
+                );
+
+            if (tooth.position === CONSTANTS.POSITION.DOWN && position === CONSTANTS.POSITION.DOWN)
+                return (
+                    <Box position={'relative'}>
+                        <LineBox dir={1}/>
+                        <LineBox dir={-1}/>
+                    </Box>
+                );
+
+            return null;
+        }
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -946,6 +990,18 @@ export const ITEM_TYPES = [
         value: '_ 31 3 M',
         name: 'Fin (Mal Estado)',
         finding: 31,
+        color: 'red',
+    },
+    {
+        value: '_ 32 B',
+        name: 'Aparato Ortodóntico Removible (Buen Estado)',
+        finding: 32,
+        color: 'blue',
+    },
+    {
+        value: '_ 32 M',
+        name: 'Aparato Ortodóntico Removible (Mal Estado)',
+        finding: 32,
         color: 'red',
     },
 ];
