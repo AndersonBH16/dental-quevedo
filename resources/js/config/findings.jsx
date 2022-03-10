@@ -2,7 +2,7 @@ import FractureFinding from "../components/FractureFinding";
 import EruptionFinding from "../components/EruptionFinding";
 import {POSITION} from "./constants";
 import SupernumeraryFinding from "../components/SupernumeraryFinding";
-import {ArrowDownward, ArrowUpward, ChangeHistory, CircleOutlined} from "@mui/icons-material";
+import {AddBoxOutlined, ArrowDownward, ArrowUpward, ChangeHistory, CircleOutlined} from "@mui/icons-material";
 import React from "react";
 import * as CONSTANTS from "./constants";
 import curveUp from "../assets/curve-up.png";
@@ -442,6 +442,49 @@ export const ITEMS = [
         value: 30,
         name: 'IMPLANTE DENTAL',
     },
+    {
+        value: 31,
+        name: 'APARATO ORTODÓNTICO FIJO',
+        external: (tooth, position, width, findingType) => {
+            const type = parseInt(findingType.value.split(' ')[2]);
+            const w = width * (type === 2 ? 1 : 0.5);
+
+            const LineBox = () => {
+                return (
+                    <Box
+                        sx={{
+                            border: "solid 2px " + findingType.color,
+                            position: 'absolute',
+                            width: (type === 2) ? w : w - 9,
+                            top: 8,
+                            left: ((type === 1 || type === 2) ? '50%' : 'auto'),
+                            right: (type === 3 ? '50%' : 'auto'),
+                            marginLeft: (type === 1) ? '5px' : `${-((width / 2) + 2)}px`,
+                            marginRight: (type === 3) ? '5px' : `${-((width / 2) + 2)}px`
+                        }}
+                    />
+                );
+            }
+
+            if (tooth.position === CONSTANTS.POSITION.UP && position === CONSTANTS.POSITION.UP)
+                return (
+                    <Box position={'relative'}>
+                        <LineBox/>
+                        {type !== 2 && <AddBoxOutlined sx={{fontSize: 18, color: findingType.color}}/>}
+                    </Box>
+                );
+
+            if (tooth.position === CONSTANTS.POSITION.DOWN && position === CONSTANTS.POSITION.DOWN)
+                return (
+                    <Box position={'relative'}>
+                        <LineBox/>
+                        {type !== 2 && <AddBoxOutlined sx={{fontSize: 18, color: findingType.color}}/>}
+                    </Box>
+                );
+
+            return null;
+        }
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -867,6 +910,42 @@ export const ITEM_TYPES = [
         value: 'IMP M',
         name: 'IMP - Implante Dental (Mal Estado)',
         finding: 30,
+        color: 'red',
+    },
+    {
+        value: '_ 31 1 B',
+        name: 'Inicio (Buen Estado)',
+        finding: 31,
+        color: 'blue',
+    },
+    {
+        value: '_ 31 2 B',
+        name: 'Centro (Buen Estado)',
+        finding: 31,
+        color: 'blue',
+    },
+    {
+        value: '_ 31 3 B',
+        name: 'Fin (Buen Estado)',
+        finding: 31,
+        color: 'blue',
+    },
+    {
+        value: '_ 31 1 M',
+        name: 'Inicio (Mal Estado)',
+        finding: 31,
+        color: 'red',
+    },
+    {
+        value: '_ 31 2 M',
+        name: 'Centro (Mal Estado)',
+        finding: 31,
+        color: 'red',
+    },
+    {
+        value: '_ 31 3 M',
+        name: 'Fin (Mal Estado)',
+        finding: 31,
         color: 'red',
     },
 ];

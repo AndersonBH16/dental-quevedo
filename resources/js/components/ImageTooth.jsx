@@ -54,7 +54,7 @@ export const ImageTooth = React.forwardRef(({item, finding, findingType, width, 
     return (
         <Box>
             <Box height={18} textAlign={'center'}>
-                {finding.external !== undefined && finding.external(item, CONSTANTS.POSITION.UP)}
+                {finding.external !== undefined && finding.external(item, CONSTANTS.POSITION.UP, width, findingType)}
             </Box>
             <div style={{position: "relative", display: "flex", justifyContent: "center"}}>
                 {draw !== null && <Box>
@@ -110,7 +110,7 @@ export const ImageTooth = React.forwardRef(({item, finding, findingType, width, 
                 </svg>
             </div>
             <Box height={18} textAlign={'center'}>
-                {finding.external !== undefined && finding.external(item, CONSTANTS.POSITION.DOWN)}
+                {finding.external !== undefined && finding.external(item, CONSTANTS.POSITION.DOWN, width, findingType)}
             </Box>
         </Box>
     );
