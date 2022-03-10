@@ -321,6 +321,34 @@ export const ITEMS = [
         name: 'MOVILIDAD PATOLÓGICA',
         colorFindingType: 'red',
     },
+    {
+        value: 27,
+        name: 'CORONA TEMPORAL',
+        colorFindingType: 'red',
+        draw: {},
+        fixing: (width, height, canvas, tooth) => {
+            if (canvas) {
+                const offsetY = (tooth.position === CONSTANTS.POSITION.UP) ? (height / 2) : 0;
+                canvas.loadPaths([
+                    {
+                        drawMode: true,
+                        paths: [
+                            {x: 5, y: offsetY + 5},
+                            {x: width-5, y: offsetY + 5},
+                            {x: width-5, y: offsetY + 15},
+                            {x: width-5, y: offsetY + height/2 - 22},
+                            {x: width-5, y: offsetY + height/2 - 7},
+                            {x: 5, y: offsetY + height/2 - 7},
+                            {x: 5, y: offsetY + height/2 - 22},
+                            {x: 5, y: offsetY + 5},
+                        ],
+                        strokeWidth: 15,
+                        strokeColor: "red",
+                    },
+                ]);
+            }
+        }
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -658,5 +686,10 @@ export const ITEM_TYPES = [
         value: 'M2',
         name: 'M2 - Movilidad Patológia Grado 2',
         finding: 26,
+    },
+    {
+        value: 'CT',
+        name: 'CT - Corona Temporal',
+        finding: 27,
     },
 ];
