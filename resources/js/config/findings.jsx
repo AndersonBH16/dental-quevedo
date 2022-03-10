@@ -622,6 +622,41 @@ export const ITEMS = [
             return null;
         }
     },
+    {
+        value: 35,
+        name: 'PRÓTESIS TOTAL',
+        external: (tooth, position, width, findingType) => {
+            const DoubleLineBox = () => {
+                return (
+                    <Box
+                        sx={{
+                            borderTop: "solid 3px " + findingType.color,
+                            borderBottom: "solid 3px " + findingType.color,
+                            width: width,
+                            margin: 'auto',
+                            height: 3,
+                        }}
+                    />
+                );
+            }
+
+            if (tooth.position === CONSTANTS.POSITION.UP && position === CONSTANTS.POSITION.UP)
+                return (
+                    <Box position={'relative'} padding={'3px'}>
+                        <DoubleLineBox/>
+                    </Box>
+                );
+
+            if (tooth.position === CONSTANTS.POSITION.DOWN && position === CONSTANTS.POSITION.DOWN)
+                return (
+                    <Box position={'relative'} padding={'3px'}>
+                        <DoubleLineBox/>
+                    </Box>
+                );
+
+            return null;
+        }
+    },
 ];
 
 export const ITEM_TYPES = [
@@ -1143,6 +1178,18 @@ export const ITEM_TYPES = [
         value: '_ 34 M',
         name: 'Prótesis Removible (Mal Estado)',
         finding: 34,
+        color: 'red',
+    },
+    {
+        value: '_ 35 B',
+        name: 'Prótesis Total (Buen Estado)',
+        finding: 35,
+        color: 'blue',
+    },
+    {
+        value: '_ 35 M',
+        name: 'Prótesis Total (Mal Estado)',
+        finding: 35,
         color: 'red',
     },
 ];
