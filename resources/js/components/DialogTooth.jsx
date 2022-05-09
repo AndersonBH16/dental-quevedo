@@ -115,6 +115,17 @@ export default function DialogTooth({setTooth, tooth, onClose}) {
                 >
                     Conservar
                 </Button>
+                {(selFinding.fixing === undefined && selFinding.external === undefined &&
+                        selFinding.highlighting === undefined && (selFindingType.draw || selFinding.draw) != null &&
+                        selFinding.value > 0) &&
+                    <Button
+                        onClick={() => {
+                            if (canvas.current) canvas.current.undo();
+                        }}
+                    >
+                        Deshacer
+                    </Button>
+                }
             </DialogContent>
         </Dialog>
     );
