@@ -38,6 +38,7 @@ Route::resources([
 
 Route::get('/pacientes_total', [App\Http\Controllers\PacienteController::class, 'mostrarTodos']);
 Route::get('/ver-histograma-paciente/', [App\Http\Controllers\PacienteController::class, 'verHistogramaPaciente']);
+Route::get('/pacientes/{paciente:dni}/odontograma', [\App\Http\Controllers\PacienteController::class, 'odontogram']);
 Route::get('/odontograma', [\App\Http\Controllers\OdontogramController::class, 'canvas']);
 Route::get('/odontograms/{id}/{tooth}', [\App\Http\Controllers\OdontogramController::class, 'display']);
 Route::post('/odontograma', [\App\Http\Controllers\OdontogramController::class, 'data']);

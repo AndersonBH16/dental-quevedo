@@ -19,6 +19,11 @@ class PacienteController extends Controller
         return view('pacientes.pacientes');
     }
 
+    public function odontogram(Request $request, Paciente $paciente)
+    {
+        return view('pacientes.odontograma', compact('paciente'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
