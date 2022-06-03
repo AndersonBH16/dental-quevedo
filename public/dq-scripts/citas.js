@@ -94,8 +94,6 @@ function abrirModal(info, tipoEvento){
             url         : `/citas/${idCita}`,
             headers     : { "X-CSRF-TOKEN": token },
             success     : response => {
-                console.log(response)
-                console.log(response.estado)
                 let fecha_start = response.fecha;
                 let hora_inicio = response.start;
 

@@ -163,23 +163,17 @@
                                     <p>Inventario</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/pacientes" class="nav-link">
-                                    <i class="nav-icon fa fa-dollar-sign"></i>
-                                    <p>Caja</p>
-                                </a>
-                            </li>
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="/pacientes" class="nav-link">--}}
+{{--                                    <i class="nav-icon fa fa-dollar-sign"></i>--}}
+{{--                                    <p>Caja</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                             <li class="nav-header">REPORTES</li>
                             <li class="nav-item">
                                 <a href="/pacientes" class="nav-link">
                                     <i class="nav-icon fa fa-users"></i>
                                     <p>Reporte de Historiales</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/pacientes" class="nav-link">
-                                    <i class="nav-icon fa fa-cubes"></i>
-                                    <p>Reporte de Costos</p>
                                 </a>
                             </li>
                         </ul>

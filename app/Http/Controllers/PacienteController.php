@@ -43,8 +43,8 @@ class PacienteController extends Controller
                     pa.apellidoMaterno,
                     pa.nombreCompleto,
                     pa.fechaNacimiento,
-                    pa.email,
-                    pa.telefono
+                    pa.telefono,
+                    pa.email
                 ');
 
             if($request->server_order){
@@ -79,8 +79,8 @@ class PacienteController extends Controller
                 'apellidoMaterno' => $request->apellidoMaternoPaciente,
                 'nombreCompleto' => $request->nombresPaciente,
                 'fechaNacimiento' => $request->fechaNacimientoPaciente,
-                'email' => $request->telefonoPaciente,
-                'telefono' => $request->emailPaciente,
+                'email' => $request->emailPaciente,
+                'telefono' => $request->telefonoPaciente,
                 'direccion' => $request->direccionPaciente,
             ]);
 
