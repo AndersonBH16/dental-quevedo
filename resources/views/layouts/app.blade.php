@@ -41,6 +41,13 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <link href="{{ asset('dq-styles/estilos.css') }}" rel="stylesheet">
+    <!-- FullCalendar-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- MomentJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     @yield('css')
 </head>
@@ -137,65 +144,6 @@
                                     <p>Dashboard</p>
                                 </a>
                             </li>
-{{--                            <li class="nav-item">--}}
-{{--                                <a href="#" class="nav-link">--}}
-{{--                                    <i class="nav-icon fas fa-tree"></i>--}}
-{{--                                    <p>--}}
-{{--                                        UI Elements--}}
-{{--                                        <i class="fas fa-angle-left right"></i>--}}
-{{--                                    </p>--}}
-{{--                                </a>--}}
-{{--                                <ul class="nav nav-treeview">--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="pages/UI/general.html" class="nav-link">--}}
-{{--                                            <i class="far fa-circle nav-icon"></i>--}}
-{{--                                            <p>General</p>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="pages/UI/icons.html" class="nav-link">--}}
-{{--                                            <i class="far fa-circle nav-icon"></i>--}}
-{{--                                            <p>Icons</p>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="pages/UI/buttons.html" class="nav-link">--}}
-{{--                                            <i class="far fa-circle nav-icon"></i>--}}
-{{--                                            <p>Buttons</p>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="pages/UI/sliders.html" class="nav-link">--}}
-{{--                                            <i class="far fa-circle nav-icon"></i>--}}
-{{--                                            <p>Sliders</p>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="pages/UI/modals.html" class="nav-link">--}}
-{{--                                            <i class="far fa-circle nav-icon"></i>--}}
-{{--                                            <p>Modals & Alerts</p>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="pages/UI/navbar.html" class="nav-link">--}}
-{{--                                            <i class="far fa-circle nav-icon"></i>--}}
-{{--                                            <p>Navbar & Tabs</p>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="pages/UI/timeline.html" class="nav-link">--}}
-{{--                                            <i class="far fa-circle nav-icon"></i>--}}
-{{--                                            <p>Timeline</p>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="pages/UI/ribbons.html" class="nav-link">--}}
-{{--                                            <i class="far fa-circle nav-icon"></i>--}}
-{{--                                            <p>Ribbons</p>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-{{--                            </li>--}}
                             <li class="nav-header">GESTIÓN DEL CONSULTORIO</li>
                             <li class="nav-item">
                                 <a href="/citas" class="nav-link">
