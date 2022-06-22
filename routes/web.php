@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CitasController;
+use App\Http\Controllers\OdontogramController;
 use App\Http\Controllers\PacienteController;
-use App\Http\Controllers\HistogramaController;
+//use App\Http\Controllers\ProductoController;
+//use App\Http\Controllers\ProveedorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,11 +30,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resources([
     'pacientes'               => PacienteController::class,
-    'histograma'              => HistogramaController::class,
-    'citas'                   => CitasController::class
+    'citas'                   => CitasController::class,
+    'categorias'              => CategoriaController::class,
+//    'proveedores'             => ProveedorController::class,
+//    'productos'               => ProductoController::class
 ]);
 
 Route::get('/pacientes_total', [App\Http\Controllers\PacienteController::class, 'mostrarTodos']);
 Route::get('/ver-histograma-paciente/', [App\Http\Controllers\PacienteController::class, 'verHistogramaPaciente']);
-//Route::get('/ver_histograma/update/{dni}', 'HistogramaController')->name('ver_histograma');
-//Route::get('/histograma', HistogramaController::class);
+Route::get('/pacientes/{paciente:dni}/odontograma', [\App\Http\Controllers\PacienteController::class, 'odontogram']);
+Route::get('/odontograma', [\App\Http\Controllers\OdontogramController::class, 'canvas']);
+Route::get('/odontograms/{id}/{tooth}', [\App\Http\Controllers\OdontogramController::class, 'display']);
+Route::post('/odontograma', [\App\Http\Controllers\OdontogramController::class, 'data']);
+Route::put('/odontograma', [\App\Http\Controllers\OdontogramController::class, 'update']);

@@ -36,8 +36,8 @@
                         <td><b>Apellido Materno</b></td>
                         <td><b>Nombres</b></td>
                         <td><b>Fecha Nac.</b></td>
-                        <td><b>Teléfono</b></td>
                         <td><b>Email</b></td>
+                        <td><b>Teléfono</b></td>
                         <td><b>Opciones</b></td>
                     </tr>
                 </thead>
@@ -55,8 +55,21 @@
     </div>
 
     @include('pacientes.modal.nuevo_paciente')
+    @include('pacientes.modal.odontograma')
 @stop
 @section('js')
     <script src="{{ asset('dq-scripts/pacientes.js') }}"></script>
+
+    <script>
+        $(document).on('click', '.btnOpenOdontogram', function () {
+            let dni = $(this).attr('data-dni');
+            $('#odontogramModal iframe').attr('src', '{{ url('/odontograma') }}?dni=' + dni);
+            $('#odontogramModal').modal('show');
+        });
+
+        function closeOdontogramModal() {
+            $('#odontogramModal').modal('hide');
+        }
+    </script>
 @stop
 

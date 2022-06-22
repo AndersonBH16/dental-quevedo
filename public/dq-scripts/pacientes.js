@@ -53,9 +53,9 @@ function obtenerFilasTablaPacientes(value) {
                             Opciones
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{ route('ver_histograma', $dni->value.dni)}}">
+                            <a class="dropdown-item" href="/pacientes/${value.dni}/odontograma">
                                 <i class="fa fa-h-square mr-2" style="color: darkcyan"></i>
-                                Ver Histograma
+                                Odontograma Inicial
                             </a>
                         </div>
                   </div>`
@@ -64,8 +64,7 @@ function obtenerFilasTablaPacientes(value) {
 
 function itemJson(data, type, value, meta) {
     item = obtenerFilasTablaPacientes(value);
-    listaTotalPacientes[value.idPacientes] = item;
-
+    listaTotalPacientes[value.idPaciente] = item;
     return item[columns[meta.col].data];
 }
 
