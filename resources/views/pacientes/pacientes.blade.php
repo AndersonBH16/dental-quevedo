@@ -36,8 +36,8 @@
                         <td><b>Apellido Materno</b></td>
                         <td><b>Nombres</b></td>
                         <td><b>Fecha Nac.</b></td>
-                        <td><b>Teléfono</b></td>
                         <td><b>Email</b></td>
+                        <td><b>Teléfono</b></td>
                         <td><b>Opciones</b></td>
                     </tr>
                 </thead>
