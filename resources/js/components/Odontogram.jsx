@@ -4,13 +4,30 @@ import * as CONSTANTS from "../config/constants";
 import * as DEFAULTS from "../config/defaults";
 import * as PATHS from "../config/paths";
 import DialogTooth from "./DialogTooth";
-import {Box, Button, Stack, TextField} from "@mui/material";
+import {Box, Button, Dialog, DialogActions, DialogTitle, Stack, TextField} from "@mui/material";
 import {post, put} from "../services/api";
 import {DatePicker} from "@mui/x-date-pickers";
+
+const SuccessAlert = ({open, onClose, message}) => {
+    return (
+        <Dialog
+            open={open}
+            onClose={onClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+        >
+            <DialogTitle>{message}</DialogTitle>
+            <DialogActions>
+                <Button onClick={onClose} autoFocus>Aceptar</Button>
+            </DialogActions>
+        </Dialog>
+    )
+}
 
 export function Odontogram() {
     const [data, setData] = React.useState(DEFAULTS.ODONTOGRAM);
     const [selTooth, setSelTooth] = React.useState(null);
+    const [open, setOpen] = React.useState(false);
 
     React.useEffect(() => {
         const url = new URL(location.href);
@@ -40,6 +57,7 @@ export function Odontogram() {
             }
         });
         put(PATHS.ODONTOGRAM, formData).then(data => {
+            setOpen(true);
             setData(data);
             if (window.parent.closeOdontogramModal !== undefined) window.parent.closeOdontogramModal();
         });
@@ -48,6 +66,11 @@ export function Odontogram() {
     return (
         <Box component={"form"} onSubmit={handleSubmit} style={{width: '100%'}}>
             <input type="hidden" name={"id"} defaultValue={data.id}/>
+            <SuccessAlert
+                open={open}
+                onClose={() => {setOpen(false)}}
+                message="Cambios Guardados!"
+            />
             <DialogTooth tooth={selTooth} setTooth={setTooth} onClose={() => {setSelTooth(null)}}/>
             <div style={{display: "flex", justifyContent: 'center'}}>
                 {adultModel().filter(tooth => tooth.position === CONSTANTS.POSITION.UP).map((tooth, index) => (
