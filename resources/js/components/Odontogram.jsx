@@ -31,7 +31,7 @@ export function Odontogram() {
 
     React.useEffect(() => {
         const url = new URL(location.href);
-        post(PATHS.ODONTOGRAM, {dni: url.searchParams.get('dni')}).then(data => {
+        post(PATHS.ODONTOGRAM, {dni: url.searchParams.get('dni'), type: url.searchParams.get('type')}).then(data => {
             setData(data);
         })
     }, []);

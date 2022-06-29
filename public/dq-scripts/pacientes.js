@@ -53,9 +53,13 @@ function obtenerFilasTablaPacientes(value) {
                             Opciones
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="/pacientes/${value.dni}/odontograma">
+                            <a class="dropdown-item" href="/pacientes/${value.dni}/odontograma?type=10">
                                 <i class="fa fa-h-square mr-2" style="color: darkcyan"></i>
                                 Odontograma Inicial
+                            </a>
+                            <a class="dropdown-item" href="/pacientes/${value.dni}/odontograma?type=20">
+                                <i class="fa fa-h-square mr-2" style="color: darkcyan"></i>
+                                Odontograma Final
                             </a>
                         </div>
                   </div>`

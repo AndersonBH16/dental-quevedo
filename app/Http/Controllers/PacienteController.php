@@ -21,7 +21,7 @@ class PacienteController extends Controller
 
     public function odontogram(Request $request, Paciente $paciente)
     {
-        return view('pacientes.odontograma', compact('paciente'));
+        return view('pacientes.odontograma', compact('paciente') + $request->only('type'));
     }
 
     /**

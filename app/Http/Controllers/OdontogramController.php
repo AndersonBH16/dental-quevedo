@@ -27,11 +27,12 @@ class OdontogramController extends Controller
 
     public function data(Request $request)
     {
+        $type = ($request->type == Odontogram::TYPE_EVOLUTION ? Odontogram::TYPE_EVOLUTION : Odontogram::TYPE_INITIAL);
         $patient = Paciente::query()->where('dni', $request->dni)->first();
-        $odontogram = $patient->odontograms->where('type', Odontogram::TYPE_INITIAL)->first();
+        $odontogram = $patient->odontograms->where('type', $type)->first();
         if (!$odontogram) {
             $odontogram = $patient->odontograms()->create([
-                'type' => Odontogram::TYPE_INITIAL,
+                'type' => $type,
                 'date' => now(),
                 'payload' => Odontogram::generatePayload(),
             ]);
