@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Odontogram;
 use App\Models\Paciente;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -58,6 +59,7 @@ class OdontogramController extends Controller
         $odontogram->update(compact('payload') + [
             'observations' => $request->observations ?? '',
             'specifications' => $request->specifications ?? '',
+            'date' => Carbon::parse($request->date),
         ]);
         return response()->json($odontogram);
     }

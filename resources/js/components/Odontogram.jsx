@@ -6,6 +6,7 @@ import * as PATHS from "../config/paths";
 import DialogTooth from "./DialogTooth";
 import {Box, Button, Stack, TextField} from "@mui/material";
 import {post, put} from "../services/api";
+import {DatePicker} from "@mui/x-date-pickers";
 
 export function Odontogram() {
     const [data, setData] = React.useState(DEFAULTS.ODONTOGRAM);
@@ -68,7 +69,7 @@ export function Odontogram() {
                     <Tooth key={index} item={tooth} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
-            <Stack spacing={1}>
+            <Stack padding={2} spacing={1}>
                 <TextField
                     multiline
                     fullWidth
@@ -100,6 +101,21 @@ export function Odontogram() {
                     }}
                 />
             </Stack>
+            <Box paddingX={2}>
+                <DatePicker
+                    label="Fecha"
+                    value={data.date}
+                    onChange={(value) => {
+                        setData({
+                            ...data,
+                            date: value,
+                        });
+                    }}
+                    renderInput={(props) => (
+                        <TextField {...props} name={'date'} />
+                    )}
+                />
+            </Box>
             <Button type={"submit"}>
                 Guardar
             </Button>
