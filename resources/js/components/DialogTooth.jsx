@@ -91,6 +91,7 @@ export default function DialogTooth({setTooth, tooth, onClose}) {
                                             setTooth({
                                                 ...tooth,
                                                 findingType: selFindingType.value,
+                                                findingText: selFindingType.value.split(' ')[0].replace("_", " "),
                                                 canvasPaths: result,
                                                 url: base64,
                                                 blob: res,
@@ -105,6 +106,7 @@ export default function DialogTooth({setTooth, tooth, onClose}) {
                             setTooth({
                                 ...tooth,
                                 findingType: selFindingType.value,
+                                findingText: selFindingType.value.split(' ')[0].replace("_", " "),
                                 draw: null,
                                 url: null,
                                 blob: null,

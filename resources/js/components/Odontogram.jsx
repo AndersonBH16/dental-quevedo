@@ -28,10 +28,12 @@ export function Odontogram() {
     const [data, setData] = React.useState(DEFAULTS.ODONTOGRAM);
     const [selTooth, setSelTooth] = React.useState(null);
     const [open, setOpen] = React.useState(false);
+    const findings = React.useRef({});
 
     React.useEffect(() => {
         const url = new URL(location.href);
         post(PATHS.ODONTOGRAM, {dni: url.searchParams.get('dni'), type: url.searchParams.get('type')}).then(data => {
+            setFindings(data);
             setData(data);
         })
     }, []);
@@ -42,8 +44,24 @@ export function Odontogram() {
     const setTooth = (tooth) => {
         setData({
             ...data,
-            payload: data.payload.map((item) => item.number === tooth.number ? tooth : item),
+            payload: data.payload.map((item) => {
+                if (item.number === tooth.number) {
+                    handleFindings(item.number, tooth.findingText);
+                    return tooth;
+                }
+                return item;
+            }),
         });
+    }
+
+    const setFindings = (data) => {
+        data.payload.forEach((item) => {
+            handleFindings(item.number, item.findingText);
+        });
+    }
+
+    const handleFindings = (id, finding) => {
+        findings.current[id] = finding;
     }
 
     const handleSubmit = (e) => {
@@ -55,9 +73,13 @@ export function Odontogram() {
                 if (tooth.blob) formData.append(`images[${tooth.number}]`, tooth.blob);
                 formData.append(`types[${tooth.number}]`, tooth.findingType);
             }
+            if (findings.current[tooth.number] !== undefined && findings.current[tooth.number]) {
+                formData.append(`findings[${tooth.number}]`, findings.current[tooth.number]);
+            }
         });
         put(PATHS.ODONTOGRAM, formData).then(data => {
             setOpen(true);
+            setFindings(data);
             setData(data);
             if (window.parent.closeOdontogramModal !== undefined) window.parent.closeOdontogramModal();
         });
@@ -74,22 +96,22 @@ export function Odontogram() {
             <DialogTooth tooth={selTooth} setTooth={setTooth} onClose={() => {setSelTooth(null)}}/>
             <div style={{display: "flex", justifyContent: 'center'}}>
                 {adultModel().filter(tooth => tooth.position === CONSTANTS.POSITION.UP).map((tooth, index) => (
-                    <Tooth key={index} item={tooth} onSelect={(tooth) => {setSelTooth(tooth)}}/>
+                    <Tooth key={index} item={tooth} handleFindings={handleFindings} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
             <div style={{display: "flex", justifyContent: 'center', width: '60%', margin: 'auto'}}>
                 {childModel().filter(tooth => tooth.position === CONSTANTS.POSITION.UP).map((tooth, index) => (
-                    <Tooth key={index} item={tooth} onSelect={(tooth) => {setSelTooth(tooth)}}/>
+                    <Tooth key={index} item={tooth} handleFindings={handleFindings} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
             <div style={{display: "flex", justifyContent: 'center', width: '20%', margin: 'auto'}}>
                 {childModel().filter(tooth => tooth.position === CONSTANTS.POSITION.DOWN).map((tooth, index) => (
-                    <Tooth key={index} item={tooth} onSelect={(tooth) => {setSelTooth(tooth)}}/>
+                    <Tooth key={index} item={tooth} handleFindings={handleFindings} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
             <div style={{display: "flex", justifyContent: 'center'}}>
                 {adultModel().filter(tooth => tooth.position === CONSTANTS.POSITION.DOWN).map((tooth, index) => (
-                    <Tooth key={index} item={tooth} onSelect={(tooth) => {setSelTooth(tooth)}}/>
+                    <Tooth key={index} item={tooth} handleFindings={handleFindings} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
             <Stack padding={2} spacing={1}>

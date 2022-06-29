@@ -1,10 +1,10 @@
 import React from "react";
-import {Box, Typography} from "@mui/material";
+import {Box, TextField} from "@mui/material";
 import {ImageTooth} from "./ImageTooth";
 import * as FINDINGS from "../config/findings";
 import * as CONSTANTS from "../config/constants";
 
-export default function Tooth({model, item, onSelect}) {
+export default function Tooth({model, item, onSelect, handleFindings}) {
     const selFindingType = FINDINGS.ITEM_TYPES.find(it => it.value === item.findingType);
     const selFinding = selFindingType === undefined ? 'black' : FINDINGS.ITEMS.find(it => it.value === selFindingType.finding);
 
@@ -22,19 +22,32 @@ export default function Tooth({model, item, onSelect}) {
 
     const Square = () => {
         const color = selFindingType?.color || selFinding.colorFindingType;
-        const type = item.findingType.split(' ')[0].replace("_", " ");
+        const type = item.findingText || item.findingType.split(' ')[0].replace("_", " ");
+
+        const CustomField = () => {
+            return (
+                <TextField
+                    sx={{marginY: 1}}
+                    defaultValue={type === '-' ? '' : type}
+                    onKeyUp={(event) => {
+                        handleFindings(item.number, event.target.value);
+                    }}
+                    inputProps={{ style: {padding: 5, fontSize: 12, color}}}
+                />
+            );
+        }
 
         if (item.position !== CONSTANTS.POSITION.UP)
             return (
                 <div>
                     <Order/>
-                    <Typography fontSize={12} textAlign={'center'} color={color} whiteSpace={'pre'}>{type}</Typography>
+                    <CustomField/>
                 </div>
             );
 
         return (
             <div>
-                <Typography fontSize={12} textAlign={'center'} color={color} whiteSpace={'pre'}>{type}</Typography>
+                <CustomField/>
                 <Order/>
             </div>
         );

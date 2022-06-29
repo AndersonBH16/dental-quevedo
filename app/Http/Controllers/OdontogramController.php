@@ -46,9 +46,13 @@ class OdontogramController extends Controller
         $odontogram = Odontogram::query()->findOrFail($request->id);
         $payload = $odontogram->payload;
         $payload = collect($payload)->map(function ($item) use ($odontogram, $time, $request) {
+            $item['findingText'] = $request->findings[$item['number']] ?? null;
+
             if (!isset($request->types[$item['number']])) return $item;
+
             $item['findingType'] = $request->types[$item['number']];
-            $item['canvasPaths'] = json_decode($request->paths[$item['number']]);
+            if ($request->paths && isset($request->paths[$item['number']]))
+                $item['canvasPaths'] = json_decode($request->paths[$item['number']]);
             if (isset($request->images[$item['number']])) {
                 if (($url = $odontogram->routeTooth($item)))
                     Storage::disk()->put($url, file_get_contents($request->images[$item['number']]));
