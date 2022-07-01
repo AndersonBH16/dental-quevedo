@@ -3,10 +3,10 @@ import Tooth from "./Tooth";
 import * as CONSTANTS from "../config/constants";
 import * as DEFAULTS from "../config/defaults";
 import * as PATHS from "../config/paths";
-import DialogTooth from "./DialogTooth";
 import {Box, Button, Dialog, DialogActions, DialogTitle, Stack, TextField} from "@mui/material";
 import {post, put} from "../services/api";
 import {DatePicker} from "@mui/x-date-pickers";
+import DialogFindings from "./DialogFindings";
 
 const SuccessAlert = ({open, onClose, message}) => {
     return (
@@ -29,6 +29,7 @@ export function Odontogram() {
     const [selTooth, setSelTooth] = React.useState(null);
     const [open, setOpen] = React.useState(false);
     const findings = React.useRef({});
+    const modifying = React.useRef({});
 
     React.useEffect(() => {
         const url = new URL(location.href);
@@ -71,7 +72,7 @@ export function Odontogram() {
             if (tooth.blob !== undefined) {
                 formData.append(`paths[${tooth.number}]`, JSON.stringify(tooth.canvasPaths));
                 if (tooth.blob) formData.append(`images[${tooth.number}]`, tooth.blob);
-                formData.append(`types[${tooth.number}]`, tooth.findingType);
+                formData.append(`types[${tooth.number}]`, JSON.stringify(tooth.findingTypes));
             }
             if (findings.current[tooth.number] !== undefined && findings.current[tooth.number]) {
                 formData.append(`findings[${tooth.number}]`, findings.current[tooth.number]);
@@ -93,25 +94,25 @@ export function Odontogram() {
                 onClose={() => {setOpen(false)}}
                 message="Cambios Guardados!"
             />
-            <DialogTooth tooth={selTooth} setTooth={setTooth} onClose={() => {setSelTooth(null)}}/>
+            <DialogFindings tooth={selTooth} setTooth={setTooth} findings={findings} modifying={modifying} onClose={() => {setSelTooth(null)}}/>
             <div style={{display: "flex", justifyContent: 'center'}}>
                 {adultModel().filter(tooth => tooth.position === CONSTANTS.POSITION.UP).map((tooth, index) => (
-                    <Tooth key={index} item={tooth} handleFindings={handleFindings} onSelect={(tooth) => {setSelTooth(tooth)}}/>
+                    <Tooth key={index} item={tooth} handleFindings={handleFindings} findings={findings} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
             <div style={{display: "flex", justifyContent: 'center', width: '60%', margin: 'auto'}}>
                 {childModel().filter(tooth => tooth.position === CONSTANTS.POSITION.UP).map((tooth, index) => (
-                    <Tooth key={index} item={tooth} handleFindings={handleFindings} onSelect={(tooth) => {setSelTooth(tooth)}}/>
+                    <Tooth key={index} item={tooth} handleFindings={handleFindings} findings={findings} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
             <div style={{display: "flex", justifyContent: 'center', width: '20%', margin: 'auto'}}>
                 {childModel().filter(tooth => tooth.position === CONSTANTS.POSITION.DOWN).map((tooth, index) => (
-                    <Tooth key={index} item={tooth} handleFindings={handleFindings} onSelect={(tooth) => {setSelTooth(tooth)}}/>
+                    <Tooth key={index} item={tooth} handleFindings={handleFindings} findings={findings} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
             <div style={{display: "flex", justifyContent: 'center'}}>
                 {adultModel().filter(tooth => tooth.position === CONSTANTS.POSITION.DOWN).map((tooth, index) => (
-                    <Tooth key={index} item={tooth} handleFindings={handleFindings} onSelect={(tooth) => {setSelTooth(tooth)}}/>
+                    <Tooth key={index} item={tooth} handleFindings={handleFindings} findings={findings} onSelect={(tooth) => {setSelTooth(tooth)}}/>
                 ))}
             </div>
             <Stack padding={2} spacing={1}>

@@ -3,7 +3,7 @@ import {ReactSketchCanvas} from "react-sketch-canvas";
 import * as CONSTANTS from "../config/constants";
 import {Box} from "@mui/material";
 
-export const ImageTooth = React.forwardRef(({item, finding, findingType, width, height, draw = null, guiding = null, fixing = null, model, onClick = null, onLoaded = null}, ref) => {
+export const ImageTooth = React.forwardRef(({item, finding, findingType = null, width, height, result = false, draw = null, guiding = null, fixing = null, model, onClick = null, onLoaded = null, position}, ref) => {
     const [loaded, setLoaded] = React.useState(false);
 
     const up = item.position === CONSTANTS.POSITION.UP;
@@ -54,7 +54,9 @@ export const ImageTooth = React.forwardRef(({item, finding, findingType, width, 
     return (
         <Box>
             <Box height={18} textAlign={'center'}>
-                {finding.external !== undefined && finding.external(item, CONSTANTS.POSITION.UP, width, findingType)}
+                {!Array.isArray(finding) ? (finding.external !== undefined && finding.external(item, CONSTANTS.POSITION.UP, width, findingType)) :
+                    finding.map((find, index) => <Box key={index}>{find.external !== undefined && find.external(item, CONSTANTS.POSITION.UP, width, findingType[index])}</Box>)
+                }
             </Box>
             <div style={{position: "relative", display: "flex", justifyContent: "center"}}>
                 {draw !== null && <Box>
@@ -68,20 +70,23 @@ export const ImageTooth = React.forwardRef(({item, finding, findingType, width, 
                         ref={ref}
                         onChange={() => {
                             if (!loaded) {
-                                if (fixing && item.findingType !== findingType.value) {
-                                    ref.current.resetCanvas();
-                                    fixing(config.width, config.height, ref.current, item, findingType);
+                                if (!result) {
+                                    if (fixing && item.findingType !== findingType.value) {
+                                        ref.current.resetCanvas();
+                                        fixing(config.width, config.height, ref.current, item, findingType);
+                                    }
+                                    else if (item.canvasPaths[position].length > 0) {
+                                        ref.current.loadPaths(item.canvasPaths[position]);
+                                    }
                                 }
-                                else if (item.canvasPaths.length > 0) {
-                                    ref.current.loadPaths(item.canvasPaths);
-                                }
+                                if (onLoaded) onLoaded();
                             }
                             setLoaded(true);
                         }}
                         width={`${config.width}px`}
                         height={`${config.height}px`}
                         canvasColor={"transparent"}
-                        allowOnlyPointerType={fixing ? null : 'all'}
+                        allowOnlyPointerType={(fixing || result) ? null : 'all'}
                         {...draw}
                     />
                     {guiding && guiding(config.width, config.height, ref.current)}
@@ -111,7 +116,9 @@ export const ImageTooth = React.forwardRef(({item, finding, findingType, width, 
                 </svg>
             </div>
             <Box height={18} textAlign={'center'}>
-                {finding.external !== undefined && finding.external(item, CONSTANTS.POSITION.DOWN, width, findingType)}
+                {!Array.isArray(finding) ? (finding.external !== undefined && finding.external(item, CONSTANTS.POSITION.DOWN, width, findingType)) :
+                    finding.map((find, index) => <Box key={index}>{find.external !== undefined && find.external(item, CONSTANTS.POSITION.DOWN, width, findingType[index])}</Box>)
+                }
             </Box>
         </Box>
     );

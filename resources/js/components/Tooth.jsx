@@ -4,9 +4,9 @@ import {ImageTooth} from "./ImageTooth";
 import * as FINDINGS from "../config/findings";
 import * as CONSTANTS from "../config/constants";
 
-export default function Tooth({model, item, onSelect, handleFindings}) {
-    const selFindingType = FINDINGS.ITEM_TYPES.find(it => it.value === item.findingType);
-    const selFinding = selFindingType === undefined ? 'black' : FINDINGS.ITEMS.find(it => it.value === selFindingType.finding);
+export default function Tooth({model, item, onSelect, handleFindings, findings}) {
+    const selFindingType = item.findingTypes.map(type => FINDINGS.ITEM_TYPES.find(item => item.value === type));
+    const selFinding = selFindingType === undefined ? 'black' : selFindingType.map(type => FINDINGS.ITEMS.find(item => item.value === type.finding));
 
     const maxWidth = 55.0;
     const minWidth = maxWidth * 0.65;
@@ -15,24 +15,28 @@ export default function Tooth({model, item, onSelect, handleFindings}) {
 
     const Order = () => (
         <Box position={'relative'}>
-            {selFinding.highlighting && selFinding.highlighting(item, minWidth, width, selFindingType)}
+            {!Array.isArray(selFinding) ? (selFinding.highlighting && selFinding.highlighting(item, minWidth, width, selFindingType)) :
+                selFinding.map((find, index) => <Box key={index}>{find.highlighting && find.highlighting(item, minWidth, width, selFindingType[index])}</Box>)
+            }
             <p style={{textAlign: "center", margin: 0}}>{item.number}</p>
         </Box>
     );
 
     const Square = () => {
-        const color = selFindingType?.color || selFinding.colorFindingType;
-        const type = item.findingText || item.findingType.split(' ')[0].replace("_", " ");
+        const colorFindingType = (Array.isArray(selFindingType) ? selFindingType.find(it => it.color !== undefined)?.color : selFindingType?.color);
+        const colorFinding = (Array.isArray(selFinding) ? selFinding.find(it => it.colorFindingType !== undefined)?.colorFindingType : selFinding?.colorFindingType);
+        const color = colorFindingType || colorFinding;
+        const type = findings.current[item.number] || item.findingText;
 
         const CustomField = () => {
             return (
                 <TextField
-                    sx={{marginY: 1}}
+                    sx={{marginY: 2}}
                     defaultValue={type === '-' ? '' : type}
                     onKeyUp={(event) => {
                         handleFindings(item.number, event.target.value);
                     }}
-                    inputProps={{ style: {padding: 5, fontSize: 12, color}}}
+                    inputProps={{ style: {padding: 5, fontSize: 12, color: color}}}
                 />
             );
         }

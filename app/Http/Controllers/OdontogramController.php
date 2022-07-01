@@ -50,7 +50,7 @@ class OdontogramController extends Controller
 
             if (!isset($request->types[$item['number']])) return $item;
 
-            $item['findingType'] = $request->types[$item['number']];
+            $item['findingTypes'] = json_decode($request->types[$item['number']]);
             if ($request->paths && isset($request->paths[$item['number']]))
                 $item['canvasPaths'] = json_decode($request->paths[$item['number']]);
             if (isset($request->images[$item['number']])) {
