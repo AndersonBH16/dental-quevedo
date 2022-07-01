@@ -2,7 +2,7 @@
 
 @section('content_header')
     <div class="row ml-1">
-        <h4 class="d-inline">Odontograma {{ $type == \App\Models\Odontogram::TYPE_INITIAL ? "Inicial" : "Final" }} - DNI: {{ $paciente->dni }}</h4>
+        <h4 class="d-inline">Odontograma {{ $type == \App\Models\Odontogram::TYPE_INITIAL ? "Inicial" : "Final" }}: {{ $paciente->dni }} - {{ $paciente->fullname() }}</h4>
     </div>
 @stop
 
