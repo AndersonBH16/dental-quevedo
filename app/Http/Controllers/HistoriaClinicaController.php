@@ -2,22 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Paciente;
 use Illuminate\Http\Request;
 
-class HistogramaController extends Controller
+class HistoriaClinicaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Request $request, Paciente $paciente)
     {
-        return view('histograma.histograma_diagrama');
-    }
-
-    public function verHistogramaPaciente(Request $request){
-        echo "hola Peter";
+        return view('historial-clinico.historial', compact('paciente'));
     }
 
     /**

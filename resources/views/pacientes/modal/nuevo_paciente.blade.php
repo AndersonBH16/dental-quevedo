@@ -22,9 +22,9 @@
                                         <span class="input-group-text">DNI:</span>
                                     </div>
                                     <input type="number" class="form-control" placeholder="" maxlength="8" name="dni">
-                                    <span class="input-group-append">
-                                        <button type="button" class="btn btn-info bg-gradient-cyan text-light"><i class="fa fa-search mr-1"></i>Validar</button>
-                                    </span>
+{{--                                    <span class="input-group-append">--}}
+{{--                                        <button type="button" class="btn btn-info bg-gradient-cyan text-light"><i class="fa fa-search mr-1"></i>Validar</button>--}}
+{{--                                    </span>--}}
                                 </div>
                             </div>
                         </div>
