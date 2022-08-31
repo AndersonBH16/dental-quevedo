@@ -91,6 +91,7 @@ class CitasController extends Controller
                         'fecha' => $request->fecha,
                         'start' => $request->time_start,
                         'end' => $request->time_end,
+                        'minutos' => $request->minutos,
                         'paciente' => $request->paciente
                     ]);
                     return response()->json('cita guardada con éxito');
@@ -151,6 +152,7 @@ class CitasController extends Controller
                     'fecha'         => $request->fecha,
                     'start'         => $request->time_start,
                     'end'           => $request->time_end,
+                    'minutos'       => $request->minutos,
                     'paciente'      => $request->paciente
                 ]);
         }else {
@@ -170,8 +172,6 @@ class CitasController extends Controller
     {
         DB::table('citas')
             ->where('id', $id)
-            ->update([
-                'estado' => 0
-            ]);
+            ->delete();
     }
 }

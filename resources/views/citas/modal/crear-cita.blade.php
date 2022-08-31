@@ -58,7 +58,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Min:</span>
                                         </div>
-                                        <input id="minutes" name="end" type="number" class="form-control col-lg" min="1" max="60" maxlength="2" required>
+                                        <input id="minutes" name="minutes" type="number" class="form-control col-lg" min="1" max="60" maxlength="2" required>
                                     </div>
                                 </div>
                             </div>
