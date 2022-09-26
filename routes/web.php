@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CitasController;
+use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\OdontogramController;
 use App\Http\Controllers\PacienteController;
 //use App\Http\Controllers\ProductoController;
@@ -32,12 +33,13 @@ Route::resources([
     'pacientes'               => PacienteController::class,
     'citas'                   => CitasController::class,
     'categorias'              => CategoriaController::class,
+    'inventario'              => InventarioController::class,
 //    'proveedores'             => ProveedorController::class,
 //    'productos'               => ProductoController::class
 ]);
 
 Route::get('/pacientes_total', [App\Http\Controllers\PacienteController::class, 'mostrarTodos']);
-Route::get('/ver-histograma-paciente/', [App\Http\Controllers\PacienteController::class, 'verHistogramaPaciente']);
+Route::get('/categorias_total', [App\Http\Controllers\CategoriaController::class, 'mostrarTodos']);
 Route::get('/pacientes/{paciente:dni}/odontograma', [\App\Http\Controllers\PacienteController::class, 'odontogram']);
 Route::get('/odontograma', [\App\Http\Controllers\OdontogramController::class, 'canvas']);
 Route::get('/odontograms/{id}/{tooth}', [\App\Http\Controllers\OdontogramController::class, 'display']);

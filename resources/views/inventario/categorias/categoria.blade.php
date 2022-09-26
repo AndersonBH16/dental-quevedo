@@ -28,19 +28,20 @@
                 <thead>
                     <tr>
                         <td><b>Nombre</b></td>
-                        <td><b>Cantidad</b></td>
                         <td><b>Descripción</b></td>
+                        <td><b>Cant Prods</b></td>
+                        <td><b>Estado</b></td>
                         <td><b>Acciones</b></td>
                     </tr>
                 </thead>
                 <tbody id="filasListaCategorias" style="display: none;">
-                <tr>
-                    <td colspan="14" class="text-center" style="padding: 5%;">
-                        <div class="spinner-border text-muted big" role="status" style="width: 100px; height: 100px;">
-                            <span class="sr-only"></span>
-                        </div>
-                    </td>
-                </tr>
+                    <tr>
+                        <td colspan="14" class="text-center" style="padding: 5%;">
+                            <div class="spinner-border text-muted big" role="status" style="width: 100px; height: 100px;">
+                                <span class="sr-only"></span>
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
