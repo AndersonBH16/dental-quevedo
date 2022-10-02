@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Categoria\StoreRequest;
 use App\Http\Requests\StoreInventarioRequest;
 use App\Http\Requests\UpdateInventarioRequest;
 use App\Models\Inventario;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class InventarioController extends Controller
 {
     public function index()
     {
-        return view('inventario.productos.productos');
+        $categorias = DB::select('CALL mostrarCategorias');
+        return view('inventario.productos.productos', compact('categorias'));
     }
 
     /**
@@ -23,15 +29,28 @@ class InventarioController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreInventarioRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreInventarioRequest $request)
+    public function store(Request $request)
     {
-        //
+        try{
+            DB::table('productos')->insert([
+                'nombreProducto'  => $request->nombreProducto,
+                'stock'           => $request->stock,
+                'precio'          => $request->precio,
+                'marca'           => $request->marca,
+                'modelo'          => $request->modelo,
+                'serie'           => $request->serie,
+                'descripcion'     => $request->descripcion,
+                'estado'          => 'ACTIVO',
+                'imagen'          => 'sin imagen',
+                'id_categoria'    => $request->categoria
+            ]);
+
+            return Redirect::refresh();
+        }catch (\Exception $e){
+            return response()->json([
+                "error" => $e
+            ]);
+        }
     }
 
     /**

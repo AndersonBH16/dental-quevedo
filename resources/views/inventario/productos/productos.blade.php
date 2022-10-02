@@ -17,7 +17,7 @@
             <div class="row">
                 <h3 class="card-title ml-2 mt-2">Lista de Productos</h3>
                 <div class="dt-buttons btn-group ml-3">
-                    <button id="registrarNuevoPaciente" class="btn btn-outline-info" tabindex="0" data-toggle="modal" data-target="#nuevoPacienteModal">
+                    <button id="registrarNuevoProducto" class="btn btn-outline-info" tabindex="0" data-toggle="modal" data-target="#nuevoProductoModal">
                         <i class="fa fa-plus-circle mr-2"></i>Nuevo
                     </button>
                     {{--                    <button class="btn btn-outline-info" tabindex="0" aria-controls="listaProformas" data-toggle="modal" data-target="#filtrosModal">--}}
@@ -27,21 +27,22 @@
             </div>
         </div>
         <div class="card-body">
-            <table id="tablaPacientes" class="table table-bordered table-hover dt-responsive table-responsive-xl">
+            <table id="tablaProductos" class="table table-bordered table-hover dt-responsive table-responsive-xl">
                 <thead>
                 <tr>
-                    {{--                        <td><b>#</b></td>--}}
-                    <td><b>DNI</b></td>
-                    <td><b>Apellido paterno</b></td>
-                    <td><b>Apellido Materno</b></td>
-                    <td><b>Nombres</b></td>
-                    <td><b>Fecha Nac.</b></td>
-                    <td><b>Email</b></td>
-                    <td><b>Teléfono</b></td>
+                    <td><b>Imagen</b></td>
+                    <td><b>Producto</b></td>
+                    <td><b>Descripción</b></td>
+                    <td><b>Marca</b></td>
+                    <td><b>Modelo</b></td>
+                    <td><b>Serie</b></td>
+                    <td><b>Stock</b></td>
+                    <td><b>Precio</b></td>
+                    <td><b>Estado</b></td>
                     <td><b>Opciones</b></td>
                 </tr>
                 </thead>
-                <tbody id="filasListaPacientes" style="display: none;">
+                <tbody id="filasListaProductos" style="display: none;">
                 <tr>
                     <td colspan="14" class="text-center" style="padding: 5%;">
                         <div class="spinner-border text-muted big" role="status" style="width: 100px; height: 100px;">
@@ -54,22 +55,9 @@
         </div>
     </div>
 
-    @include('pacientes.modal.nuevo_paciente')
-    @include('pacientes.modal.odontograma')
+    @include('inventario.productos.modal.nuevo_producto')
 @stop
 @section('js')
-    <script src="{{ asset('dq-scripts/pacientes.js') }}"></script>
-
-    <script>
-        $(document).on('click', '.btnOpenOdontogram', function () {
-            let dni = $(this).attr('data-dni');
-            $('#odontogramModal iframe').attr('src', '{{ url('/odontograma') }}?dni=' + dni);
-            $('#odontogramModal').modal('show');
-        });
-
-        function closeOdontogramModal() {
-            $('#odontogramModal').modal('hide');
-        }
-    </script>
+    <script src="{{ asset('dq-scripts/productos.js') }}"></script>
 @stop
 
