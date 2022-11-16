@@ -40,6 +40,7 @@ Route::resources([
 
 Route::get('/pacientes_total', [App\Http\Controllers\PacienteController::class, 'mostrarTodos']);
 Route::get('/categorias_total', [App\Http\Controllers\CategoriaController::class, 'mostrarTodos']);
+Route::get('/productos_total', [App\Http\Controllers\InventarioController::class, 'mostrarTodos']);
 Route::get('/pacientes/{paciente:dni}/odontograma', [\App\Http\Controllers\PacienteController::class, 'odontogram']);
 Route::get('/odontograma', [\App\Http\Controllers\OdontogramController::class, 'canvas']);
 Route::get('/odontograms/{id}/{tooth}', [\App\Http\Controllers\OdontogramController::class, 'display']);

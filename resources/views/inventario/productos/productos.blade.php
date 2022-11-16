@@ -38,6 +38,7 @@
                     <td><b>Serie</b></td>
                     <td><b>Stock</b></td>
                     <td><b>Precio</b></td>
+                    <td><b>Categoria</b></td>
                     <td><b>Estado</b></td>
                     <td><b>Opciones</b></td>
                 </tr>

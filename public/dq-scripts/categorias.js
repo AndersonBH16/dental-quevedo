@@ -56,10 +56,14 @@ function obtenerFilasTablaPacientes(value) {
 }
 
 const itemJson = (data, type, value, meta) => {
+    console.log("values categorias");
+    console.log(value);
     item = obtenerFilasTablaPacientes(value);
-    console.log("ITEM******")
-    console.log(item)
+    // console.log("ITEM******")
+    // console.log(item)
     listaTotalCategorias[value.id] = item;
+    // console.log("lista total categorias******")
+    // console.log(listaTotalCategorias)
     return item[columns[meta.col].data];
 };
 

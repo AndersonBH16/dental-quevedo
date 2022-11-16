@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Categoria\StoreRequest;
-use App\Http\Requests\StoreInventarioRequest;
 use App\Http\Requests\UpdateInventarioRequest;
 use App\Models\Inventario;
 use Illuminate\Http\Request;
@@ -27,6 +25,47 @@ class InventarioController extends Controller
     public function create()
     {
         //
+    }
+
+    public function mostrarTodos(Request $request){
+        try{
+            if($request->ajax()) {
+                $query = DB::table('productos', 'prod')
+                    ->selectRaw('
+                    prod.idProducto,
+                    prod.nombreProducto,
+                    prod.stock,
+                    prod.precio,
+                    prod.marca,
+                    prod.modelo,
+                    prod.serie,
+                    prod.descripcion,
+                    prod.estado,
+                    prod.imagen,
+                    cat.nombre_categoria
+                ')
+                    ->Join('categorias as cat', 'cat.id', '=', 'prod.id_categoria')
+                ;
+
+                if($request->server_order){
+                    $column = $request->server_order[0]['column'];
+                    $dir = $request->server_order[0]['dir'];
+                }else{
+                    $column = null;
+                }
+
+                $table = datatables((isset($columns[$column]) ? $query->orderBy($columns[$column], $dir) : $query)->get())->toJson();
+                return $table;
+            }else {
+                return response()->json([
+                    "error" => "Your ajax request was invalid."
+                ]);
+            }
+        }catch (\Exception $e){
+            $error = $e->getMessage() . 'Linea error: '.$e->getLine();
+            echo $error;
+            exit();
+        }
     }
 
     public function store(Request $request)

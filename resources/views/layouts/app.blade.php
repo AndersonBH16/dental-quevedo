@@ -120,7 +120,7 @@
             <!-- /.navbar -->
 
             <!-- Main Sidebar Container -->
-            <aside class="main-sidebar sidebar-dark-warning bg-gradient-navy elevation-4">
+            <aside class="main-sidebar sidebar-dark-warning elevation-4" style="background-color: #590730">
                 <!-- Brand Logo -->
                 <a href="/home" class="brand-link">
                     <img src="/dist/img/dental-quevedo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
