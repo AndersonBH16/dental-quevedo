@@ -73,9 +73,6 @@
                     <li class="nav-item d-none d-lg-inline-block pl-4">
                         <a href="/home" class="nav-link">Home</a>
                     </li>
-                    <li class="nav-item d-none d-lg-inline-block pl-4">
-                        <a href="#" class="nav-link">My Profile</a>
-                    </li>
                 </ul>
 
                 <!-- Right navbar links -->
@@ -161,10 +158,28 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/pacientes" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="nav-icon fa fa-cubes"></i>
-                                    <p>Inventario</p>
+                                    <p>
+                                        Inventario
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+
                                 </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/categorias" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Categorías</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/inventario" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Productos</p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
 {{--                            <li class="nav-item">--}}
 {{--                                <a href="/pacientes" class="nav-link">--}}

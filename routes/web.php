@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CitasController;
+use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\OdontogramController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\HistoriaClinicaController;
@@ -34,13 +35,17 @@ Route::resources([
     'historial-clinico'       => HistoriaClinicaController::class,
     'citas'                   => CitasController::class,
     'categorias'              => CategoriaController::class,
+    'inventario'              => InventarioController::class,
 //    'proveedores'             => ProveedorController::class,
 //    'productos'               => ProductoController::class
 ]);
 
 Route::get('/pacientes_total', [App\Http\Controllers\PacienteController::class, 'mostrarTodos']);
-Route::get('/pacientes/{paciente:dni}/odontograma', [PacienteController::class, 'odontogram']);
+Route::get('/categorias_total', [App\Http\Controllers\CategoriaController::class, 'mostrarTodos']);
+Route::get('/productos_total', [App\Http\Controllers\InventarioController::class, 'mostrarTodos']);
+Route::get('/pacientes/{paciente:dni}/odontograma', [\App\Http\Controllers\PacienteController::class, 'odontogram']);
 Route::get('/historia-clinica/{paciente:dni}/ver-historial-clinico', [HistoriaClinicaController::class, 'index']);
+
 Route::get('/odontograma', [\App\Http\Controllers\OdontogramController::class, 'canvas']);
 Route::get('/odontograms/{id}/{tooth}', [\App\Http\Controllers\OdontogramController::class, 'display']);
 Route::post('/odontograma', [\App\Http\Controllers\OdontogramController::class, 'data']);

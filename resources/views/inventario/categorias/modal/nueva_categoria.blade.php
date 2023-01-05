@@ -27,7 +27,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary bg-gradient-cyan" value="Guardar">{{ __('Registrar') }}</button>
+                    <button type="submit" id="btn_nuevaCategoria" class="btn btn-primary bg-gradient-cyan" value="Guardar">{{ __('Registrar') }}</button>
                 </div>
             </form>
         </div>

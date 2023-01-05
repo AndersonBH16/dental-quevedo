@@ -66,8 +66,10 @@ class CategoriaController extends Controller
         if($request->ajax()) {
             $query = DB::table('categorias', 'cat')
                 ->selectRaw('
+                    cat.id,
                     cat.nombre_categoria,
-                    cat.descripcion
+                    cat.descripcion,
+                    cat.estado
                 ');
 
             if($request->server_order){
