@@ -43,9 +43,7 @@ class InventarioController extends Controller
                     prod.estado,
                     prod.imagen,
                     cat.nombre_categoria
-                ')
-                    ->Join('categorias as cat', 'cat.id', '=', 'prod.id_categoria')
-                ;
+                ')->Join('categorias as cat', 'cat.id', '=', 'prod.id_categoria');
 
                 if($request->server_order){
                     $column = $request->server_order[0]['column'];

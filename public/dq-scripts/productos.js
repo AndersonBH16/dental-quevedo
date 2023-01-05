@@ -8,6 +8,8 @@ let bodyTablaProductos = $('#filasListaProductos');
 let listaTotalProductos = {};
 let listaProductosDatatable = null;
 
+const $loadingIcon = $('#loadingIcon');
+
 const DATA_TABLE_CONFIG = {
     decimal: ",",
     thousands: ".",
@@ -37,14 +39,17 @@ let columns = [
     { data : 'stock' },
     { data : 'precio' },
     { data : 'estado' },
-    { data : 'nombre_categoria' }
+    { data : 'nombre_categoria' },
+    { data : 'opciones' }
 ];
 
 function obtenerFilasTablaProductos(value) {
-    let activo = value.estado;
+    let idProductos = value.idProducto;
+    let activo      = value.estado;
 
     return {
         ...value,
+        id_producto     : idProductos,
         imagen          : value.imagen,
         nombreProducto  : value.nombreProducto,
         descripcion     : value.descripcion,
@@ -64,17 +69,12 @@ function obtenerFilasTablaProductos(value) {
     };
 }
 
-const itemJson = (data, type, value, meta) => {
-    console.log("values categorias");
-    console.log(value);
+function itemJson(data, type, value, meta){
+    let item;
     item = obtenerFilasTablaProductos(value);
-    listaTotalProductos[value.idProducto] = item;
-    // console.log("lista total productos:");
-    // console.log(item);
-    // console.log("lista total productos:");
-    // console.log(listaTotalProductos);
+    listaTotalProductos[value] = item;
     return item[columns[meta.col].data];
-};
+}
 
 const mostrarListaProductos = () => {
     bodyTablaProductos.show();
@@ -115,16 +115,16 @@ const mostrarListaProductos = () => {
         autoWidth   : false,
         responsive  : true,
         columnDefs  : [
-            { width: 170, targets: 0, render: itemJson },
-            { width: 120, targets: 1, render: itemJson },
-            { width: 150, targets: 2, render: itemJson },
+            { width: 10, targets: 0, render: itemJson },
+            { width: 150, targets: 1, render: itemJson },
+            { width: 200, targets: 2, render: itemJson },
             { width: 40, targets: 3, render: itemJson },
             { width: 10, targets: 4, render: itemJson },
             { width: 10, targets: 5, render: itemJson },
             { width: 10, targets: 6, render: itemJson },
-            { width: 10, targets: 7, render: itemJson },
-            { width: 10, targets: 8, render: itemJson },
-            { width: 10, targets: 9, render: itemJson },
+            { width: 50, targets: 7, render: itemJson },
+            { width: 20, targets: 8, render: itemJson },
+            { width: 20, targets: 9, render: itemJson },
             { width: 10, targets: 10, render: itemJson },
             { visible: true },
             { orderable: true},
@@ -132,9 +132,7 @@ const mostrarListaProductos = () => {
         lengthMenu: [[5, 50, 100], [5, 50, 100]],
         language: DATA_TABLE_CONFIG
     });
-
     tablaProductos.on( 'page.dt', function () {
         pageNumber = listaProductosDatatable.page();
     });
 };
-
