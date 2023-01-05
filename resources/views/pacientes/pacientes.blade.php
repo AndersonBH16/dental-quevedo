@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+@endsection
+
 @section('content_header')
     <div class="row ml-1">
         <h4 class="d-inline">Pacientes</h4>

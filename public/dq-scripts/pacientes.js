@@ -71,7 +71,6 @@ function obtenerFilasTablaPacientes(value) {
 }
 
 function itemJson(data, type, value, meta) {
-    console.log(value)
     item = obtenerFilasTablaPacientes(value);
     listaTotalPacientes[value] = item;
     return item[columns[meta.col].data];
