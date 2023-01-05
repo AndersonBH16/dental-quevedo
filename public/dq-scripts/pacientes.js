@@ -61,6 +61,10 @@ function obtenerFilasTablaPacientes(value) {
                                 <i class="fa fa-h-square mr-2" style="color: darkcyan"></i>
                                 Odontograma Final
                             </a>
+                            <a class="dropdown-item" href="/historia-clinica/${value.dni}/ver-historial-clinico">
+                                <i class="fa fa-eye mr-2" style="color: darkcyan"></i>
+                                Historial Médico
+                            </a>
                         </div>
                   </div>`
     };

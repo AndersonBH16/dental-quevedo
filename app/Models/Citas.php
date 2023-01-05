@@ -10,7 +10,7 @@ class Citas extends Model
     use HasFactory;
 
     protected $table = 'citas';
-    protected $fillable = ['titulo', 'descripcion', 'fecha', 'start', 'end', 'paciente', 'estado'];
+    protected $fillable = ['titulo', 'descripcion', 'fecha', 'start', 'end', 'minutos', 'paciente', 'estado'];
 
 //    static $rules = [
 //        'titulo' => 'required',

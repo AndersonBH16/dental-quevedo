@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-@endsection
-
 @section('content_header')
     <div class="row ml-1">
         <h4 class="d-inline">Pacientes</h4>
@@ -11,13 +7,13 @@
 @stop
 
 @section('content')
-    <div class="card card-info card-outline mt-3">
+    <div class="card card-info card-outline mt-3" style="border-top-color: #590730">
         @csrf
         <div class="card-header">
             <div class="row">
                 <h3 class="card-title ml-2 mt-2">Lista de Pacientes</h3>
                 <div class="dt-buttons btn-group ml-3">
-                    <button id="registrarNuevoPaciente" class="btn btn-outline-info" tabindex="0" data-toggle="modal" data-target="#nuevoPacienteModal">
+                    <button id="registrarNuevoPaciente" class="btn btn-outline-main-button" tabindex="0" data-toggle="modal" data-target="#nuevoPacienteModal">
                         <i class="fa fa-plus-circle mr-2"></i>Nuevo
                     </button>
 {{--                    <button class="btn btn-outline-info" tabindex="0" aria-controls="listaProformas" data-toggle="modal" data-target="#filtrosModal">--}}

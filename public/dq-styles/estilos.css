@@ -3,3 +3,27 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+/* Quevedo customized butttons */
+.btn-main-button {
+    color: #fff;
+    background-color: #590730;
+    border-color: #440525; /*set the color you want here*/
+}
+.btn-main-button:hover, btn-main-button:focus, btn-main-button:active, .btn-main-button.active, .open>.dropdown-toggle.btn-main-button {
+    color: #fff;
+    background-color: #440525;
+    border-color: #38041E; /*set the color you want here*/
+}
+
+.btn-outline-main-button{
+    color: #590730;
+    border-color: #590730;
+}
+
+.btn-outline-main-button:hover {
+    color: #fff;
+    background-color: #590730;
+    border-color: #590730;
+}
+

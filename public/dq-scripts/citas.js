@@ -36,6 +36,7 @@ const mostrarModalCitas = () => {
 const limpiarInputsModal = () => {
     $('#titulo').val('');
     $('#cita_descripcion').val('');
+    $('#time_start').val('');
     $('#paciente').val('');
 }
 
@@ -107,7 +108,7 @@ function abrirModal(info, tipoEvento){
                 $('#cita_descripcion').val(response.descripcion);
                 $('#fecha').val(fecha_start);
                 $('#time_start').val(hora_inicio);
-                $('#minutes').val();
+                $('#minutes').val(response.minutos);
                 $('#paciente').val(response.paciente);
 
                 mostrarModalCitas();
@@ -134,6 +135,7 @@ document.getElementById("btnRegistrarCita").addEventListener("click", function (
         fecha       : fecha,
         time_start  : hora_inicial,
         time_end    : hora_final,
+        minutos     : minutos,
         paciente    : $('#paciente').val()
     };
 
@@ -174,6 +176,7 @@ document.getElementById("btnActualizarCita").addEventListener("click", function 
         fecha       : fecha,
         time_start  : hora_inicial,
         time_end    : hora_final,
+        minutos     : minutos,
         paciente    : $('#paciente').val()
     };
 
@@ -203,24 +206,35 @@ document.getElementById("btnActualizarCita").addEventListener("click", function 
 
 document.getElementById("btnEliminar").addEventListener("click", function (){
     const idCita = $('#btnActualizarCita').attr('data-id');
-    console.log(idCita);
 
-    $.ajax({
-        type        : 'DELETE',
-        url         : `/citas/${idCita}`,
-        headers     : { "X-CSRF-TOKEN": token },
-        beforeSend  : response => {
-        },
-        success     : response => {
-            $("#crearCita").modal("hide");
-        },
-        error: function (error){
-            if(error.response){
-                console.log(error.response.data);
-            }
-        },
-        complete: result => {
-            location.reload();
+    swal.fire({
+        title: 'Se eliminará la cita',
+        text: "¿Está seguro?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí. Continuar'
+    }).then((result) => {
+        if(result.value){
+            $.ajax({
+                type        : 'DELETE',
+                url         : `/citas/${idCita}`,
+                headers     : { "X-CSRF-TOKEN": token },
+                beforeSend  : response => {
+                },
+                success     : response => {
+                    $("#crearCita").modal("hide");
+                },
+                error: function (error){
+                    if(error.response){
+                        console.log(error.response.data);
+                    }
+                },
+                complete: result => {
+                    location.reload();
+                }
+            });
         }
     });
 });
