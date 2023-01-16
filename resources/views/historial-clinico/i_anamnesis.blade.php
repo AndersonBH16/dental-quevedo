@@ -15,7 +15,7 @@
                     <label class="col-form-label">Nombre:</label>
                 </div>
                 <div class="col-sm">
-                    <input type="text" class="form-control" value="{{$paciente->nombreCompleto}} {{ $paciente->apellidoPaterno }} {{ $paciente->apellidoMaterno }}" readonly>
+                    <input id="nombres" type="text" class="form-control" value="{{$paciente->nombreCompleto}} {{ $paciente->apellidoPaterno }} {{ $paciente->apellidoMaterno }}" readonly>
                 </div>
             </div>
             <div class="form-group row">
@@ -24,7 +24,7 @@
                         <label class="col-form-label">Edad:</label>
                     </div>
                     <div class="col-sm">
-                        <input type="number" class="form-control" id="edad" min="2" max="90">
+                        <input id="edad" type="number" class="form-control" min="2" max="90">
                     </div>
                 </div>
                 <div class="form-group col-sm-4 row">
@@ -39,7 +39,7 @@
                 <div class="form-group col-sm-4 row">
                     <label class="col-sm-4 col-form-label">DNI:</label>
                     <div class="col-md">
-                        <input type="text" class="form-control" value="{{ $paciente->dni }}" disabled/>
+                        <input id="dni" type="text" class="form-control" value="{{ $paciente->dni }}" disabled/>
                     </div>
                 </div>
             </div>
@@ -113,7 +113,7 @@
             </div>
             <label class="">3. Enfermedad Actual</label>
             <div class="form-group row"><br>
-                <label>Tiempo de enfernmedad:</label><br>
+                <label>Tiempo de enfermedad:</label><br>
                 <textarea id="tiempo_enfermedad" class="form-control" placeholder="Escribir detalle" rows="5"></textarea><br>
                 <label>Signos y síntomas principales:</label><br>
                 <textarea id="signos_sintomas_princip" class="form-control" placeholder="Escribir detalle" rows="5"></textarea><br>
@@ -127,126 +127,126 @@
                     <div class="col-lg-6">
                         <div class="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input id="hiper" name="antecedentes" class="form-check-input" type="checkbox" value="hipertension">
+                                <label class="form-check-label" for="hiper">
                                     Hipertensión
                                 </label>
                             </div>
                             <div class="form-check ml-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <input id="hepa" name="antecedentes" class="form-check-input" type="checkbox" value="hepatitis">
+                                <label class="form-check-label" for="hepa">
                                     Hepatitis
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input id="diab" name="antecedentes" class="form-check-input" type="checkbox" value="diabetes">
+                                <label class="form-check-label" for="diab">
                                     Diabetes
                                 </label>
                             </div>
                             <div class="form-check ml-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <input id="anem" name="antecedentes" class="form-check-input" type="checkbox" value="anemia">
+                                <label class="form-check-label" for="anem">
                                     Anemia
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Trastornos respiratorios
+                                <input id="tt" name="antecedentes" class="form-check-input" type="checkbox" value="Trastornos Respiratorios">
+                                <label class="form-check-label" for="tt">
+                                    Trastornos Respiratorios
                                 </label>
                             </div>
                             <div class="form-check ml-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <input id="epil" name="antecedentes" class="form-check-input" type="checkbox" value="Epilepsia">
+                                <label class="form-check-label" for="epil">
                                     Epilepsia
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input id="tbc" name="antecedentes" class="form-check-input" type="checkbox" value="Tuberculosis">
+                                <label class="form-check-label" for="tbc">
                                     Tuberculosis
                                 </label>
                             </div>
                             <div class="form-check ml-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    Fiebre reumática
+                                <input id="freu" name="antecedentes" class="form-check-input" type="checkbox" value="Fiebre Reumática">
+                                <label class="form-check-label" for="freu">
+                                    Fiebre Reumática
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Enfermedad cardíaca
+                                <input id="ec" name="antecedentes" class="form-check-input" type="checkbox" value="Enfermedad Cardiaca">
+                                <label class="form-check-label" for="ec">
+                                    Enfermedad Cardíaca
                                 </label>
                             </div>
                             <div class="form-check ml-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    Trastornos gástricos
+                                <input id="tg" name="antecedentes" class="form-check-input" type="checkbox" value="Trastornos Gastricos">
+                                <label class="form-check-label" for="tg">
+                                    Trastornos Gástricos
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Enfermedad renal
+                                <input id="er" name="antecedentes" class="form-check-input" type="checkbox" value="Enfermedad Renal">
+                                <label class="form-check-label" for="er">
+                                    Enfermedad Renal
                                 </label>
                             </div>
                             <div class="form-check ml-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    Trastornos hormonales
+                                <input id="th" name="antecedentes" class="form-check-input" type="checkbox" value="Trastornos Hormonales">
+                                <label class="form-check-label" for="th">
+                                    Trastornos Hormonales
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input id="neu" name="antecedentes" class="form-check-input" type="checkbox" value="Neuralgia">
+                                <label class="form-check-label" for="neu">
                                     Neuralgia
                                 </label>
                             </div>
                             <div class="form-check ml-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <input id="aam" name="antecedentes" class="form-check-input" type="checkbox" value="Alergia a algún medicamento">
+                                <label class="form-check-label" for="aam">
                                     Alergia a algún medicamento
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input id="sida" name="antecedentes" class="form-check-input" type="checkbox" value="Infección Venérea o SIDA">
+                                <label class="form-check-label" for="sida">
                                     Infección venérea o SIDA
                                 </label>
                             </div>
                             <div class="form-check ml-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <input id="colest" name="antecedentes" class="form-check-input" type="checkbox" value="Colesterol">
+                                <label class="form-check-label" for="colest">
                                     Colesterol
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input id="art" name="antecedentes" class="form-check-input" type="checkbox" value="Artitris">
+                                <label class="form-check-label" for="art">
                                     Artitris
                                 </label>
                             </div>
                             <div class="form-check ml-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <input id="tumor" name="antecedentes" class="form-check-input" type="checkbox" value="Algún tumor">
+                                <label class="form-check-label" for="tumor">
                                     Algún tumor
                                 </label>
                             </div>
@@ -255,84 +255,84 @@
                     <div class="col-lg-6">
                         <div class="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input id="piel" name="antecedentes" class="form-check-input" type="checkbox" value="Enfermedad de la piel">
+                                <label class="form-check-label" for="piel">
                                     Enfermedad de la piel
                                 </label>
                             </div>
                             <div class="form-check ml-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <input id="emba" name="antecedentes" class="form-check-input" type="checkbox" value="Embarazo">
+                                <label class="form-check-label" for="emba">
                                     Embarazo
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input id="ds" name="antecedentes" class="form-check-input" type="checkbox" value="Discrasias sanguíneas">
+                                <label class="form-check-label" for="ds">
                                     Discrasias sanguíneas
                                 </label>
                             </div>
                             <div class="form-check ml-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <input id="tp" name="antecedentes" class="form-check-input" type="checkbox" value="Trastornos psicológicos">
+                                <label class="form-check-label" for="tp">
                                     Trastornos psicológicos
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input id="fuma" name="antecedentes" class="form-check-input" type="checkbox" value="Fuma">
+                                <label class="form-check-label" for="fuma">
                                     Fuma
                                 </label>
                             </div>
                             <div class="form-check ml-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <input id="alco" name="antecedentes" class="form-check-input" type="checkbox" value="Alcoholismo">
+                                <label class="form-check-label" for="alco">
                                     Alcoholismo
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input id="drog" name="antecedentes" class="form-check-input" type="checkbox" value="Drogadicción">
+                                <label class="form-check-label" for="drog">
                                     Drogadicción
                                 </label>
                             </div>
                             <div class="form-check ml-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <input id="canc" name="antecedentes" class="form-check-input" type="checkbox" value="Cáncer">
+                                <label class="form-check-label" for="canc">
                                     Cáncer
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input id="oe" name="antecedentes" class="form-check-input" type="checkbox" value="Otra enfermedad">
+                                <label class="form-check-label" for="oe">
                                     Otra enfermedad
                                 </label>
                             </div>
                             <div class="form-check ml-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <input id="medic" name="antecedentes" class="form-check-input" type="checkbox" value="Toma algún medicamento">
+                                <label class="form-check-label" for="medic">
                                     Toma algún medicamento
                                 </label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input id="quir" name="antecedentes" class="form-check-input" type="checkbox" value="Quirúrgicos">
+                                <label class="form-check-label" for="quir">
                                     Quirúrgicos
                                 </label>
                             </div>
                             <div class="form-check ml-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
+                                <input id="quimio" name="antecedentes" class="form-check-input" type="checkbox" value="Quimioterapia o Radioterapia">
+                                <label class="form-check-label" for="quimio">
                                     Quimioterapia o Radioterapia
                                 </label>
                             </div>

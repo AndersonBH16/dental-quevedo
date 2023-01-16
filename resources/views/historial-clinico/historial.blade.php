@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <textarea id="diagnostico_pre" class="form-control" placeholder="Escribir detalle" rows="5"></textarea>
+                <textarea id="diag_pres" class="form-control" placeholder="Escribir detalle" rows="5"></textarea>
             </div>
         </div>
 
@@ -101,7 +101,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <textarea id="control_evoluc" class="form-control" placeholder="Detallar" rows="5"></textarea>
+                <textarea id="control_evol" class="form-control" placeholder="Detallar" rows="5"></textarea>
             </div>
         </div>
 
