@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HistorialClinico;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
 
 class HistoriaClinicaController extends Controller
 {
-    public function index(Request $request, Paciente $paciente)
+    public function index(Request $request, Paciente $paciente, HistorialClinico $historial)
     {
-        return view('historial-clinico.historial', compact('paciente'));
+        return view('historial-clinico.historial', compact('paciente'), compact('historial'));
     }
 
     /**
@@ -26,16 +26,17 @@ class HistoriaClinicaController extends Controller
 
     public function store(Request $request){
 //        try {
-//            dd($request["dataPaciente"]["control_evol"]);
+//            dd($request["dataPaciente"]["idPaciente"]);
 ////            dd($request["dataPaciente"]);
 //
 //        }catch (\Exception $e){
 //            dd($e);
 //        }
 
-
         try{
-            DB::table('historial_clinico')->insert([
+            DB::table('historial_clinico')->updateOrInsert([
+                'idPaciente'=>'12345678'
+            ], [
                 'ana_edad'                      => $request["dataPaciente"]["edad"],
                 'ana_sexo'                      => $request["dataPaciente"]["sexo"],
                 'ana_religion'                  => $request["dataPaciente"]["religion"],
@@ -86,7 +87,6 @@ class HistoriaClinicaController extends Controller
                 'control_evol'                  => $request["dataPaciente"]["control_evol"]
             ]);
 
-            return Redirect::refresh();
         }catch (\Exception $e){
             return response()->json([
                 "error" => $e
@@ -94,15 +94,17 @@ class HistoriaClinicaController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function show($dni){
+        try{
+            return response()->json(
+                DB::select('CALL obtenerHistorialClinicoXDNI(?)',[$dni])[0]
+            );
+
+        }catch (\Exception $e){
+            $error = $e->getMessage() . 'Linea error: '.$e->getLine();
+            echo $error;
+            exit();
+        }
     }
 
     /**

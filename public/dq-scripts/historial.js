@@ -1,3 +1,7 @@
+$(document).ready(function () {
+    mostrarHistorialClinico();
+});
+
 const token = $("input[name=_token]").val();
 
 $('#btnGuardarHistorialMedico').click(function(){
@@ -92,7 +96,7 @@ $('#btnGuardarHistorialMedico').click(function(){
             console.log(datos);
         },
         success     : response => {
-            $('#btnGuardarHistorialMedico').attr('disabled', false);
+            location.reload();
         },
         error       : function (error){
             if(error.response){
@@ -104,3 +108,63 @@ $('#btnGuardarHistorialMedico').click(function(){
         // }
     });
 });
+
+const mostrarHistorialClinico = () => {
+    const dni = parseInt($('#dni').val());
+
+    $.ajax({
+        type        : 'GET',
+        url         : `/historial-clinico/${dni}`,
+        headers     : { "X-CSRF-TOKEN": token },
+        success     : response => {
+            // 1.Filacion
+            $('#edad').val(response.ana_edad);
+            $('#sexo').val(response.ana_sexo);
+            $('#religion').val(response.ana_religion);
+            $('#lugarNacimiento').val(response.ana_lugar_nacimiento);
+            $('#telefono').val(response.ana_relefono);
+            $('#email').val(response.ana_telefono_emergencia);
+            $('#ocupacion').val(response.ana_ocupacion);
+            $('#grado_instruccion').val(response.ana_grado_instruccion);
+            $('#estado_civil').val(response.ana_estado_civil);
+            $('#nacionalidad').val(response.ana_nacionalidad);
+            $('#telefono_emergencia').val(response.ana_telefono_emergencia);
+                // 2. Motivo
+            $('#motivo_consulta').val(response.ana_motivo_consulta);
+                // 3. Enfermedad Actual
+            $('#tiempo_enfermedad').val(response.ana_tiempo_enfermedad);
+            $('#signos_sintomas_princip').val(response.ana_signos_sintomas);
+            $('#relato_enfermedad').val(response.ana_relato_enfermedad);
+                // 4. Antecedentes
+            $('#ampliacion').val(response.ana_antecedentes_ampliacion);
+            $('#familiares').val(response.ana_antecedentes_familiares);
+                // III. Diagnóstico Presuntivo
+            $('#diag_pres').val(response.diagnostico_presuntivo),
+                // IV. Pruebas Complementarias
+            $('#radio_peri').val(response.pc_rad_peri);
+            $('#radio_bw').val(response.pc_rad_b_w);
+            $('#radio_oclu').val(response.pc_rad_oclusal);
+            $('#radio_pano').val(response.pc_rad_pano);
+            $('#radio_cefa').val(response.pc_rad_cefa);
+            $('#tac').val(response.pc_rad_tac);
+            $('#hemograma').val(response.pc_rad_hemograma);
+            $('#biopsia').val(response.pc_rad_biopsia);
+                // V. Diagnóstico Definitivo
+            $('#diagnostico_def').val(response.diagnostico_definitivo);
+                // VI. Pronostico
+            $('#pronostico').val(response.pronostico);
+                // VII. Presupuesto
+            $('#presupuesto').val(response.presupuesto);
+                // VIII. Plan tratamientos y recomendaciones
+            $('#plan_tratamiento_recomendaciones').val(response.plan_trat_recomend);
+                //X. Contro, y Evolución
+            $('#control_evol').val(response.control_evol);
+        },
+        error       : function (error){
+            if(error.response){
+                alert(error.response.data);
+                console.log(error.response.data);
+            }
+        }
+    });
+};
