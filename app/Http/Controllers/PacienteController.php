@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Redirect;
 
 class PacienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('pacientes.pacientes');
@@ -46,6 +41,27 @@ class PacienteController extends Controller
                     pa.telefono,
                     pa.email
                 ');
+
+            if($request->dni) $query->whereIn('dni', explode('|', $request->dni));
+            if($request->apellidoPaterno) $query->whereIn('apellidoPaterno', explode('|', $request->dni));
+            if($request->apellidoMaterno) $query->whereIn('apellidoMaterno', explode('|', $request->dni));
+            if($request->nombreCompleto) $query->whereIn('nombreCompleto', explode('|', $request->dni));
+
+            $columns = [
+                0 => 'dni',
+                1 => 'apellidoPaterno',
+                2 => 'apellidoMaterno',
+                3 => 'nombreCompleto',
+            ];
+
+            $search = $request->server_search['value'];
+            if ($search) {
+                $query->where(function ($q) use ($columns, $search) {
+                    foreach ($columns as $column) {
+                        $q->Orwhere($column, 'like', "%{$search}%");
+                    }
+                });
+            }
 
             if($request->server_order){
                 $column = $request->server_order[0]['column'];

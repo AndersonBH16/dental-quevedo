@@ -13,7 +13,7 @@ const DATA_TABLE_CONFIG = {
     thousands: ".",
     lengthMenu: "Mostrar _MENU_ registros",
     zeroRecords: "No se encontraron resultados",
-    searchPlaceholder: "Buscar proformas",
+    searchPlaceholder: "Buscar Pacientes",
     info: "Registros de _START_ al _END_ de un total de _TOTAL_ registros",
     infoEmpty: "No se encontraron registros disponibles",
     infoFiltered: "(filtrado de un total de _MAX_ registros)",
@@ -123,7 +123,7 @@ function mostrarListaPacientes(){
             { width: 10, targets: 6, render: itemJson },
             { width: 10, targets: 7, render: itemJson },
             { visible: true },
-            { orderable: true},
+            { orderable: true, targets: [0, 1, 2, 3]},
         ],
         lengthMenu: [[25, 50, 100], [25, 50, 100]],
         language: DATA_TABLE_CONFIG
