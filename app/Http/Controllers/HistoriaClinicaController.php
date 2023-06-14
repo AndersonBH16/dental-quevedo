@@ -25,73 +25,119 @@ class HistoriaClinicaController extends Controller
     }
 
     public function store(Request $request){
-//        try {
+        try {
 //            dd($request["dataPaciente"]["idPaciente"]);
-////            dd($request["dataPaciente"]);
-//
-//        }catch (\Exception $e){
-//            dd($e);
-//        }
-
-        try{
-            DB::table('historial_clinico')->updateOrInsert([
-                'idPaciente'=>'12345678'
-            ], [
-                'ana_edad'                      => $request["dataPaciente"]["edad"],
-                'ana_sexo'                      => $request["dataPaciente"]["sexo"],
-                'ana_religion'                  => $request["dataPaciente"]["religion"],
-                'ana_lugar_nacimiento'          => $request["dataPaciente"]["lugarNacimiento"],
-                'ana_telefono'                  => $request["dataPaciente"]["telefono"],
-                'ana_email'                     => $request["dataPaciente"]["email"],
-                'ana_ocupacion'                 => $request["dataPaciente"]["ocupacion"],
-                'ana_grado_instruccion'         => $request["dataPaciente"]["grado_instruccion"],
-                'ana_estado_civil'              => $request["dataPaciente"]["estado_civil"],
-                'ana_nacionalidad'              => $request["dataPaciente"]["nacionalidad"],
-                'ana_telefono_emergencia'       => $request["dataPaciente"]["telefono_emergencia"],
-                'ana_motivo_consulta'           => $request["dataPaciente"]["motivo_consulta"],
-                'ana_tiempo_enfermedad'         => $request["dataPaciente"]["tiempo_enfermedad"],
-                'ana_signos_sintomas'           => $request["dataPaciente"]["signos_sintomas_princip"],
-                'ana_relato_enfermedad'         => $request["dataPaciente"]["relato_enfermedad"],
-//                'checkbox_antecedentes'         => implode(',', $request["dataPaciente"]["checkbox_antecedentes"]),
-//                'ana_antecedentes_hh'           => $request["dataPaciente"]["categoria"],
-//                'ana_antecedentes_da'           => $request["dataPaciente"]["categoria"],
-//                'ana_antecedentes_te'           => $request["dataPaciente"]["categoria"],
-//                'ana_antecedentes_tfr'          => $request["dataPaciente"]["categoria"],
-//                'ana_antecedentes_ec_tg'        => $request["dataPaciente"]["categoria"],
-//                'ana_antecedentes_er_th'        => $request["dataPaciente"]["categoria"],
-//                'ana_antecedentes_n_aam'        => $request["dataPaciente"]["categoria"],
-//                'ana_antecedentes_sida_c'       => $request["dataPaciente"]["categoria"],
-//                'ana_antecedentes_a_at'         => $request["dataPaciente"]["categoria"],
-//                'ana_antecedentes_ep_e'         => $request["dataPaciente"]["categoria"],
-//                'ana_antecedentes_ds_tp'        => $request["dataPaciente"]["categoria"],
-//                'ana_antecedentes_f_a'          => $request["dataPaciente"]["categoria"],
-//                'ana_antecedentes_d_c'          => $request["dataPaciente"]["categoria"],
-//                'ana_antecedentes_o_tam'        => $request["dataPaciente"]["categoria"],
-//                'ana_antecedentes_q_qr'         => $request["dataPaciente"]["categoria"],
-                'ana_antecedentes_ampliacion'   => $request["dataPaciente"]["amp"],
-                'ana_antecedentes_familiares'   => $request["dataPaciente"]["familiares"],
-                'idPaciente'                    => $request["dataPaciente"]["idPaciente"],
-                'diagnostico_presuntivo'        => $request["dataPaciente"]["diag_pres"],
-                'pc_rad_peri'                   => $request["dataPaciente"]["periapical"],
-                'pc_rad_b_w'                    => $request["dataPaciente"]["bite_wing"],
-                'pc_rad_oclusal'                => $request["dataPaciente"]["oclusal"],
-                'pc_rad_pano'                   => $request["dataPaciente"]["panom"],
-                'pc_rad_cefa'                   => $request["dataPaciente"]["cefalo"],
-                'pc_rad_tac'                    => $request["dataPaciente"]["tac"],
-                'pc_rad_hemograma'              => $request["dataPaciente"]["hemo"],
-                'pc_rad_biopsia'                => $request["dataPaciente"]["biopsia"],
-                'diagnostico_definitivo'        => $request["dataPaciente"]["diagnostico_def"],
-                'pronostico'                    => $request["dataPaciente"]["pronostico"],
-                'presupuesto'                   => $request["dataPaciente"]["presupuesto"],
-                'plan_trat_recomend'            => $request["dataPaciente"]["plan_trat_recomend"],
-                'control_evol'                  => $request["dataPaciente"]["control_evol"]
-            ]);
+//            dd($request["dataPaciente"]["ana_edad"]);
+//            dd($request["dataPaciente"]["control_evol"]);
+//            dd($request["dataPaciente"]);
 
         }catch (\Exception $e){
-            return response()->json([
-                "error" => $e
-            ]);
+            dd($e);
         }
+
+//        try{
+//            DB::table('historial_clinico')->updateOrInsert([
+//                'idPaciente'=>'12345678'
+//            ], [
+//                'ana_edad'                      => $request["dataPaciente"]["edad"],
+//                'ana_sexo'                      => $request["dataPaciente"]["sexo"],
+//                'ana_religion'                  => $request["dataPaciente"]["religion"],
+//                'ana_lugar_nacimiento'          => $request["dataPaciente"]["lugarNacimiento"],
+//                'ana_telefono'                  => $request["dataPaciente"]["telefono"],
+//                'ana_email'                     => $request["dataPaciente"]["email"],
+//                'ana_ocupacion'                 => $request["dataPaciente"]["ocupacion"],
+//                'ana_grado_instruccion'         => $request["dataPaciente"]["grado_instruccion"],
+//                'ana_estado_civil'              => $request["dataPaciente"]["estado_civil"],
+//                'ana_nacionalidad'              => $request["dataPaciente"]["nacionalidad"],
+//                'ana_telefono_emergencia'       => $request["dataPaciente"]["telefono_emergencia"],
+//                'ana_motivo_consulta'           => $request["dataPaciente"]["motivo_consulta"],
+//                'ana_tiempo_enfermedad'         => $request["dataPaciente"]["tiempo_enfermedad"],
+//                'ana_signos_sintomas'           => $request["dataPaciente"]["signos_sintomas_princip"],
+//                'ana_relato_enfermedad'         => $request["dataPaciente"]["relato_enfermedad"],
+////                'checkbox_antecedentes'         => implode(',', $request["dataPaciente"]["checkbox_antecedentes"]),
+////                'ana_antecedentes_hh'           => $request["dataPaciente"]["categoria"],
+////                'ana_antecedentes_da'           => $request["dataPaciente"]["categoria"],
+////                'ana_antecedentes_te'           => $request["dataPaciente"]["categoria"],
+////                'ana_antecedentes_tfr'          => $request["dataPaciente"]["categoria"],
+////                'ana_antecedentes_ec_tg'        => $request["dataPaciente"]["categoria"],
+////                'ana_antecedentes_er_th'        => $request["dataPaciente"]["categoria"],
+////                'ana_antecedentes_n_aam'        => $request["dataPaciente"]["categoria"],
+////                'ana_antecedentes_sida_c'       => $request["dataPaciente"]["categoria"],
+////                'ana_antecedentes_a_at'         => $request["dataPaciente"]["categoria"],
+////                'ana_antecedentes_ep_e'         => $request["dataPaciente"]["categoria"],
+////                'ana_antecedentes_ds_tp'        => $request["dataPaciente"]["categoria"],
+////                'ana_antecedentes_f_a'          => $request["dataPaciente"]["categoria"],
+////                'ana_antecedentes_d_c'          => $request["dataPaciente"]["categoria"],
+////                'ana_antecedentes_o_tam'        => $request["dataPaciente"]["categoria"],
+////                'ana_antecedentes_q_qr'         => $request["dataPaciente"]["categoria"],
+//                'ana_antecedentes_ampliacion'   => $request["dataPaciente"]["amp"],
+//                'ana_antecedentes_familiares'   => $request["dataPaciente"]["familiares"],
+//                'idPaciente'                    => $request["dataPaciente"]["idPaciente"],
+//                'diagnostico_presuntivo'        => $request["dataPaciente"]["diag_pres"],
+//                'pc_rad_peri'                   => $request["dataPaciente"]["periapical"],
+//                'pc_rad_b_w'                    => $request["dataPaciente"]["bite_wing"],
+//                'pc_rad_oclusal'                => $request["dataPaciente"]["oclusal"],
+//                'pc_rad_pano'                   => $request["dataPaciente"]["panom"],
+//                'pc_rad_cefa'                   => $request["dataPaciente"]["cefalo"],
+//                'pc_rad_tac'                    => $request["dataPaciente"]["tac"],
+//                'pc_rad_hemograma'              => $request["dataPaciente"]["hemo"],
+//                'pc_rad_biopsia'                => $request["dataPaciente"]["biopsia"],
+//                'diagnostico_definitivo'        => $request["dataPaciente"]["diagnostico_def"],
+//                'pronostico'                    => $request["dataPaciente"]["pronostico"],
+//                'presupuesto'                   => $request["dataPaciente"]["presupuesto"],
+//                'plan_trat_recomend'            => $request["dataPaciente"]["plan_trat_recomend"],
+//                'control_evol'                  => $request["dataPaciente"]["control_evol"]
+//            ]);
+
+
+            try {
+                DB::select('CALL guardarActualizarHistorialClinico(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [
+                    $request["dataPaciente"]["edad"],
+                    $request["dataPaciente"]["sexo"],
+                    $request["dataPaciente"]["religion"],
+                    $request["dataPaciente"]["lugarNacimiento"],
+                    $request["dataPaciente"]["telefono"],
+                    $request["dataPaciente"]["email"],
+                    $request["dataPaciente"]["ocupacion"],
+                    $request["dataPaciente"]["grado_instruccion"],
+                    $request["dataPaciente"]["estado_civil"],
+                    $request["dataPaciente"]["nacionalidad"],
+                    $request["dataPaciente"]["telefono_emergencia"],
+                    $request["dataPaciente"]["motivo_consulta"],
+                    $request["dataPaciente"]["tiempo_enfermedad"],
+                    $request["dataPaciente"]["signos_sintomas_princip"],
+                    $request["dataPaciente"]["relato_enfermedad"],
+
+                    $request["dataPaciente"]["amp"],
+                    $request["dataPaciente"]["familiares"],
+                    $request["dataPaciente"]["idPaciente"],
+                    $request["dataPaciente"]["diag_pres"],
+                    $request["dataPaciente"]["periapical"],
+                    $request["dataPaciente"]["bite_wing"],
+                    $request["dataPaciente"]["oclusal"],
+                    $request["dataPaciente"]["panom"],
+                    $request["dataPaciente"]["cefalo"],
+                    $request["dataPaciente"]["tac"],
+                    $request["dataPaciente"]["hemo"],
+                    $request["dataPaciente"]["biopsia"],
+                    $request["dataPaciente"]["diagnostico_def"],
+                    $request["dataPaciente"]["pronostico"],
+                    $request["dataPaciente"]["presupuesto"],
+                    $request["dataPaciente"]["plan_trat_recomend"],
+                    $request["dataPaciente"]["control_evol"]
+                ]);
+
+            }catch (\Exception $e){
+                $error = $e->getMessage() . 'Linea error: '.$e->getLine();
+                echo $error;
+                exit();
+            }
+
+//        }catch (\Exception $e){
+//            return response()->json([
+//                "error" => $e
+//            ]);
+//        }
     }
 
     public function show($dni){

@@ -10,6 +10,7 @@
 @section('content')
         @csrf
         @include('historial-clinico.i_anamnesis')
+        @include('historial-clinico.ii_examen_clinico')
         <div class="card card-info card-outline mt-3">
             <div class="card-header">
                 <h3 class="card-title"><b>III. DIAGNÓSTICO PRESUNTIVO</b></h3>

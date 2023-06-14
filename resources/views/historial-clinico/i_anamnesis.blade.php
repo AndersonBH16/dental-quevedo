@@ -345,8 +345,9 @@
                 </div>
                 <label class="">b. Familiares</label>
                 <div class="">
-                    <textarea id="familiares" class="form-control" placeholder="Descripción" rows="5"></textarea>
+                    <textarea id="familiares" class="form-control" placeholder="Descripción" rows="1"></textarea>
                 </div>
+                <br>
                 <label class="mt-2">c. Estomatológicos</label>
                 <div class="row mt-2 mb-2">
                     <div class="col-md-8">
@@ -505,6 +506,98 @@
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
                             <label class="form-check-label" for="flexCheckChecked">No</label>
                         </div>
+                    </div>
+                </div>
+                <div class="row mt-2 mb-2">
+                    <div class="col-md-8">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            ¿Alguna vez se le ha fracturado algún diente?
+                        </label>
+                    </div>
+                    <div class="col-md-4 row">
+                        <div class="form-check ml-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">Sí</label>
+                        </div>
+                        <div class="form-check ml-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2 mb-2">
+                    <div class="col-md-8">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            ¿Respira por la boca?
+                        </label>
+                    </div>
+                    <div class="col-md-4 row">
+                        <div class="form-check ml-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">Sí</label>
+                        </div>
+                        <div class="form-check ml-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2 mb-2">
+                    <div class="col-md-8">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            ¿Sufrió algún golpe en los dientes?
+                        </label>
+                    </div>
+                    <div class="col-md-4 row">
+                        <div class="form-check ml-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">Sí</label>
+                        </div>
+                        <div class="form-check ml-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2 mb-2">
+                    <div class="col-md-3">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            ¿Cuándo?
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="form-group row">
+                        <textarea id="cuando_golpe_dientes" class="form-control" placeholder="Escribir detalle" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="row mt-2 mb-2">
+                    <div class="col-md-8">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            ¿Tiene dificultad para hablar?
+                        </label>
+                    </div>
+                    <div class="col-md-4 row">
+                        <div class="form-check ml-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">Sí</label>
+                        </div>
+                        <div class="form-check ml-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2 mb-2">
+                    <div class="col-md-3">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Otros
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="form-group row">
+                        <textarea id="cuando_dificultad_hablar" class="form-control" placeholder="Escribir detalle" rows="2"></textarea>
                     </div>
                 </div>
             </div>
